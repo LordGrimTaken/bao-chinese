@@ -20,6 +20,7 @@ Bao is a Duolingo-shaped Mandarin course that refuses to skip the parts generic 
 - **Grammar gets one minute.** Every lesson has a plain-English “why” card.
 - **Five minutes is enough.** 14–22 interactions, with a real completion screen.
 - **It works offline.** No account, no server, no ads, no tracking. Your progress is local and exportable.
+- **Pinyin beside every word.** Dictionary rows, lesson answer options, build tiles, sentence examples, and story lines all show pinyin; the setting can turn it off for listening practice.
 - **Bundled Mandarin audio.** 661 neural-voice clips cover every word, sentence, story line, and tone pair; device TTS is the fallback.
 - **It updates itself.** The Android build checks GitHub Releases, verifies the APK checksum, and hands it to Android's installer.
 - **Gentle gamification.** Streaks, XP, gems, and hearts — with an unlimited-hearts setting and free review.
@@ -43,6 +44,10 @@ It is a **complete starter course for HSK 3.0 Level 1**: 16 units, 49 lessons, *
 | Stories | Story reader |
 | --- | --- |
 | ![Stories](screenshots/stories.png) | ![Story](screenshots/story.png) |
+
+| Pinyin in choices | Pinyin in build |
+| --- | --- |
+| ![Pinyin lesson](screenshots/lesson-pinyin.png) | ![Pinyin build](screenshots/build-pinyin.png) |
 
 | Words | Profile | Completion |
 | --- | --- | --- |
@@ -126,7 +131,7 @@ When a newer release exists, it:
 
 The first update needs “Allow from this source” for Bao. Progress stays on the device; the app does not use an account.
 
-**One-time note:** v0.1.0 was signed with a throwaway CI debug key and has no updater code, so it cannot update itself. Reinstall v1.1.0 once. The v0.1.1+ builds are signed with the stable demo key and can update in place. The demo key is intentionally public for this prototype — see [android/keystore/README.md](android/keystore/README.md) before a Play Store release.
+**One-time note:** v0.1.0 was signed with a throwaway CI debug key and has no updater code, so it cannot update itself. Reinstall v1.1.1 once. The v0.1.1+ builds are signed with the stable demo key and can update in place. The demo key is intentionally public for this prototype — see [android/keystore/README.md](android/keystore/README.md) before a Play Store release.
 
 ```bash
 # requires JDK 17, Android SDK 35, and Gradle 8.9+

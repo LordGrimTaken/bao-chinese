@@ -103,6 +103,7 @@ A friendly, offline Android app that teaches absolute beginners to **hear tones,
 | Lessons | Intro, meaning, hanzi, audio, tone, match, build, fill, trace | ✅ |
 | Stroke order | 16 core characters, animated paths, guided writing, hints | ✅ v1.0 |
 | Stories | 4 graded scenes, line audio, tap-to-translate, comprehension questions | ✅ v1.1 |
+| Pinyin | Beside words, answer options, build tiles, and story lines; toggle in Me | ✅ v1.1.1 |
 | Feedback | Correct/incorrect states, answer reveal, retry queue | ✅ |
 | Audio | Android TTS bridge; browser speech synthesis; slow mode | ✅ |
 | Gamification | XP, levels, gems, hearts + refill, streak + freeze, daily goal | ✅ |

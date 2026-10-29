@@ -90,7 +90,7 @@ for (let tick = 0; tick < 120; tick += 1) {
       const tiles = [...document.querySelectorAll('[data-tile]')].filter(t => !t.classList.contains('used'));
       const selectedTexts = (session.buildSelected || []).map(key => step.bank.find(t => t.key === key)?.text);
       const nextText = step.answer[selectedTexts.length];
-      const tile = tiles.find(t => t.textContent.trim() === nextText);
+      const tile = tiles.find(t => t.querySelector('.tile-text')?.textContent.trim() === nextText);
       if (tile) {
         tile.click();
         return { stage: 'build-tile', step: step.type, text: nextText };

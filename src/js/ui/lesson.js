@@ -163,13 +163,15 @@ function renderToneWord(app, step) {
 }
 
 function renderOptions(step, app) {
+  const showPinyin = app.state.profile.showPinyin;
   return `<div class="options" data-options>
     ${step.options
       .map(
         (option, index) => `<button class="option ${optionClass(app, step, option.value)}" data-value="${escapeHtml(String(option.value))}" ${app.session.checked ? 'disabled' : ''}>
           <span class="option-key">${index + 1}</span>
-          <span class="option-text">${escapeHtml(String(option.label))}
-          </span>
+          <span class="option-text">${escapeHtml(String(option.label))}${
+            showPinyin && option.pinyin ? `<span class="opt-py">${escapeHtml(option.pinyin)}</span>` : ''
+          }</span>
         </button>`
       )
       .join('')}
@@ -189,9 +191,12 @@ function renderFill(app, step) {
 
 function renderBuild(app, step) {
   const selected = app.session.buildSelected || [];
+  const showPinyin = app.state.profile.showPinyin;
   const selectedTiles = selected
     .map((key) => step.bank.find((tile) => tile.key === key))
     .filter(Boolean);
+  const tilePinyin = (tile) =>
+    showPinyin && tile.pinyin ? `<span class="tile-pinyin">${escapeHtml(tile.pinyin)}</span>` : '';
   return `<div class="lesson-prompt">
     ${promptHeader('Build the translation')}
     <div class="prompt-en" style="margin-top:10px">${escapeHtml(step.prompt)}</div>
@@ -200,7 +205,7 @@ function renderBuild(app, step) {
     ${selectedTiles
       .map(
         (tile) =>
-          `<button class="tile in-answer" data-remove-tile="${tile.key}"><span class="tile-text">${escapeHtml(tile.text)}</span></button>`
+          `<button class="tile in-answer" data-remove-tile="${tile.key}"><span class="tile-text">${escapeHtml(tile.text)}</span>${tilePinyin(tile)}</button>`
       )
       .join('')}
   </div>
@@ -208,7 +213,7 @@ function renderBuild(app, step) {
     ${step.bank
       .map(
         (tile) =>
-          `<button class="tile ${selected.includes(tile.key) ? 'used' : ''}" data-tile="${tile.key}"><span class="tile-text">${escapeHtml(tile.text)}</span></button>`
+          `<button class="tile ${selected.includes(tile.key) ? 'used' : ''}" data-tile="${tile.key}"><span class="tile-text">${escapeHtml(tile.text)}</span>${tilePinyin(tile)}</button>`
       )
       .join('')}
   </div>
@@ -399,7 +404,9 @@ export function mountLesson(app) {
       const answer = root.querySelector('[data-build-answer]');
       answer?.insertAdjacentHTML(
         'beforeend',
-        `<button class="tile in-answer" data-remove-tile="${key}"><span class="tile-text">${escapeHtml(tile?.text || '')}</span></button>`
+        `<button class="tile in-answer" data-remove-tile="${key}"><span class="tile-text">${escapeHtml(tile?.text || '')}</span>${
+          app.state.profile.showPinyin && tile?.pinyin ? `<span class="tile-pinyin">${escapeHtml(tile.pinyin)}</span>` : ''
+        }</button>`
       );
       const remove = answer?.lastElementChild;
       remove?.addEventListener('click', () => removeTile(app, key));

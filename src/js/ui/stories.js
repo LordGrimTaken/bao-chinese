@@ -22,7 +22,7 @@ export function renderStories(app) {
     <header class="page-header">
       <span class="eyebrow">Graded reading</span>
       <h1>Stories</h1>
-      <p>Short scenes built only from words you have met. Tap a line for pinyin and English, then check what you understood.</p>
+      <p>Short scenes built only from words you have met. Pinyin is shown beside each line; tap it for English, then check what you understood.</p>
     </header>
 
     <div class="story-list">
@@ -42,7 +42,7 @@ export function renderStories(app) {
 
     <div class="story-tip">
       ${panda('happy')}
-      <span><b>慢慢来.</b> Read one line at a time. You can replay every line, and questions never cost hearts.</span>
+      <span><b>慢慢来.</b> Pinyin is shown beside each line. Tap for English, replay the audio, and answer without losing hearts.</span>
     </div>
   </div>`;
 }
@@ -56,6 +56,7 @@ export function mountStories(app) {
 export function renderStory(app) {
   const story = STORY_BY_ID.get(app.route.storyId) || STORIES[0];
   const done = Boolean(app.route.done);
+  const showPinyin = Boolean(app.state.profile.showPinyin);
 
   if (done) {
     return `<div class="story-reader story-reader--${story.color}">
@@ -93,7 +94,7 @@ export function renderStory(app) {
     </section>
 
     <div class="story-read-head">
-      <span>Tap a line to reveal pinyin + English</span>
+      <span>${showPinyin ? 'Pinyin is on. Tap a line for English.' : 'Tap a line to reveal pinyin and English.'}</span>
       <button class="story-reveal" data-story-action="reveal">Show all</button>
     </div>
 
@@ -106,7 +107,7 @@ export function renderStory(app) {
               <button class="story-hear" data-story-hear="${line.id}" aria-label="Hear line">${icon('speaker')}</button>
             </div>
             <p class="story-zh">${escapeHtml(line.zh)}</p>
-            <p class="story-pinyin">${escapeHtml(line.pinyin)}</p>
+            ${showPinyin ? `<p class="story-pinyin">${escapeHtml(line.pinyin)}</p>` : ''}
             <p class="story-en">${escapeHtml(line.en)}</p>
           </div>`
         )

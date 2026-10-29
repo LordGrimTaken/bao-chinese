@@ -75,6 +75,7 @@ function optionList(target, pool, random, key, count = 4) {
   return shuffle([target, ...wrong], random).map((word) => ({
     value: key(word),
     label: key(word),
+    pinyin: word.pinyin ?? null,
     id: word.id,
   }));
 }
@@ -175,8 +176,8 @@ function makeBuildStep(sentence, pool, random, index) {
     .map((word) => word.zh);
   const bank = shuffle(
     [
-      ...answer.map((text, i) => ({ key: `a${i}`, text })),
-      ...extras.map((text, i) => ({ key: `x${i}`, text })),
+      ...answer.map((text, i) => ({ key: `a${i}`, text, pinyin: WORD_BY_ZH.get(text)?.pinyin ?? null })),
+      ...extras.map((text, i) => ({ key: `x${i}`, text, pinyin: WORD_BY_ZH.get(text)?.pinyin ?? null })),
     ],
     random
   );

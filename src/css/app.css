@@ -2678,7 +2678,27 @@ body.modal-open {
   box-shadow: 0 3px 0 #bcdcf2;
 }
 
+.tile {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1px;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  line-height: 1.15;
+}
+
 .tile-text {
+  pointer-events: none;
+}
+
+.tile-pinyin {
+  color: var(--muted);
+  font-family: var(--font-body);
+  font-size: 9.5px;
+  font-weight: 600;
+  line-height: 1.15;
   pointer-events: none;
 }
 
@@ -4412,24 +4432,23 @@ body.modal-open {
   color: var(--ink);
 }
 
-.story-pinyin,
+.story-pinyin {
+  display: block;
+  margin: 3px 0 0;
+  color: var(--jade-dark);
+  font-size: 11.5px;
+  font-weight: 700;
+  line-height: 1.45;
+}
+
 .story-en {
   display: none;
   margin: 4px 0 0;
+  color: var(--muted);
   font-size: 11.5px;
   line-height: 1.45;
 }
 
-.story-pinyin {
-  color: var(--jade-dark);
-  font-weight: 700;
-}
-
-.story-en {
-  color: var(--muted);
-}
-
-.story-line.open .story-pinyin,
 .story-line.open .story-en {
   display: block;
 }
