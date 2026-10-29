@@ -540,6 +540,11 @@ ul {
   --u-dark: #634992;
   --u-soft: #f0e9fa;
 }
+.unit-steel {
+  --u: #4e7c8a;
+  --u-dark: #355a66;
+  --u-soft: #e3eff2;
+}
 
 .unit-banner {
   position: relative;

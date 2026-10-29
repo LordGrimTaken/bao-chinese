@@ -356,6 +356,75 @@ export const EXPANSION_UNITS = [
       },
     ],
   },
+  {
+    id: 'u14',
+    number: 14,
+    title: 'City & Communication',
+    subtitle: 'Going out, seeing, hearing, and making yourself understood',
+    color: 'steel',
+    emoji: '📞',
+    lessons: [
+      {
+        id: 'u14l1',
+        title: 'Going & returning',
+        kicker: 'Countries, arriving, going home, and driving',
+        words: ['hsk_guo', 'hsk_wai', 'hsk_dao', 'hsk_hui', 'hsk_kai', 'hsk_kai_che'],
+        sentences: [
+          s(['我', '爱', '我', '的', '国', '。'], 'I love my country.'),
+          s(['外', '边', '很', '冷', '。'], 'It is cold outside.'),
+          s(['我', '到', '学校', '了', '。'], 'I arrived at school.'),
+          s(['我', '回', '家', '。'], 'I am going home.'),
+          s(['我', '开', '车', '。'], 'I drive a car.'),
+          s(['我', '开车', '去', '公司', '。'], 'I drive to the company.'),
+        ],
+        grammar: {
+          title: 'Arrive, return, drive',
+          pattern: '到 + Place · 回 + Place · 开车',
+          body: '到 = arrive, 回 = return, 开 = open/drive. 开车 is “to drive”. 国 is country and 外 means outside; 外边 = outside.',
+        },
+      },
+      {
+        id: 'u14l2',
+        title: 'See & hear',
+        kicker: 'Here, there, and what your senses catch',
+        words: ['hsk_jian', 'hsk_kan_jian', 'hsk_ting_jian', 'hsk_zhe_li', 'hsk_na_li', 'hsk_na_li_2', 'hsk_zhong_wen'],
+        sentences: [
+          s(['我', '看见', '你', '了', '。'], 'I saw you.'),
+          s(['我', '听见', '了', '。'], 'I heard it.'),
+          s(['我', '见', '老师', '。'], 'I meet the teacher.'),
+          s(['我', '在', '这里', '。'], 'I am here.'),
+          s(['你', '在', '哪里', '？'], 'Where are you?'),
+          s(['我', '在', '那里', '。'], 'I am there.'),
+          s(['我', '学习', '中文', '。'], 'I study Chinese.'),
+        ],
+        grammar: {
+          title: 'See, hear, and location',
+          pattern: '看见 / 听见 · 这里 / 哪里 / 那里',
+          body: '见 = see/meet, 看见 = catch sight of, 听见 = hear. 这里 = here, 哪里 = where, 那里 = there. 中文 = the Chinese language.',
+        },
+      },
+      {
+        id: 'u14l3',
+        title: 'Phone & talk',
+        kicker: 'Call someone and say what you think',
+        words: ['hsk_da_dian_hua', 'hsk_wei', 'hsk_shuo_hua', 'hsk_jue_de', 'hsk_wen_ti', 'hsk_shi', 'hsk_mang'],
+        sentences: [
+          s(['我', '给', '你', '打电话', '。'], 'I will call you.'),
+          s(['喂', '，', '你', '好', '！'], 'Hello (on the phone)!'),
+          s(['我', '在', '说话', '。'], 'I am speaking.'),
+          s(['我', '觉得', '很', '好', '。'], 'I think it is good.'),
+          s(['这', '是', '一', '个', '问题', '。'], 'This is a problem.'),
+          s(['我', '有', '事', '。'], 'I have something to do.'),
+          s(['今天', '我', '很', '忙', '。'], 'I am busy today.'),
+        ],
+        grammar: {
+          title: 'Phone calls and opinions',
+          pattern: '打电话 · 觉得 + Clause',
+          body: '打电话 = make a phone call; 喂 is “hello” on the phone. 说话 = speak, 觉得 = think/feel. 问题 = question/problem; 事 = matter; 忙 = busy.',
+        },
+      },
+    ],
+  },
 ];
 
 export const EXPANSION_WORDS = [...new Set(EXPANSION_UNITS.flatMap((unit) => unit.lessons.flatMap((lesson) => lesson.words)))]
