@@ -193,7 +193,7 @@ Sentence data is **tokenized**:
 
 ## 6. Audio
 
-- **Bundled clips:** 637 MP3s generated with `zh-CN-XiaoxiaoNeural` cover all 314 dictionary words, 287 sentences, and 36 tone-pair words. The app resolves a clip by content ID; no manifest is needed (`words/<id>.mp3`, `sentences/<id>.mp3`, `tones/<id>.mp3`).
+- **Bundled clips:** 661 MP3s generated with `zh-CN-XiaoxiaoNeural` cover all 314 dictionary words, 287 sentences, 24 story lines, and 36 tone-pair words. The app resolves a clip by content ID; no manifest is needed (`words/<id>.mp3`, `sentences/<id>.mp3`, `stories/<id>.mp3`, `tones/<id>.mp3`).
 - **Fallback:** if a clip is missing/fails, Android `TextToSpeech` (`BaoNative.speak`) or Web Speech is used. This keeps local development and non-audio builds usable.
 - **Slow mode:** HTMLAudio `playbackRate = 0.72`, with TTS slow rate as fallback.
 - **SFX:** WebAudio oscillators (correct, wrong, tap, complete, heart). No network.
@@ -210,6 +210,16 @@ Sentence data is **tokenized**:
 - **Offline:** the data, vendor script, and `src/js/ui/stroke.js` are in the service-worker shell cache, so the lab works without a network.
 - **Access:** Review → Practice gym → Stroke order, or a word sheet's **Stroke order** button when the character is in the 16-character set.
 - **Expand:** add more characters to `stroke-data.js` and `STROKE_CHARS`; no other code changes.
+
+---
+
+## 6.2 Graded stories
+
+- **Data:** `src/data/stories.js` holds four six-line scenes. Lines are tokenized, enriched with pinyin via the shared word map, and every non-punctuation token must exist in the course dictionary.
+- **Audio:** each line has a stable ID (`s1l1` … `s4l6`) and a matching `assets/audio/stories/<id>.mp3`. `audio.js` resolves exact line text through `STORY_LINE_BY_ZH` before falling back to words/sentences/TTS.
+- **Reader:** tap a line to reveal pinyin and English; the speaker button plays that line. The two comprehension questions per story are local and never cost hearts.
+- **State:** completing all questions stores `state.stories[storyId]` and awards +10 XP once.
+- **Expand:** append a story object; generate audio for each line ID and add it to the publish step.
 
 ---
 

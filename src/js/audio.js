@@ -8,6 +8,7 @@
  */
 
 import { ALL_WORD_BY_ZH, SENTENCE_BY_ZH } from '../data/course.js';
+import { STORY_LINE_BY_ZH } from '../data/stories.js';
 import { TONE_PAIR_BY_ZH } from '../data/tone-pairs.js';
 
 let audioContext = null;
@@ -18,6 +19,8 @@ let currentAudio = null;
 const failedClips = new Set();
 
 function resolveClip(text) {
+  const storyLine = STORY_LINE_BY_ZH.get(text);
+  if (storyLine) return `stories/${storyLine}.mp3`;
   const word = ALL_WORD_BY_ZH.get(text);
   if (word && !word.hidden) return `words/${word.id}.mp3`;
   const sentence = SENTENCE_BY_ZH.get(text);

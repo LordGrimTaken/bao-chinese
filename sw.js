@@ -1,6 +1,6 @@
 /* Bao Chinese — offline shell. No build step, no dependencies. */
 // Bump this on every deploy so cache-first assets are invalidated.
-const VERSION = 'bao-v1.0.0';
+const VERSION = 'bao-v1.1.0';
 const ASSETS = [
   './',
   './index.html',
@@ -16,6 +16,7 @@ const ASSETS = [
   './src/data/expansion.js',
   './src/data/tone-pairs.js',
   './src/data/stroke-data.js',
+  './src/data/stories.js',
   './src/js/ui/common.js',
   './src/js/ui/onboarding.js',
   './src/js/ui/home.js',
@@ -23,6 +24,7 @@ const ASSETS = [
   './src/js/ui/review.js',
   './src/js/ui/words.js',
   './src/js/ui/stroke.js',
+  './src/js/ui/stories.js',
   './src/js/ui/profile.js',
   './assets/icon.svg',
   './assets/icon-maskable.svg',

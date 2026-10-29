@@ -15,11 +15,12 @@ The course is sequenced by **communicative function**, not by the alphabetical H
 | Words | 314 lesson words (no deck-only words) |
 | Sentences | 287 |
 | Grammar cards | 49 |
+| Graded stories | 4 |
 | Exercise types | 10 |
 | Estimated time | 5–8 minutes per lesson |
 | Coverage | All 302 official HSK 1 words have a lesson; 314 dictionary entries including extras |
 
-**Important:** the **word list and sentence sequence are complete** for HSK 1, but this is **not** exam preparation. The 49 lessons cover all 314 dictionary entries with sentences and grammar. Mock tests, stories, and more output practice are still needed.
+**Important:** the **word list, sentence sequence, and first story set are complete** for HSK 1, but this is **not** exam preparation. The 49 lessons cover all 314 dictionary entries with sentences and grammar; four graded stories add connected reading. Mock tests and more output practice are still needed.
 
 ---
 
@@ -232,7 +233,7 @@ node tools/validate-content.mjs
 | P0 | Remaining HSK 1 words (~151) | Complete the level |
 | P0 | Native-speaker audio for all 151 words + 128 sentences | TTS is not enough for a paid product |
 | ✅ | Tone-pair gym (mā/má/mǎ/mà, shū/shú/shǔ/shù, …) | Shipped in v0.1.2: 9 minimal-pair sets, audio-first |
-| P1 | 8 graded mini-stories using known words | Comprehensible input; reading habit |
+| P1 | 8 graded mini-stories using known words (4 shipped) | Comprehensible input; reading habit |
 | P1 | Measure-word trainer (个/本/杯/件/家/口) | Major beginner error source |
 | P2 | Traditional character toggle | Taiwan / heritage learners |
 | P2 | HSK 1 mock test (new format) | Exam segment |

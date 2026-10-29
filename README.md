@@ -16,14 +16,15 @@ Bao is a Duolingo-shaped Mandarin course that refuses to skip the parts generic 
 - **Tones are explicit.** Every word has audio, pinyin, and a tone contour; tone questions are audio-first.
 - **Minimal pairs, not guesswork.** The tone gym drills sets like mā/má/mǎ/mà and shū/shú/shǔ/shù with the character hidden until you answer.
 - **You produce characters.** Trace the character you just learned, then open the **Stroke order** lab for real stroke paths, animation, and guided writing on 16 core characters.
+- **You read whole scenes.** Four graded stories use only known words, with per-line audio, tap-to-translate, and comprehension questions.
 - **Grammar gets one minute.** Every lesson has a plain-English “why” card.
 - **Five minutes is enough.** 14–22 interactions, with a real completion screen.
 - **It works offline.** No account, no server, no ads, no tracking. Your progress is local and exportable.
-- **Bundled Mandarin audio.** 637 neural-voice clips cover every word, sentence, and tone pair; device TTS is the fallback.
+- **Bundled Mandarin audio.** 661 neural-voice clips cover every word, sentence, story line, and tone pair; device TTS is the fallback.
 - **It updates itself.** The Android build checks GitHub Releases, verifies the APK checksum, and hands it to Android's installer.
 - **Gentle gamification.** Streaks, XP, gems, and hearts — with an unlimited-hearts setting and free review.
 
-It is a **complete starter course for HSK 3.0 Level 1**: 16 units, 49 lessons, **314 dictionary entries**, 287 sentences, and 49 grammar cards. Every official HSK 1 word now has a sentence lesson, audio, and spaced review. It is still not exam prep.
+It is a **complete starter course for HSK 3.0 Level 1**: 16 units, 49 lessons, **314 dictionary entries**, 287 sentences, 4 graded stories, and 49 grammar cards. Every official HSK 1 word now has a sentence lesson, audio, and spaced review. It is still not exam prep.
 
 ## Screens
 
@@ -38,6 +39,10 @@ It is a **complete starter course for HSK 3.0 Level 1**: 16 units, 49 lessons, *
 | Stroke order | Review practice gym |
 | --- | --- |
 | ![Stroke order](screenshots/stroke.png) | ![Review](screenshots/review.png) |
+
+| Stories | Story reader |
+| --- | --- |
+| ![Stories](screenshots/stories.png) | ![Story](screenshots/story.png) |
 
 | Words | Profile | Completion |
 | --- | --- | --- |
@@ -78,6 +83,8 @@ Demo routes for screenshots and QA:
 /?demo=words
 /?demo=profile
 /?demo=stroke
+/?demo=stories
+/?demo=story&story=s1
 /?demo=lesson&lesson=u2l2
 /?demo=lesson&lesson=u1l1&type=build
 /?demo=tone-pairs
@@ -88,7 +95,7 @@ Demo routes for screenshots and QA:
 
 ```bash
 node tests/core.test.mjs        # 15 state, SRS, streak, hearts, gamification tests
-node tests/lesson.test.mjs      # 13 content, exercise-generator, and stroke-data tests
+node tests/lesson.test.mjs      # 14 content, exercise, stroke-data, and story tests
 node tools/validate-content.mjs # token/pinyin/lesson/full-deck integrity
 ```
 
@@ -119,7 +126,7 @@ When a newer release exists, it:
 
 The first update needs “Allow from this source” for Bao. Progress stays on the device; the app does not use an account.
 
-**One-time note:** v0.1.0 was signed with a throwaway CI debug key and has no updater code, so it cannot update itself. Reinstall v1.0.0 once. The v0.1.1+ builds are signed with the stable demo key and can update in place. The demo key is intentionally public for this prototype — see [android/keystore/README.md](android/keystore/README.md) before a Play Store release.
+**One-time note:** v0.1.0 was signed with a throwaway CI debug key and has no updater code, so it cannot update itself. Reinstall v1.1.0 once. The v0.1.1+ builds are signed with the stable demo key and can update in place. The demo key is intentionally public for this prototype — see [android/keystore/README.md](android/keystore/README.md) before a Play Store release.
 
 ```bash
 # requires JDK 17, Android SDK 35, and Gradle 8.9+
@@ -180,7 +187,8 @@ Full sources and reasoning: [docs/research.md](docs/research.md).
 
 - **v0.2–v0.9:** bundled neural audio, tone-pair gym, full HSK 1 word deck, auto-updater, and sentence lessons for all 302 official HSK 1 words. *(shipped)*
 - **v1.0:** real stroke-order handwriting lab with guided writing for 16 core characters. *(shipped)*
-- **v1.1:** graded stories, 70 grammar points, traditional toggle, beta on Google Play.
+- **v1.1:** four graded stories with line audio, tap-to-translate, and comprehension questions. *(shipped)*
+- **v1.2:** 70 grammar points, traditional toggle, beta on Google Play.
 - **Later:** HSK 2, graded readers, FSRS, accounts/sync, AI conversation with honest tone feedback.
 
 See [docs/product.md](docs/product.md) for the full roadmap and metrics.

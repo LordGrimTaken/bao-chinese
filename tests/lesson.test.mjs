@@ -14,6 +14,7 @@ import {
 } from '../src/data/course.js';
 import { TONE_PAIRS } from '../src/data/tone-pairs.js';
 import { STROKE_CHARS, STROKE_DATA } from '../src/data/stroke-data.js';
+import { STORIES } from '../src/data/stories.js';
 import { toMarks, tonesOf, plainPinyin } from '../src/js/pinyin.js';
 import {
   buildLessonSession,
@@ -211,6 +212,24 @@ test('tone steps only use single-syllable words', () => {
     const word = WORD_LIST.find((item) => item.id === step.wordId);
     assert.equal(word.tones.length, 1);
     assert.notEqual(word.tones[0], 5);
+  }
+});
+
+test('graded stories use only known words and have one right answer per question', () => {
+  assert.equal(STORIES.length, 4);
+  for (const story of STORIES) {
+    assert.equal(story.lines.length, 6);
+    assert.equal(story.questions.length, 2);
+    for (const line of story.lines) {
+      assert.ok(line.zh && line.pinyin && line.en);
+      for (const token of line.tokens) {
+        if (PUNCTUATION.has(token)) continue;
+        assert.ok(WORD_BY_ZH.has(token), `${line.id}: unknown token ${token}`);
+      }
+    }
+    for (const question of story.questions) {
+      assert.equal(question.options.filter((option) => option.correct).length, 1);
+    }
   }
 });
 

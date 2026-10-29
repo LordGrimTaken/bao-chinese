@@ -18,7 +18,7 @@ export function renderProfile(app) {
   const name = state.profile.name || 'friend';
   const joinDate = new Date(state.createdAt).toLocaleDateString(undefined, { month: 'short', year: 'numeric' });
   const history = state.history || {};
-  const version = window.BaoNative?.getVersionName?.() || '1.0.0';
+  const version = window.BaoNative?.getVersionName?.() || '1.1.0';
 
   return `<div class="screen">
     <header class="page-header">

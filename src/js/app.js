@@ -34,6 +34,7 @@ import { renderProfile, mountProfile } from './ui/profile.js';
 import { renderReview, mountReview } from './ui/review.js';
 import { renderWords, mountWords, openWord } from './ui/words.js';
 import { renderStroke, mountStroke } from './ui/stroke.js';
+import { renderStories, mountStories, renderStory, mountStory } from './ui/stories.js';
 import { initUpdater, showUpdateSheet } from './updater.js';
 
 const root = document.querySelector('#app');
@@ -67,17 +68,23 @@ const app = {
       root.classList.add('app--lesson');
       root.innerHTML = renderStroke(this);
       mountStroke(this);
+    } else if (this.route.name === 'story') {
+      root.classList.add('app--lesson');
+      root.innerHTML = renderStory(this);
+      mountStory(this);
     } else {
       root.classList.remove('app--lesson');
       const screen = this.route.name;
       let html = '';
       if (screen === 'review') html = renderReview(this);
       else if (screen === 'words') html = renderWords(this);
+      else if (screen === 'stories') html = renderStories(this);
       else if (screen === 'profile') html = renderProfile(this);
       else html = renderHome(this);
       root.innerHTML = html + this.renderNav();
       if (screen === 'review') mountReview(this);
       else if (screen === 'words') mountWords(this);
+      else if (screen === 'stories') mountStories(this);
       else if (screen === 'profile') mountProfile(this);
       else mountHome(this);
       requestAnimationFrame(() => {
@@ -88,7 +95,7 @@ const app = {
         }
       });
     }
-    document.body.classList.toggle('is-lesson', this.route.name === 'lesson' || this.route.name === 'stroke');
+    document.body.classList.toggle('is-lesson', this.route.name === 'lesson' || this.route.name === 'stroke' || this.route.name === 'story');
     this.bindGlobal();
   },
 
@@ -97,6 +104,7 @@ const app = {
     const due = dueWords(this.state).length;
     const items = [
       ['learn', 'Learn', 'play'],
+      ['stories', 'Stories', 'sparkle'],
       ['review', 'Review', 'target'],
       ['words', 'Words', 'book'],
       ['profile', 'Me', 'user'],
@@ -597,6 +605,10 @@ const app = {
       this.go(this.route.from || 'review');
       return true;
     }
+    if (this.route.name === 'story') {
+      this.go('stories');
+      return true;
+    }
     if (this.route.name !== 'learn') {
       this.go('learn');
       return true;
@@ -729,6 +741,18 @@ function applyDemo() {
     app.render();
   } else if (demo === 'review') {
     app.route = { name: 'review' };
+    app.render();
+  } else if (demo === 'stories') {
+    app.route = { name: 'stories' };
+    app.render();
+  } else if (demo === 'story') {
+    app.route = {
+      name: 'story',
+      storyId: params.get('story') || 's1',
+      done: false,
+      rewarded: false,
+      answered: 0,
+    };
     app.render();
   } else if (demo === 'stroke') {
     app.route = {

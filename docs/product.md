@@ -102,13 +102,14 @@ A friendly, offline Android app that teaches absolute beginners to **hear tones,
 | Path | 16 units, 49 lessons, alternating nodes, trail, stars, locked/current | ✅ |
 | Lessons | Intro, meaning, hanzi, audio, tone, match, build, fill, trace | ✅ |
 | Stroke order | 16 core characters, animated paths, guided writing, hints | ✅ v1.0 |
+| Stories | 4 graded scenes, line audio, tap-to-translate, comprehension questions | ✅ v1.1 |
 | Feedback | Correct/incorrect states, answer reveal, retry queue | ✅ |
 | Audio | Android TTS bridge; browser speech synthesis; slow mode | ✅ |
 | Gamification | XP, levels, gems, hearts + refill, streak + freeze, daily goal | ✅ |
 | Review | Due SRS, weak words, tone pairs, listening, tracing | ✅ |
 | Tone pairs | 9 four-way minimal-pair sets, audio-first, character hidden until answer | ✅ v0.1.2 |
 | Words | 314-entry dictionary (full HSK 1 deck), search/filter, word sheet, practice | ✅ |
-| Audio | 637 bundled neural Mandarin clips + TTS fallback | ✅ v0.1.3 |
+| Audio | 661 bundled neural Mandarin clips + TTS fallback | ✅ v1.1 |
 | Profile | Streak/XP/words/lessons, weekly chart, 9 achievements, settings | ✅ |
 | Persistence | localStorage, export/import JSON, reset | ✅ |
 | Offline | Service worker, manifest, installable PWA | ✅ |
@@ -227,7 +228,7 @@ Experiments:
 - Native-speaker audio for 151 words + 128 sentences.
 - ~~Tone-pair gym with minimal pairs.~~ Shipped in v0.1.2.
 - Fix WebView export/import.
-- Add 8 mini-stories using known words.
+- Expand the 4 shipped stories to 8 mini-stories using known words.
 - Onboarding placement check (3 questions) for restarting learners.
 - CI APK verification on a real device/emulator.
 
