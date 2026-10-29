@@ -1,6 +1,6 @@
 {
   "name": "bao-chinese",
-  "version": "0.9.0",
+  "version": "1.0.0",
   "private": true,
   "type": "module",
   "description": "Bao Chinese — an offline-first HSK 1 Mandarin learning app.",

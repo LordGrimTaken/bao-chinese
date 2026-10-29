@@ -13,6 +13,7 @@ import {
   TOTAL_WORDS,
 } from '../src/data/course.js';
 import { TONE_PAIRS } from '../src/data/tone-pairs.js';
+import { STROKE_CHARS, STROKE_DATA } from '../src/data/stroke-data.js';
 import { toMarks, tonesOf, plainPinyin } from '../src/js/pinyin.js';
 import {
   buildLessonSession,
@@ -210,5 +211,24 @@ test('tone steps only use single-syllable words', () => {
     const word = WORD_LIST.find((item) => item.id === step.wordId);
     assert.equal(word.tones.length, 1);
     assert.notEqual(word.tones[0], 5);
+  }
+});
+
+test('stroke-order data is complete for every lab character', () => {
+  assert.equal(STROKE_CHARS.length, 16);
+  assert.equal(new Set(STROKE_CHARS).size, STROKE_CHARS.length);
+  for (const char of STROKE_CHARS) {
+    const data = STROKE_DATA[char];
+    assert.ok(data, `missing stroke data for ${char}`);
+    assert.ok(data.strokes.length >= 1 && data.strokes.length <= 20);
+    assert.equal(data.strokes.length, data.medians.length);
+    for (const path of data.strokes) assert.match(path, /^M /);
+    for (const median of data.medians) {
+      assert.ok(median.length >= 2);
+      for (const [x, y] of median) {
+        assert.ok(Number.isFinite(x) && Number.isFinite(y));
+        assert.ok(x >= -100 && x <= 1124 && y >= -100 && y <= 1000);
+      }
+    }
   }
 });

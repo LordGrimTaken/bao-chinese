@@ -10,6 +10,8 @@ import { plainPinyin } from '../pinyin.js';
 import { wordMastery } from '../core.js';
 import { buildTraceSession, buildWordSession } from '../lesson-engine.js';
 import { escapeHtml, icon, panda, toneSparkline, toneSummary } from './common.js';
+import { STROKE_DATA } from '../../data/stroke-data.js';
+import { openStrokeLab } from './stroke.js';
 
 export function renderWords(app) {
   const view = app.wordsView || (app.wordsView = { query: '', filter: 'all' });
@@ -207,6 +209,7 @@ export function openWord(app, wordId) {
     <div class="word-sheet-actions">
       <button class="btn btn-primary" data-practice-word="${word.id}">Practise</button>
       <button class="btn btn-secondary" data-trace-word="${word.id}">Trace ${escapeHtml([...word.zh][0])}</button>
+      ${STROKE_DATA[word.zh] ? `<button class="btn btn-secondary" data-stroke-word="${word.id}">Stroke order</button>` : ''}
     </div>`, {
     onMount: (root) => {
       root.querySelectorAll('[data-speak]').forEach((button) => {
@@ -219,6 +222,9 @@ export function openWord(app, wordId) {
       root.querySelector('[data-trace-word]')?.addEventListener('click', () => {
         app.closeModal();
         app.startSession(buildTraceSession([word.id], { limit: 1, wordMap: ALL_WORD_BY_ID, pool: ALL_WORDS }));
+      });
+      root.querySelector('[data-stroke-word]')?.addEventListener('click', () => {
+        openStrokeLab(app, word.zh, 'words');
       });
     },
   });

@@ -203,6 +203,16 @@ Sentence data is **tokenized**:
 
 ---
 
+## 6.1 Stroke-order lab
+
+- **Data:** `src/data/stroke-data.js` bundles SVG stroke outlines and median points for 16 core characters, from Make Me a Hanzi / hanzi-writer-data (Arphic Public License). `assets/vendor/` carries the license texts.
+- **Renderer:** Hanzi Writer 3.7.1 is vendored as `assets/vendor/hanzi-writer.min.js` (MIT), loaded before the app module. It renders the outline and runs a guided quiz: correct strokes advance, two misses trigger a hint, and `Show me` replays the character.
+- **Offline:** the data, vendor script, and `src/js/ui/stroke.js` are in the service-worker shell cache, so the lab works without a network.
+- **Access:** Review → Practice gym → Stroke order, or a word sheet's **Stroke order** button when the character is in the 16-character set.
+- **Expand:** add more characters to `stroke-data.js` and `STROKE_CHARS`; no other code changes.
+
+---
+
 ## 7. Android shell
 
 - `MainActivity` is a plain `Activity` + `WebView` (no AndroidX, no Compose).
@@ -272,7 +282,7 @@ The E2E run verifies:
 
 ## 10. Privacy & security
 
-- No account, no server, no analytics, no third-party scripts.
+- No account, no server, no analytics, and no third-party runtime services. Hanzi Writer is vendored locally for the stroke-order lab.
 - Progress lives in `localStorage` on the device; export/import is a local JSON file.
 - The Android shell blocks external navigation and disables file/content access.
 - No user-generated content or network input.
@@ -285,8 +295,8 @@ The E2E run verifies:
 | Shortcut | Payback |
 | --- | --- |
 | TTS instead of recorded audio | License native audio; A/B tone accuracy |
-| Self-assessed tracing | Stroke-order data + per-stroke scoring |
+| Self-assessed tracing | Real stroke-order lab for 16 characters; expand the dataset next |
 | SM-2 instead of FSRS | Migrate when ≥10k reviews exist |
 | WebView shell | Move lesson runner to Compose if startup/scroll performance suffers |
-| 151 words | Ship the rest of HSK 1; add stories |
+| 16-character stroke set | Expand to the full HSK 1 character set; add stories |
 | No speech recognition | Evaluate ASR only with tone-aware scoring; otherwise it teaches bad habits |

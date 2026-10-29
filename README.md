@@ -15,7 +15,7 @@ Bao is a Duolingo-shaped Mandarin course that refuses to skip the parts generic 
 
 - **Tones are explicit.** Every word has audio, pinyin, and a tone contour; tone questions are audio-first.
 - **Minimal pairs, not guesswork.** The tone gym drills sets like mā/má/mǎ/mà and shū/shú/shǔ/shù with the character hidden until you answer.
-- **You produce characters.** Trace the character you just learned; recognition is not treated as mastery.
+- **You produce characters.** Trace the character you just learned, then open the **Stroke order** lab for real stroke paths, animation, and guided writing on 16 core characters.
 - **Grammar gets one minute.** Every lesson has a plain-English “why” card.
 - **Five minutes is enough.** 14–22 interactions, with a real completion screen.
 - **It works offline.** No account, no server, no ads, no tracking. Your progress is local and exportable.
@@ -34,6 +34,10 @@ It is a **complete starter course for HSK 3.0 Level 1**: 16 units, 49 lessons, *
 | Tone pairs | Update |
 | --- | --- |
 | ![Tone pairs](screenshots/tone-pairs.png) | ![Update](screenshots/update.png) |
+
+| Stroke order | Review practice gym |
+| --- | --- |
+| ![Stroke order](screenshots/stroke.png) | ![Review](screenshots/review.png) |
 
 | Words | Profile | Completion |
 | --- | --- | --- |
@@ -73,6 +77,7 @@ Demo routes for screenshots and QA:
 /?demo=review
 /?demo=words
 /?demo=profile
+/?demo=stroke
 /?demo=lesson&lesson=u2l2
 /?demo=lesson&lesson=u1l1&type=build
 /?demo=tone-pairs
@@ -83,7 +88,7 @@ Demo routes for screenshots and QA:
 
 ```bash
 node tests/core.test.mjs        # 15 state, SRS, streak, hearts, gamification tests
-node tests/lesson.test.mjs      # 12 content + exercise-generator tests
+node tests/lesson.test.mjs      # 13 content, exercise-generator, and stroke-data tests
 node tools/validate-content.mjs # token/pinyin/lesson/full-deck integrity
 ```
 
@@ -114,7 +119,7 @@ When a newer release exists, it:
 
 The first update needs “Allow from this source” for Bao. Progress stays on the device; the app does not use an account.
 
-**One-time note:** v0.1.0 was signed with a throwaway CI debug key and has no updater code, so it cannot update itself. Reinstall v0.9.0 once. The v0.1.1+ builds are signed with the stable demo key and can update in place. The demo key is intentionally public for this prototype — see [android/keystore/README.md](android/keystore/README.md) before a Play Store release.
+**One-time note:** v0.1.0 was signed with a throwaway CI debug key and has no updater code, so it cannot update itself. Reinstall v1.0.0 once. The v0.1.1+ builds are signed with the stable demo key and can update in place. The demo key is intentionally public for this prototype — see [android/keystore/README.md](android/keystore/README.md) before a Play Store release.
 
 ```bash
 # requires JDK 17, Android SDK 35, and Gradle 8.9+
@@ -174,7 +179,8 @@ Full sources and reasoning: [docs/research.md](docs/research.md).
 ## Roadmap
 
 - **v0.2–v0.9:** bundled neural audio, tone-pair gym, full HSK 1 word deck, auto-updater, and sentence lessons for all 302 official HSK 1 words. *(shipped)*
-- **v1.0:** stroke-order handwriting, graded stories, 70 grammar points, traditional toggle, beta on Google Play.
+- **v1.0:** real stroke-order handwriting lab with guided writing for 16 core characters. *(shipped)*
+- **v1.1:** graded stories, 70 grammar points, traditional toggle, beta on Google Play.
 - **Later:** HSK 2, graded readers, FSRS, accounts/sync, AI conversation with honest tone feedback.
 
 See [docs/product.md](docs/product.md) for the full roadmap and metrics.

@@ -15,7 +15,7 @@ The course is sequenced by **communicative function**, not by the alphabetical H
 | Words | 314 lesson words (no deck-only words) |
 | Sentences | 287 |
 | Grammar cards | 49 |
-| Exercise types | 9 |
+| Exercise types | 10 |
 | Estimated time | 5–8 minutes per lesson |
 | Coverage | All 302 official HSK 1 words have a lesson; 314 dictionary entries including extras |
 

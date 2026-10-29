@@ -7,6 +7,8 @@ import {
   buildTraceSession,
 } from '../lesson-engine.js';
 import { icon, panda, escapeHtml } from './common.js';
+import { openStrokeLab } from './stroke.js';
+import { STROKE_CHARS } from '../../data/stroke-data.js';
 
 export function renderReview(app) {
   const state = app.state;
@@ -55,6 +57,11 @@ export function renderReview(app) {
         <span class="practice-emoji" style="--accent:var(--red);--accent-soft:var(--red-soft)">${icon('dumbbell')}</span>
         <strong>Weak words</strong>
         <span>${weak.length ? `${weak.length} word${weak.length === 1 ? '' : 's'} need another look.` : 'No weak spots yet — keep it up.'}</span>
+      </button>
+      <button class="practice-card practice-card--wide" data-practice="stroke">
+        <span class="practice-emoji" style="--accent:var(--red);--accent-soft:var(--red-soft)">${icon('brush')}</span>
+        <strong>Stroke order</strong>
+        <span>Real paths and guided writing for 16 core characters.</span>
       </button>
       ${BONUS_ONLY_WORDS.length
         ? `<button class="practice-card practice-card--wide" data-practice="hsk1">
@@ -162,6 +169,8 @@ export function mountReview(app) {
           wordMap: ALL_WORD_BY_ID,
         });
         app.startSession(session);
+      } else if (mode === 'stroke') {
+        openStrokeLab(app, STROKE_CHARS[0], 'review');
       } else if (mode === 'hsk1') {
         const session = buildReviewSession(BONUS_ONLY_WORDS.map((word) => word.id), {
           limit: 12,

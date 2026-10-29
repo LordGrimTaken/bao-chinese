@@ -33,6 +33,7 @@ import { renderOnboarding, mountOnboarding } from './ui/onboarding.js';
 import { renderProfile, mountProfile } from './ui/profile.js';
 import { renderReview, mountReview } from './ui/review.js';
 import { renderWords, mountWords, openWord } from './ui/words.js';
+import { renderStroke, mountStroke } from './ui/stroke.js';
 import { initUpdater, showUpdateSheet } from './updater.js';
 
 const root = document.querySelector('#app');
@@ -62,6 +63,10 @@ const app = {
       root.classList.add('app--lesson');
       root.innerHTML = renderLesson(this);
       mountLesson(this);
+    } else if (this.route.name === 'stroke') {
+      root.classList.add('app--lesson');
+      root.innerHTML = renderStroke(this);
+      mountStroke(this);
     } else {
       root.classList.remove('app--lesson');
       const screen = this.route.name;
@@ -83,7 +88,7 @@ const app = {
         }
       });
     }
-    document.body.classList.toggle('is-lesson', this.route.name === 'lesson');
+    document.body.classList.toggle('is-lesson', this.route.name === 'lesson' || this.route.name === 'stroke');
     this.bindGlobal();
   },
 
@@ -588,6 +593,10 @@ const app = {
       this.confirmExitLesson();
       return true;
     }
+    if (this.route.name === 'stroke') {
+      this.go(this.route.from || 'review');
+      return true;
+    }
     if (this.route.name !== 'learn') {
       this.go('learn');
       return true;
@@ -720,6 +729,28 @@ function applyDemo() {
     app.render();
   } else if (demo === 'review') {
     app.route = { name: 'review' };
+    app.render();
+  } else if (demo === 'stroke') {
+    app.route = {
+      name: 'stroke',
+      char: '我',
+      from: 'review',
+      index: 0,
+      done: false,
+      rewarded: false,
+      feedback: '',
+    };
+    app.render();
+  } else if (demo === 'stroke-done') {
+    app.route = {
+      name: 'stroke',
+      char: '我',
+      from: 'review',
+      index: 7,
+      done: true,
+      rewarded: true,
+      feedback: '',
+    };
     app.render();
   } else if (demo === 'unit16') {
     for (const lesson of LESSONS.filter((item) => item.unitNumber <= 15)) {

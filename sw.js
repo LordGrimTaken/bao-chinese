@@ -1,6 +1,6 @@
 /* Bao Chinese — offline shell. No build step, no dependencies. */
 // Bump this on every deploy so cache-first assets are invalidated.
-const VERSION = 'bao-v0.9.0';
+const VERSION = 'bao-v1.0.0';
 const ASSETS = [
   './',
   './index.html',
@@ -13,16 +13,20 @@ const ASSETS = [
   './src/js/lesson-engine.js',
   './src/data/course.js',
   './src/data/hsk1-extra.js',
+  './src/data/expansion.js',
   './src/data/tone-pairs.js',
+  './src/data/stroke-data.js',
   './src/js/ui/common.js',
   './src/js/ui/onboarding.js',
   './src/js/ui/home.js',
   './src/js/ui/lesson.js',
   './src/js/ui/review.js',
   './src/js/ui/words.js',
+  './src/js/ui/stroke.js',
   './src/js/ui/profile.js',
   './assets/icon.svg',
   './assets/icon-maskable.svg',
+  './assets/vendor/hanzi-writer.min.js',
 ];
 
 self.addEventListener('install', (event) => {

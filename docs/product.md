@@ -101,6 +101,7 @@ A friendly, offline Android app that teaches absolute beginners to **hear tones,
 | Onboarding | 4 steps, reason, goal, name, skip | ✅ |
 | Path | 16 units, 49 lessons, alternating nodes, trail, stars, locked/current | ✅ |
 | Lessons | Intro, meaning, hanzi, audio, tone, match, build, fill, trace | ✅ |
+| Stroke order | 16 core characters, animated paths, guided writing, hints | ✅ v1.0 |
 | Feedback | Correct/incorrect states, answer reveal, retry queue | ✅ |
 | Audio | Android TTS bridge; browser speech synthesis; slow mode | ✅ |
 | Gamification | XP, levels, gems, hearts + refill, streak + freeze, daily goal | ✅ |
@@ -138,6 +139,7 @@ A friendly, offline Android app that teaches absolute beginners to **hear tones,
 - Questions: one clear prompt, 4 options or tiles; keyboard 1–4; Check disabled until an answer.
 - Feedback: full-width panel, correct answer, explanation, Continue.
 - Trace: ghost character, crosshair, brush, clear, Done; self-assessed.
+- Stroke order: real SVG paths, stroke animation, and Hanzi Writer guided quiz for 16 core characters.
 - Completion: confetti, panda, stars, XP/accuracy/time, daily goal, achievements, next lesson, review mistakes.
 - Exit confirmation; progress in an abandoned lesson is not counted.
 
@@ -231,7 +233,7 @@ Experiments:
 
 ### 1–3 months (v1.0)
 - Complete HSK 3.0 Level 1 vocabulary (302 words) and 70 grammar points.
-- Stroke-order data + scored handwriting.
+- Expand the stroke-order lab from 16 characters to the full HSK 1 set.
 - Speech recording + self-shadowing (no fake ASR scores).
 - Traditional character toggle.
 - Dark mode.
