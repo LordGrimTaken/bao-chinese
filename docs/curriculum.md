@@ -17,9 +17,9 @@ The course is sequenced by **communicative function**, not by the alphabetical H
 | Grammar cards | 24 |
 | Exercise types | 8 |
 | Estimated time | 5–8 minutes per lesson |
-| Coverage | A starter subset of HSK 3.0 Level 1 (302 words) |
+| Coverage | 151 lesson words + the **full 302-word HSK 1 vocabulary deck** (163 bonus entries; 314 dictionary entries including extras) |
 
-**Important:** this is **not** a complete HSK 1 course and not exam preparation. It covers the highest-utility first 151 words and 24 patterns, enough for a learner to survive a first trip and decide whether to continue.
+**Important:** the **word list** is complete for HSK 1, but this is **not** a complete lesson sequence or exam preparation. The 24 lessons cover 151 high-utility words with sentences and grammar; the remaining 163 words are available as an audio + SRS vocabulary deck. Sentence lessons for the whole list are the next content milestone.
 
 ---
 

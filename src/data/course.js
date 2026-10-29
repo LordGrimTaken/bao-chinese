@@ -10,6 +10,9 @@
  */
 
 import { toMarks, tonesOf } from '../js/pinyin.js';
+import { BONUS_WORDS } from './hsk1-extra.js';
+
+export { BONUS_WORDS };
 
 const w = (zh, py, en, extra = {}) => ({ zh, py, en, ...extra });
 
@@ -681,6 +684,14 @@ export const DRILL_WORDS = WORD_LIST.filter((word) => !word.hidden);
 export const WORD_BY_ZH = new Map(WORD_LIST.map((word) => [word.zh, word]));
 export const WORD_BY_ID = new Map(WORD_LIST.map((word) => [word.id, word]));
 
+/** Course words + the complete HSK 1 vocabulary deck. */
+export const ALL_WORDS = [...DRILL_WORDS, ...BONUS_WORDS];
+export const ALL_WORD_BY_ZH = new Map([
+  ...WORD_BY_ZH,
+  ...BONUS_WORDS.map((word) => [word.zh, word]),
+]);
+export const ALL_WORD_BY_ID = new Map(ALL_WORDS.map((word) => [word.id, word]));
+
 export const LESSONS = UNITS.flatMap((unit) =>
   unit.lessons.map((lesson) => ({
     ...lesson,
@@ -717,6 +728,7 @@ for (const lesson of LESSONS) {
 
 export const SENTENCES = LESSONS.flatMap((lesson) => lesson.sentences);
 export const SENTENCE_BY_ID = new Map(SENTENCES.map((sentence) => [sentence.id, sentence]));
+export const SENTENCE_BY_ZH = new Map(SENTENCES.map((sentence) => [sentence.zh, sentence]));
 
 /** Which lesson introduces each word (used by the vocabulary screen). */
 export const WORD_LESSON = new Map();
@@ -732,9 +744,13 @@ export const COURSE = {
   level: 'HSK 1',
   units: UNITS,
   lessons: LESSONS,
-  words: WORD_LIST,
+  words: ALL_WORDS,
+  courseWords: DRILL_WORDS,
+  bonusWords: BONUS_WORDS,
   sentences: SENTENCES,
 };
 
 export const TOTAL_WORDS = DRILL_WORDS.length;
+export const TOTAL_DICTIONARY_WORDS = ALL_WORDS.length;
+export const TOTAL_BONUS_WORDS = BONUS_WORDS.length;
 export const TOTAL_LESSONS = LESSONS.length;

@@ -1,9 +1,31 @@
-/** Text-to-speech + tiny synthesized sound effects. No audio files needed. */
+/**
+ * Bundled Mandarin audio first, on-device TTS as a fallback.
+ *
+ * Audio files are generated for every word, sentence, and tone-pair entry and
+ * served from assets/audio/. If a clip is missing (for example in a local
+ * checkout without the generated assets), we transparently fall back to the
+ * Android TTS bridge or the Web Speech API.
+ */
+
+import { ALL_WORD_BY_ZH, SENTENCE_BY_ZH } from '../data/course.js';
+import { TONE_PAIR_BY_ZH } from '../data/tone-pairs.js';
 
 let audioContext = null;
 let voices = [];
 let soundEnabled = true;
 let unlocked = false;
+let currentAudio = null;
+const failedClips = new Set();
+
+function resolveClip(text) {
+  const word = ALL_WORD_BY_ZH.get(text);
+  if (word && !word.hidden) return `words/${word.id}.mp3`;
+  const sentence = SENTENCE_BY_ZH.get(text);
+  if (sentence) return `sentences/${sentence.id}.mp3`;
+  const toneWord = TONE_PAIR_BY_ZH.get(text);
+  if (toneWord) return `tones/${toneWord.id}.mp3`;
+  return null;
+}
 
 export function initAudio() {
   if (typeof window === 'undefined') return;
@@ -58,6 +80,47 @@ export function hasChineseVoice() {
 
 export function speak(text, { slow = false } = {}) {
   if (!text) return false;
+  const clip = resolveClip(String(text));
+  if (clip && !failedClips.has(clip)) {
+    if (playClip(text, clip, slow)) return true;
+  }
+  return speakWithTts(text, slow);
+}
+
+function playClip(text, path, slow) {
+  try {
+    stopSpeaking();
+    const audio = new Audio(`./assets/audio/${path}`);
+    audio.preload = 'auto';
+    audio.playbackRate = slow ? 0.72 : 1;
+    audio.volume = 1;
+    audio.addEventListener(
+      'error',
+      () => {
+        failedClips.add(path);
+        if (currentAudio === audio) currentAudio = null;
+        speakWithTts(text, slow);
+      },
+      { once: true }
+    );
+    audio.addEventListener('play', flashSpeaking, { once: true });
+    const promise = audio.play();
+    if (promise?.catch) {
+      promise.catch(() => {
+        failedClips.add(path);
+        if (currentAudio === audio) currentAudio = null;
+        speakWithTts(text, slow);
+      });
+    }
+    currentAudio = audio;
+    return true;
+  } catch {
+    failedClips.add(path);
+    return false;
+  }
+}
+
+function speakWithTts(text, slow) {
   const rate = slow ? 0.66 : 0.9;
   if (window.BaoNative?.speak) {
     try {
@@ -94,6 +157,15 @@ function flashSpeaking() {
 }
 
 export function stopSpeaking() {
+  if (currentAudio) {
+    try {
+      currentAudio.pause();
+      currentAudio.currentTime = 0;
+    } catch {
+      /* noop */
+    }
+    currentAudio = null;
+  }
   try {
     window.speechSynthesis?.cancel();
   } catch {

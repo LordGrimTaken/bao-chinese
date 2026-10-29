@@ -122,9 +122,9 @@ The Chinese Proficiency Grading Standards (HSK 3.0) introduced nine levels in th
 
 Source: [GraphChinese HSK 3.0 guide](https://graphchinese.com/hsk-3-0), [HSK 1 vocabulary list](https://graphchinese.com/new-hsk-1-vocabulary).
 
-**What Bao v1 covers:** 8 units, 24 lessons, **151 words**, 128 sentences, and 24 grammar cards. It is a **starter subset of HSK 1**, not a complete HSK 1 course and not exam preparation. The curriculum is sequenced by communicative function and grammar dependency, not by the alphabetical HSK list.
+**What Bao v1 covers:** 8 units, 24 lessons, **151 lesson words**, 128 sentences, and 24 grammar cards, plus the **complete 302-word HSK 1 vocabulary deck** in the dictionary (163 bonus entries; 314 dictionary entries including extras). It is a starter course, not a complete HSK 1 lesson sequence or exam preparation. The curriculum is sequenced by communicative function and grammar dependency, not by the alphabetical HSK list.
 
-**What this means:** a learner who finishes v1 can greet, introduce themselves, talk about family, count, tell time, order basic food, talk about places/transport, describe simple things, and connect ideas. They will still need HSK-specific vocabulary and mock tests before sitting the exam.
+**What this means:** a learner who finishes the 24 lessons can greet, introduce themselves, talk about family, count, tell time, order basic food, talk about places/transport, describe simple things, and connect ideas. The HSK 1 deck adds audio, meaning, and spaced review for every remaining official word, but those words do not yet have dedicated sentence lessons. They will still need mock tests and more output practice before sitting the exam.
 
 ---
 

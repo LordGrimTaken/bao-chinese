@@ -1,4 +1,5 @@
-import { DRILL_WORDS, WORD_BY_ID } from '../../data/course.js';
+import { ALL_WORDS, ALL_WORD_BY_ID } from '../../data/course.js';
+import { BONUS_WORDS } from '../../data/hsk1-extra.js';
 import { dueWords, studiedWords, weakWords, wordMastery } from '../core.js';
 import {
   buildListeningSession,
@@ -14,8 +15,8 @@ export function renderReview(app) {
   const studied = studiedWords(state);
   const weak = weakWords(state).slice(0, 5);
   const counts = [0, 0, 0, 0];
-  for (const word of DRILL_WORDS) counts[wordMastery(state, word.id)] += 1;
-  const total = DRILL_WORDS.length;
+  for (const word of ALL_WORDS) counts[wordMastery(state, word.id)] += 1;
+  const total = ALL_WORDS.length;
   const studiedCount = studied.length;
   const pct = (n) => Math.max(0, (n / total) * 100);
 
@@ -56,6 +57,11 @@ export function renderReview(app) {
         <strong>Weak words</strong>
         <span>${weak.length ? `${weak.length} word${weak.length === 1 ? '' : 's'} need another look.` : 'No weak spots yet — keep it up.'}</span>
       </button>
+      <button class="practice-card practice-card--wide" data-practice="hsk1">
+        <span class="practice-emoji" style="--accent:var(--jade);--accent-soft:var(--jade-soft)">${icon('book')}</span>
+        <strong>HSK 1 deck</strong>
+        <span>All ${BONUS_WORDS.length} bonus words — audio, meaning, and spaced review.</span>
+      </button>
     </div>
 
     <section class="strength-card">
@@ -80,7 +86,7 @@ export function renderReview(app) {
           <div class="weak-list">
             ${weak
               .map((id) => {
-                const word = WORD_BY_ID.get(id);
+                const word = ALL_WORD_BY_ID.get(id);
                 const data = state.words[id];
                 return `<button class="weak-row" data-word="${id}">
                   <span class="w-zh">${escapeHtml(word.zh)}</span>
@@ -101,9 +107,9 @@ export function renderReview(app) {
     <div class="section-title"><h2>Up next</h2><span>${studiedCount ? 'Recent' : 'Start here'}</span></div>
     <div class="weak-list">
       ${
-        (studied.length ? studied.slice(-3).reverse() : DRILL_WORDS.slice(0, 3).map((word) => word.id))
+        (studied.length ? studied.slice(-3).reverse() : ALL_WORDS.slice(0, 3).map((word) => word.id))
           .map((id) => {
-            const word = WORD_BY_ID.get(id);
+            const word = ALL_WORD_BY_ID.get(id);
             return `<button class="weak-row" data-word="${id}">
               <span class="w-zh">${escapeHtml(word.zh)}</span>
               <span><span class="w-py">${escapeHtml(word.pinyin)}</span><br><span class="w-en">${escapeHtml(word.en)}</span></span>
@@ -123,7 +129,11 @@ export function mountReview(app) {
 
   document.querySelector('[data-action="start-review"]')?.addEventListener('click', () => {
     if (!due.length) return;
-    const session = buildReviewSession(due, { limit: 12 });
+    const session = buildReviewSession(due, {
+      limit: 12,
+      pool: ALL_WORDS,
+      wordMap: ALL_WORD_BY_ID,
+    });
     session.subtitle = upNextCopy(due.length);
     app.startSession(session);
   });
@@ -134,17 +144,40 @@ export function mountReview(app) {
       if (mode === 'tone') {
         app.startSession(buildTonePairSession({ limit: 8 }));
       } else if (mode === 'listening') {
-        const session = buildListeningSession(studied.length ? studied : null, { limit: 10 });
+        const session = buildListeningSession(studied.length ? studied : null, {
+          limit: 10,
+          pool: ALL_WORDS,
+          wordMap: ALL_WORD_BY_ID,
+        });
         app.startSession(session);
       } else if (mode === 'trace') {
-        const session = buildTraceSession(studied.length ? studied : null, { limit: 8 });
+        const session = buildTraceSession(studied.length ? studied : null, {
+          limit: 8,
+          pool: ALL_WORDS,
+          wordMap: ALL_WORD_BY_ID,
+        });
+        app.startSession(session);
+      } else if (mode === 'hsk1') {
+        const session = buildReviewSession(BONUS_WORDS.map((word) => word.id), {
+          limit: 12,
+          seed: 'hsk1',
+          pool: ALL_WORDS,
+          wordMap: ALL_WORD_BY_ID,
+        });
+        session.title = 'HSK 1 deck';
+        session.subtitle = 'The complete vocabulary list';
         app.startSession(session);
       } else if (mode === 'weak') {
         if (!weak.length) {
           app.toast('No weak words yet — finish a lesson first.');
           return;
         }
-        const session = buildReviewSession(weak, { limit: 10, seed: 'weak' });
+        const session = buildReviewSession(weak, {
+          limit: 10,
+          seed: 'weak',
+          pool: ALL_WORDS,
+          wordMap: ALL_WORD_BY_ID,
+        });
         session.title = 'Weak words';
         session.subtitle = 'A gentle second pass';
         app.startSession(session);

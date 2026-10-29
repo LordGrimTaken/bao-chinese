@@ -1,5 +1,16 @@
 import assert from 'node:assert/strict';
-import { WORDS, WORD_LIST, WORD_BY_ZH, UNITS, LESSONS, TOTAL_WORDS, TOTAL_LESSONS, COURSE } from '../src/data/course.js';
+import {
+  WORDS,
+  WORD_LIST,
+  WORD_BY_ZH,
+  ALL_WORDS,
+  BONUS_WORDS,
+  UNITS,
+  LESSONS,
+  TOTAL_WORDS,
+  TOTAL_LESSONS,
+  COURSE,
+} from '../src/data/course.js';
 
 import { toMarks, tonesOf } from '../src/js/pinyin.js';
 
@@ -51,7 +62,20 @@ for (const lesson of LESSONS) {
 }
 
 if (TOTAL_LESSONS !== 24) fail(`expected 24 lessons, got ${TOTAL_LESSONS}`);
-if (TOTAL_WORDS < 120) fail(`expected at least 120 drill words, got ${TOTAL_WORDS}`);
+if (TOTAL_WORDS !== 151) fail(`expected 151 course words, got ${TOTAL_WORDS}`);
+if (BONUS_WORDS.length !== 163) fail(`expected 163 HSK bonus words, got ${BONUS_WORDS.length}`);
+
+// Complete HSK 1 vocabulary deck
+const bonusIds = new Set();
+for (const word of BONUS_WORDS) {
+  if (bonusIds.has(word.id)) fail(`duplicate bonus id: ${word.id}`);
+  bonusIds.add(word.id);
+  if (!PY_RE.test(word.py)) fail(`bad bonus pinyin: ${word.id} (${word.py})`);
+  if (/\d/.test(word.pinyin)) fail(`bonus tone marks still have digits: ${word.id}`);
+  if (WORD_BY_ZH.has(word.zh)) fail(`bonus word duplicates course word: ${word.zh}`);
+  if (!word.en) fail(`bonus word missing meaning: ${word.id}`);
+}
+if (ALL_WORDS.length !== 314) fail(`expected 314 dictionary words, got ${ALL_WORDS.length}`);
 
 if (errors.length) {
   console.error(`✗ ${errors.length} content error(s):`);
@@ -60,6 +84,8 @@ if (errors.length) {
 }
 
 const sentenceWordCount = new Set(COURSE.sentences.flatMap((s) => s.tokens.filter((t) => WORD_BY_ZH.has(t))));
-console.log(`✓ content valid: ${UNITS.length} units, ${TOTAL_LESSONS} lessons, ${TOTAL_WORDS} words, ${sentenceCount} sentences`);
+console.log(
+  `✓ content valid: ${UNITS.length} units, ${TOTAL_LESSONS} lessons, ${TOTAL_WORDS} course words + ${BONUS_WORDS.length} HSK 1 deck words (${ALL_WORDS.length} dictionary entries), ${sentenceCount} sentences`
+);
 console.log(`  distinct words used in sentences: ${sentenceWordCount.size}`);
 console.log(`  sample: ${COURSE.sentences[0].zh} — ${COURSE.sentences[0].pinyin} — ${COURSE.sentences[0].en}`);

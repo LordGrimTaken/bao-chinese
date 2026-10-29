@@ -115,6 +115,19 @@ for (const [source, destination] of PENDING) {
   if (fs.existsSync(absolute)) files.push({ relative: destination, absolute });
 }
 
+const AUDIO_DIR = process.env.BAO_AUDIO_DIR || 'C:\\Users\\Austin\\AppData\\Local\\BaoAudio';
+for (const kind of ['words', 'sentences', 'tones']) {
+  const directory = path.join(AUDIO_DIR, kind);
+  if (!fs.existsSync(directory)) continue;
+  for (const name of fs.readdirSync(directory)) {
+    if (!name.endsWith('.mp3')) continue;
+    const absolute = path.join(directory, name);
+    if (fs.statSync(absolute).size > 500) {
+      files.push({ relative: `assets/audio/${kind}/${name}`, absolute });
+    }
+  }
+}
+
 console.log(`Publishing ${files.length} files to ${OWNER}/${REPO} (${VISIBILITY})`);
 
 // 1. Ensure the repository exists.

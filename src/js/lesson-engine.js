@@ -294,8 +294,9 @@ export function buildLessonSession(lesson, options = {}) {
 /** Build a spaced-repetition review from a list of word ids. */
 export function buildReviewSession(wordIds, options = {}) {
   const pool = options.pool || DRILL_WORDS;
+  const wordMap = options.wordMap || WORD_BY_ID;
   const random = mulberry32(hashString(`review:${options.seed || wordIds.join(',')}`));
-  const words = wordIds.map((id) => WORD_BY_ID.get(id)).filter(Boolean);
+  const words = wordIds.map((id) => wordMap.get(id)).filter(Boolean);
   const selected = shuffle(words, random).slice(0, options.limit || 10);
   const steps = [];
   const types = ['meaning', 'audio', 'hanzi'];
@@ -326,9 +327,10 @@ export function buildReviewSession(wordIds, options = {}) {
 /** Tone-only drill. */
 export function buildToneSession(wordIds, options = {}) {
   const pool = options.pool || DRILL_WORDS;
+  const wordMap = options.wordMap || WORD_BY_ID;
   const random = mulberry32(hashString(`tone:${options.seed || 'tone'}`));
   const candidates = (wordIds?.length ? wordIds : pool.map((word) => word.id))
-    .map((id) => WORD_BY_ID.get(id))
+    .map((id) => wordMap.get(id))
     .filter((word) => word && word.tones?.length === 1 && word.tones[0] !== 5);
   const words = shuffle(candidates, random).slice(0, options.limit || 10);
   const steps = words.map((word) => makeWordStep('tone', word, pool, random));
@@ -381,9 +383,10 @@ export function buildTonePairSession(options = {}) {
 /** Listening-only drill. */
 export function buildListeningSession(wordIds, options = {}) {
   const pool = options.pool || DRILL_WORDS;
+  const wordMap = options.wordMap || WORD_BY_ID;
   const random = mulberry32(hashString(`listening:${options.seed || 'listen'}`));
   const candidates = (wordIds?.length ? wordIds : pool.map((word) => word.id))
-    .map((id) => WORD_BY_ID.get(id))
+    .map((id) => wordMap.get(id))
     .filter(Boolean);
   const words = shuffle(candidates, random).slice(0, options.limit || 10);
   const steps = words.map((word) => makeWordStep('audio', word, pool, random));
@@ -398,9 +401,10 @@ export function buildListeningSession(wordIds, options = {}) {
 /** Character tracing drill. */
 export function buildTraceSession(wordIds, options = {}) {
   const pool = options.pool || DRILL_WORDS;
+  const wordMap = options.wordMap || WORD_BY_ID;
   const random = mulberry32(hashString(`trace:${options.seed || 'trace'}`));
   const candidates = (wordIds?.length ? wordIds : pool.map((word) => word.id))
-    .map((id) => WORD_BY_ID.get(id))
+    .map((id) => wordMap.get(id))
     .filter(Boolean);
   const words = shuffle(candidates, random).slice(0, options.limit || 8);
   return {

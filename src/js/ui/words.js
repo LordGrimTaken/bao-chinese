@@ -1,4 +1,12 @@
-import { SENTENCES, UNITS, WORD_BY_ID, WORD_LESSON } from '../../data/course.js';
+import {
+  ALL_WORDS,
+  ALL_WORD_BY_ID,
+  SENTENCES,
+  UNITS,
+  WORD_BY_ID,
+  WORD_LESSON,
+} from '../../data/course.js';
+import { BONUS_WORDS } from '../../data/hsk1-extra.js';
 import { plainPinyin } from '../pinyin.js';
 import { wordMastery } from '../core.js';
 import { buildTraceSession, buildWordSession } from '../lesson-engine.js';
@@ -6,12 +14,12 @@ import { escapeHtml, icon, panda, toneSparkline, toneSummary } from './common.js
 
 export function renderWords(app) {
   const view = app.wordsView || (app.wordsView = { query: '', filter: 'all' });
-  const total = [...WORD_BY_ID.values()].filter((word) => !word.hidden).length;
+  const total = ALL_WORDS.length;
   return `<div class="screen">
     <header class="page-header">
       <span class="eyebrow">Your dictionary</span>
       <h1>Words</h1>
-      <p>${total} words across 8 units. Tap any word for audio, an example, and a quick drill.</p>
+      <p>${total} words: the 24-lesson course plus the full 302-word HSK 1 deck. Tap any word for audio and a quick drill.</p>
     </header>
     <div class="search-wrap">
       ${icon('search')}
@@ -23,6 +31,7 @@ export function renderWords(app) {
         ['new', 'New'],
         ['learning', 'Learning'],
         ['strong', 'Strong'],
+        ['deck', 'HSK 1 deck'],
       ]
         .map(
           ([id, label]) =>
@@ -32,6 +41,7 @@ export function renderWords(app) {
     </div>
     <div id="word-list">
       ${UNITS.map((unit) => renderUnitWords(app, unit)).join('')}
+      ${renderBonusWords(app)}
       <div class="empty-state hidden" id="word-empty">
         ${panda('think')}
         <h3>No words match</h3>
@@ -52,24 +62,35 @@ function renderUnitWords(app, unit) {
       <span class="line"></span>
       <span style="font-size:10.5px;color:var(--muted);font-weight:700">${words.length}</span>
     </div>
-    ${words
-      .map((word) => {
-        const mastery = wordMastery(app.state, word.id);
-        const search = `${word.zh} ${word.pinyin} ${plainPinyin(word.py)} ${word.en}`.toLowerCase();
-        return `<button class="word-row" data-word="${word.id}" data-search="${escapeHtml(search)}" data-mastery="${mastery}">
-          <span class="word-hanzi">${escapeHtml(word.zh)}</span>
-          <span class="word-main">
-            <span class="word-pinyin">${escapeHtml(word.pinyin)}</span>
-            <span class="word-en">${escapeHtml(word.en)}</span>
-          </span>
-          <span class="word-side">
-            <span class="mastery-dot m${mastery}" title="${masteryLabel(mastery)}"></span>
-            <span class="speak-btn" role="button" tabindex="0" data-speak="${escapeHtml(word.zh)}" aria-label="Hear ${escapeHtml(word.zh)}">${icon('speaker')}</span>
-          </span>
-        </button>`;
-      })
-      .join('')}
+    ${words.map((word) => renderWordRow(app, word)).join('')}
   </section>`;
+}
+
+function renderBonusWords(app) {
+  return `<section class="word-group" data-group="bonus">
+    <div class="word-group-head">
+      <h3>HSK 1 vocabulary deck</h3>
+      <span class="line"></span>
+      <span style="font-size:10.5px;color:var(--muted);font-weight:700">${BONUS_WORDS.length}</span>
+    </div>
+    ${BONUS_WORDS.map((word) => renderWordRow(app, word)).join('')}
+  </section>`;
+}
+
+function renderWordRow(app, word) {
+  const mastery = wordMastery(app.state, word.id);
+  const search = `${word.zh} ${word.pinyin} ${plainPinyin(word.py)} ${word.en}`.toLowerCase();
+  return `<button class="word-row" data-word="${word.id}" data-search="${escapeHtml(search)}" data-mastery="${mastery}" data-deck="${word.bonus ? '1' : '0'}">
+    <span class="word-hanzi">${escapeHtml(word.zh)}</span>
+    <span class="word-main">
+      <span class="word-pinyin">${escapeHtml(word.pinyin)}</span>
+      <span class="word-en">${escapeHtml(word.en)}</span>
+    </span>
+    <span class="word-side">
+      <span class="mastery-dot m${mastery}" title="${masteryLabel(mastery)}"></span>
+      <span class="speak-btn" role="button" tabindex="0" data-speak="${escapeHtml(word.zh)}" aria-label="Hear ${escapeHtml(word.zh)}">${icon('speaker')}</span>
+    </span>
+  </button>`;
 }
 
 function masteryLabel(level) {
@@ -93,7 +114,8 @@ export function mountWords(app) {
         filter === 'all' ||
         (filter === 'new' && mastery === 0) ||
         (filter === 'learning' && mastery === 1) ||
-        (filter === 'strong' && mastery >= 2);
+        (filter === 'strong' && mastery >= 2) ||
+        (filter === 'deck' && row.dataset.deck === '1');
       const searchOk = !needle || row.dataset.search.includes(needle);
       const show = filterOk && searchOk;
       row.classList.toggle('hidden', !show);
@@ -143,7 +165,7 @@ export function mountWords(app) {
 }
 
 export function openWord(app, wordId) {
-  const word = WORD_BY_ID.get(wordId);
+  const word = ALL_WORD_BY_ID.get(wordId);
   if (!word) return;
   const state = app.state.words[wordId];
   const mastery = wordMastery(app.state, wordId);
@@ -170,7 +192,9 @@ export function openWord(app, wordId) {
             <div class="ex-en">${escapeHtml(example.en)}</div>
             <button class="btn btn-ghost btn-sm" style="padding-left:0;margin-top:6px" data-speak="${escapeHtml(example.zh)}">${icon('speaker')} Hear the sentence</button>
           </div>`
-        : ''
+        : word.bonus
+          ? `<div class="word-example"><div class="ex-en">HSK 1 vocabulary deck — audio, meaning, and spaced review. A lesson sentence will arrive in a future content pack.</div></div>`
+          : ''
     }
     <div class="word-stats">
       <div class="word-stat"><strong>${state?.seen || 0}</strong><span>Seen</span></div>
@@ -189,11 +213,11 @@ export function openWord(app, wordId) {
       });
       root.querySelector('[data-practice-word]')?.addEventListener('click', () => {
         app.closeModal();
-        app.startSession(buildWordSession(word));
+        app.startSession(buildWordSession(word, { pool: ALL_WORDS }));
       });
       root.querySelector('[data-trace-word]')?.addEventListener('click', () => {
         app.closeModal();
-        app.startSession(buildTraceSession([word.id], { limit: 1 }));
+        app.startSession(buildTraceSession([word.id], { limit: 1, wordMap: ALL_WORD_BY_ID, pool: ALL_WORDS }));
       });
     },
   });

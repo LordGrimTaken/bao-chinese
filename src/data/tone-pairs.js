@@ -79,3 +79,7 @@ export const TONE_PAIRS = [
     [4, '右', 'you4', 'right'],
   ]),
 ];
+
+export const TONE_PAIR_BY_ZH = new Map(
+  TONE_PAIRS.flatMap((toneSet) => toneSet.words.map((word) => [word.zh, word]))
+);

@@ -193,11 +193,13 @@ Sentence data is **tokenized**:
 
 ## 6. Audio
 
-- **Android shell:** `BaoNative.speak(text, rate)` → Android `TextToSpeech` with `Locale.SIMPLIFIED_CHINESE`, fallback `Locale.CHINESE`. The bridge initializes lazily and queues a pending utterance if TTS is not ready.
-- **Browser/PWA:** Web Speech API with a zh-CN voice, rate 0.9 normal / 0.66 slow.
-- **SFX:** WebAudio oscillators (correct, wrong, tap, complete, heart). No audio files, no network.
+- **Bundled clips:** 478 MP3s generated with `zh-CN-XiaoxiaoNeural` cover all 314 dictionary words, 128 sentences, and 36 tone-pair words. The app resolves a clip by content ID; no manifest is needed (`words/<id>.mp3`, `sentences/<id>.mp3`, `tones/<id>.mp3`).
+- **Fallback:** if a clip is missing/fails, Android `TextToSpeech` (`BaoNative.speak`) or Web Speech is used. This keeps local development and non-audio builds usable.
+- **Slow mode:** HTMLAudio `playbackRate = 0.72`, with TTS slow rate as fallback.
+- **SFX:** WebAudio oscillators (correct, wrong, tap, complete, heart). No network.
 - **Haptics:** Android `VibrationEffect` via bridge; `navigator.vibrate` on the web.
-- **Future:** bundle licensed native audio for every word/sentence, and use a pronunciation-scoring service only when it can evaluate tones credibly.
+- **Caveat:** the clips are neural TTS, not human studio recordings. A paid release should use human voice actors and verify TTS licensing.
+- **Future:** pronunciation scoring only when it can evaluate tones credibly.
 
 ---
 

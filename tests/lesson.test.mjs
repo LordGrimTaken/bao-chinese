@@ -1,6 +1,15 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { UNITS, LESSONS, WORD_LIST, WORD_BY_ZH, TOTAL_WORDS } from '../src/data/course.js';
+import {
+  ALL_WORDS,
+  ALL_WORD_BY_ID,
+  BONUS_WORDS,
+  UNITS,
+  LESSONS,
+  WORD_LIST,
+  WORD_BY_ZH,
+  TOTAL_WORDS,
+} from '../src/data/course.js';
 import { TONE_PAIRS } from '../src/data/tone-pairs.js';
 import { toMarks, tonesOf, plainPinyin } from '../src/js/pinyin.js';
 import {
@@ -30,8 +39,35 @@ test('pinyin conversion places tone marks correctly', () => {
 test('the course has the expected shape', () => {
   assert.equal(UNITS.length, 8);
   assert.equal(LESSONS.length, 24);
-  assert.ok(TOTAL_WORDS >= 140);
+  assert.equal(TOTAL_WORDS, 151);
+  assert.equal(BONUS_WORDS.length, 163);
+  assert.equal(ALL_WORDS.length, 314);
   assert.equal(new Set(LESSONS.map((lesson) => lesson.id)).size, LESSONS.length);
+});
+
+test('the complete HSK 1 deck is valid and does not duplicate course words', () => {
+  const courseHanzi = new Set(WORD_LIST.map((word) => word.zh));
+  const ids = new Set();
+  const hanzi = new Set();
+  for (const word of BONUS_WORDS) {
+    assert.ok(!ids.has(word.id), `duplicate bonus id ${word.id}`);
+    assert.ok(!hanzi.has(word.zh), `duplicate bonus hanzi ${word.zh}`);
+    assert.ok(!courseHanzi.has(word.zh), `bonus word ${word.zh} duplicates the course`);
+    ids.add(word.id);
+    hanzi.add(word.zh);
+    assert.ok(word.pinyin && !/\d/.test(word.pinyin));
+    assert.ok(word.tones.length >= 1);
+  }
+  const session = buildReviewSession(
+    BONUS_WORDS.slice(0, 6).map((word) => word.id),
+    { limit: 6, pool: ALL_WORDS, wordMap: ALL_WORD_BY_ID, seed: 'bonus' }
+  );
+  assert.ok(session.steps.length >= 4);
+  for (const step of session.steps) {
+    if (step.options?.length) {
+      assert.ok(step.options.some((option) => option.value === step.answer));
+    }
+  }
 });
 
 test('every token in every sentence is a known word or punctuation', () => {

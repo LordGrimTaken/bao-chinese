@@ -6,6 +6,8 @@ import { fileURLToPath } from 'node:url';
 const ROOT = resolve(fileURLToPath(new URL('..', import.meta.url)));
 const PORT = Number(process.env.PORT || 5173);
 const HOST = process.env.HOST || '127.0.0.1';
+const AUDIO_ROOT =
+  process.env.BAO_AUDIO_DIR || 'C:\\Users\\Austin\\AppData\\Local\\BaoAudio';
 
 const MIME = {
   '.html': 'text/html; charset=utf-8',
@@ -16,6 +18,7 @@ const MIME = {
   '.webmanifest': 'application/manifest+json; charset=utf-8',
   '.svg': 'image/svg+xml',
   '.png': 'image/png',
+  '.mp3': 'audio/mpeg',
   '.ico': 'image/x-icon',
   '.woff2': 'font/woff2',
   '.txt': 'text/plain; charset=utf-8',
@@ -30,7 +33,16 @@ const server = http.createServer((request, response) => {
     response.writeHead(403).end('Forbidden');
     return;
   }
-  if (!existsSync(target) || !statSync(target).isFile()) {
+  let resolvedTarget = target;
+  if (!existsSync(resolvedTarget) && pathname.startsWith('/assets/audio/')) {
+    // Local development: the generated audio lives outside the repo.
+    const relative = pathname.replace('/assets/audio/', '');
+    const audioTarget = normalize(join(AUDIO_ROOT, relative));
+    if (audioTarget.startsWith(normalize(AUDIO_ROOT)) && existsSync(audioTarget)) {
+      resolvedTarget = audioTarget;
+    }
+  }
+  if (!existsSync(resolvedTarget) || !statSync(resolvedTarget).isFile()) {
     // SPA fallback for paths without an extension.
     if (!extname(pathname)) {
       const fallback = join(ROOT, 'index.html');
@@ -42,11 +54,11 @@ const server = http.createServer((request, response) => {
     return;
   }
   response.writeHead(200, {
-    'Content-Type': MIME[extname(target)] || 'application/octet-stream',
+    'Content-Type': MIME[extname(resolvedTarget)] || 'application/octet-stream',
     'Cache-Control': 'no-store',
     'X-Content-Type-Options': 'nosniff',
   });
-  createReadStream(target).pipe(response);
+  createReadStream(resolvedTarget).pipe(response);
 });
 
 server.listen(PORT, HOST, () => {

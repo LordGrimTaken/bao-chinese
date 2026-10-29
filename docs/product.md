@@ -106,7 +106,8 @@ A friendly, offline Android app that teaches absolute beginners to **hear tones,
 | Gamification | XP, levels, gems, hearts + refill, streak + freeze, daily goal | ✅ |
 | Review | Due SRS, weak words, tone pairs, listening, tracing | ✅ |
 | Tone pairs | 9 four-way minimal-pair sets, audio-first, character hidden until answer | ✅ v0.1.2 |
-| Words | 151-word dictionary, search/filter, word sheet, practice | ✅ |
+| Words | 314-entry dictionary (full HSK 1 deck), search/filter, word sheet, practice | ✅ |
+| Audio | 478 bundled neural Mandarin clips + TTS fallback | ✅ v0.1.3 |
 | Profile | Streak/XP/words/lessons, weekly chart, 9 achievements, settings | ✅ |
 | Persistence | localStorage, export/import JSON, reset | ✅ |
 | Offline | Service worker, manifest, installable PWA | ✅ |

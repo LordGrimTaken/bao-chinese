@@ -19,10 +19,11 @@ Bao is a Duolingo-shaped Mandarin course that refuses to skip the parts generic 
 - **Grammar gets one minute.** Every lesson has a plain-English “why” card.
 - **Five minutes is enough.** 14–22 interactions, with a real completion screen.
 - **It works offline.** No account, no server, no ads, no tracking. Your progress is local and exportable.
+- **Bundled Mandarin audio.** 478 neural-voice clips cover every word, sentence, and tone pair; device TTS is the fallback.
 - **It updates itself.** The Android build checks GitHub Releases, verifies the APK checksum, and hands it to Android's installer.
 - **Gentle gamification.** Streaks, XP, gems, and hearts — with an unlimited-hearts setting and free review.
 
-It is a **starter subset of HSK 3.0 Level 1**: 8 units, 24 lessons, **151 words**, 128 sentences, 24 grammar cards. It is not a complete HSK course or exam prep.
+It is a **starter course for HSK 3.0 Level 1**: 8 units, 24 lessons, **151 lesson words**, 128 sentences, 24 grammar cards — plus the **complete 302-word HSK 1 vocabulary deck** in the dictionary (314 entries including 12 extra high-utility words). The word list is complete; sentence lessons for every deck word are the next content milestone. It is not exam prep.
 
 ## Screens
 
@@ -66,8 +67,8 @@ Demo routes for screenshots and QA:
 
 ```bash
 node tests/core.test.mjs        # 15 state, SRS, streak, hearts, gamification tests
-node tests/lesson.test.mjs      # 9 content + exercise-generator tests
-node tools/validate-content.mjs # token/pinyin/lesson integrity
+node tests/lesson.test.mjs      # 12 content + exercise-generator tests
+node tools/validate-content.mjs # token/pinyin/lesson/full-deck integrity
 ```
 
 The full lesson can be played headlessly against a running Chrome/Edge with the DevTools protocol:
@@ -97,7 +98,7 @@ When a newer release exists, it:
 
 The first update needs “Allow from this source” for Bao. Progress stays on the device; the app does not use an account.
 
-**One-time note:** v0.1.0 was signed with a throwaway CI debug key and has no updater code, so it cannot update itself. Reinstall v0.1.2 once. The v0.1.1+ builds are signed with the stable demo key and can update in place. The demo key is intentionally public for this prototype — see [android/keystore/README.md](android/keystore/README.md) before a Play Store release.
+**One-time note:** v0.1.0 was signed with a throwaway CI debug key and has no updater code, so it cannot update itself. Reinstall v0.1.3 once. The v0.1.1+ builds are signed with the stable demo key and can update in place. The demo key is intentionally public for this prototype — see [android/keystore/README.md](android/keystore/README.md) before a Play Store release.
 
 ```bash
 # requires JDK 17, Android SDK 35, and Gradle 8.9+
@@ -129,9 +130,11 @@ Read [docs/architecture.md](docs/architecture.md) for the full design.
 | 6 | Daily Life | 3 | 18 |
 | 7 | Describe It | 3 | 18 |
 | 8 | Connect & Chat | 3 | 18 |
-| **Total** | | **24** | **151** |
+| **Lesson total** | | **24** | **151** |
+| **HSK 1 deck** | Complete 302-word vocabulary list (includes the 151 lesson words + 163 bonus entries) | — | **163 bonus** |
+| **Dictionary total** | Course + HSK 1 deck + 12 extras | **24** | **314** |
 
-What a learner can do after v0.1: greet, introduce themselves, talk about family, count, tell time, order basic food, talk about places/transport, describe simple things, and connect ideas.
+What a learner can do after v0.1: greet, introduce themselves, talk about family, count, tell time, order basic food, talk about places/transport, describe simple things, and connect ideas. The HSK 1 deck adds audio, meaning, and spaced review for every remaining official HSK 1 word.
 
 ## Research & decisions
 
@@ -146,8 +149,8 @@ Full sources and reasoning: [docs/research.md](docs/research.md).
 
 ## Roadmap
 
-- **v0.2:** native-speaker audio, tone-pair gym, mini-stories, placement check.
-- **v1.0:** complete HSK 1 (302 words / 70 grammar points), stroke-order handwriting, traditional toggle, beta on Google Play.
+- **v0.2:** bundled neural audio, tone-pair gym, full HSK 1 word deck, auto-updater. *(shipped)*
+- **v1.0:** sentence lessons for the remaining HSK 1 deck, 70 grammar points, stroke-order handwriting, traditional toggle, beta on Google Play.
 - **Later:** HSK 2, graded readers, FSRS, accounts/sync, AI conversation with honest tone feedback.
 
 See [docs/product.md](docs/product.md) for the full roadmap and metrics.

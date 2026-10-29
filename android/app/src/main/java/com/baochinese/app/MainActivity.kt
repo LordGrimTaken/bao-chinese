@@ -131,6 +131,7 @@ class MainActivity : Activity() {
         path.endsWith(".webmanifest") -> "application/manifest+json"
         path.endsWith(".svg") -> "image/svg+xml"
         path.endsWith(".png") -> "image/png"
+        path.endsWith(".mp3") -> "audio/mpeg"
         else -> "application/octet-stream"
     }
 
