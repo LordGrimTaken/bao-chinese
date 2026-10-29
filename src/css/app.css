@@ -525,6 +525,11 @@ ul {
   --u-dark: #58721d;
   --u-soft: #eef5d9;
 }
+.unit-ocean {
+  --u: #2f7fa8;
+  --u-dark: #1f5c7d;
+  --u-soft: #e2f0f7;
+}
 
 .unit-banner {
   position: relative;

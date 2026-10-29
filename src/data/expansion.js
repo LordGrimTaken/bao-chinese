@@ -149,6 +149,78 @@ export const EXPANSION_UNITS = [
       },
     ],
   },
+  {
+    id: 'u11',
+    number: 11,
+    title: 'Time & Dates',
+    subtitle: 'Days, meals, durations, and the calendar',
+    color: 'ocean',
+    emoji: '⏰',
+    lessons: [
+      {
+        id: 'u11l1',
+        title: 'Times of day',
+        kicker: 'Morning, noon, afternoon, and night',
+        words: ['hsk_zao', 'hsk_wan_2', 'hsk_zao_shang', 'hsk_shang_wu', 'hsk_zhong_wu', 'hsk_xia_wu', 'hsk_wan_shang', 'hsk_bai_tian'],
+        sentences: [
+          s(['你', '早', '！'], 'Good morning!'),
+          s(['现在', '很', '晚', '。'], 'It is very late now.'),
+          s(['早上', '我', '喝', '茶', '。'], 'I drink tea in the morning.'),
+          s(['上午', '我', '上课', '。'], 'I have class in the morning.'),
+          s(['中午', '我', '吃', '午饭', '。'], 'At noon I eat lunch.'),
+          s(['下午', '我', '在', '家', '。'], 'I am at home in the afternoon.'),
+          s(['晚上', '我', '看', '书', '。'], 'I read in the evening.'),
+          s(['白天', '我', '工作', '。'], 'I work during the day.'),
+        ],
+        grammar: {
+          title: 'Times of day',
+          pattern: '早上 / 上午 / 中午 / 下午 / 晚上',
+          body: '早上 = early morning, 上午 = morning before noon, 中午 = noon, 下午 = afternoon, 晚上 = evening/night. 白天 = daytime. 早 and 晚 can also mean “early” and “late”.',
+        },
+      },
+      {
+        id: 'u11l2',
+        title: 'Meals & minutes',
+        kicker: 'Breakfast, lunch, dinner, and duration',
+        words: ['hsk_zao_fan', 'hsk_wu_fan', 'hsk_wan_fan', 'hsk_fen_zhong', 'hsk_xiao_shi', 'hsk_ban', 'hsk_shi_jian'],
+        sentences: [
+          s(['我', '吃', '早饭', '。'], 'I eat breakfast.'),
+          s(['午饭', '很', '好', '吃', '。'], 'Lunch is delicious.'),
+          s(['晚上', '我', '吃', '晚饭', '。'], 'I eat dinner in the evening.'),
+          s(['我', '学习', '了', '三', '十', '分钟', '。'], 'I studied for thirty minutes.'),
+          s(['我', '工作', '八', '小时', '。'], 'I work eight hours.'),
+          s(['我', '学习', '了', '半', '小时', '。'], 'I studied for half an hour.'),
+          s(['我', '没有', '时间', '。'], 'I have no time.'),
+        ],
+        grammar: {
+          title: 'Meals and duration',
+          pattern: 'Number + 分钟/小时 · 半 + 小时',
+          body: '早饭 = breakfast, 午饭 = lunch, 晚饭 = dinner. 分钟 means minute and 小时 means hour. 半 means half: 半小时 = half an hour. 时间 means time.',
+        },
+      },
+      {
+        id: 'u11l3',
+        title: 'Years & dates',
+        kicker: 'This year, next year, and calendar dates',
+        words: ['hsk_jin_nian', 'hsk_ming_nian', 'hsk_qu_nian', 'hsk_nian', 'hsk_yue', 'hsk_ri', 'hsk_hao', 'hsk_zuo_tian', 'hsk_xing_qi_tian'],
+        sentences: [
+          s(['今年', '我', '学习', '汉语', '。'], 'This year I study Chinese.'),
+          s(['明年', '我', '去', '中国', '。'], 'Next year I am going to China.'),
+          s(['去年', '我', '在', '北京', '。'], 'Last year I was in Beijing.'),
+          s(['今年', '是', '二', '零', '二', '六', '年', '。'], 'This year is 2026.'),
+          s(['这个', '月', '我', '在', '家', '。'], 'This month I am at home.'),
+          s(['今天', '是', '几', '号', '？'], 'What is the date today?'),
+          s(['今天', '是', '十', '月', '三', '日', '。'], 'Today is October 3rd.'),
+          s(['昨天', '是', '星期天', '。'], 'Yesterday was Sunday.'),
+        ],
+        grammar: {
+          title: 'Years, months, and dates',
+          pattern: '年 / 月 / 日 / 号',
+          body: '今年 = this year, 明年 = next year, 去年 = last year. Dates run biggest to smallest: 2026 年 10 月 3 日. 号 is the spoken date number; 日 is the written form.',
+        },
+      },
+    ],
+  },
 ];
 
 export const EXPANSION_WORDS = [...new Set(EXPANSION_UNITS.flatMap((unit) => unit.lessons.flatMap((lesson) => lesson.words)))]

@@ -11,16 +11,16 @@ The course is sequenced by **communicative function**, not by the alphabetical H
 | | |
 | --- | --- |
 | Units | 8 |
-| Units | 10 |
-| Lessons | 30 |
-| Words | 193 lesson words + 121 deck-only words (314 dictionary entries) |
-| Sentences | 166 |
-| Grammar cards | 30 |
+| Units | 11 |
+| Lessons | 33 |
+| Words | 217 lesson words + 97 deck-only words (314 dictionary entries) |
+| Sentences | 189 |
+| Grammar cards | 33 |
 | Exercise types | 9 |
 | Estimated time | 5–8 minutes per lesson |
-| Coverage | 193 lesson words + the **full 302-word HSK 1 vocabulary deck** (121 still deck-only; 314 dictionary entries including extras) |
+| Coverage | 217 lesson words + the **full 302-word HSK 1 vocabulary deck** (97 still deck-only; 314 dictionary entries including extras) |
 
-**Important:** the **word list** is complete for HSK 1, but this is **not** a complete lesson sequence or exam preparation. The 30 lessons cover 193 high-utility words with sentences and grammar; the remaining 121 words are available as an audio + SRS vocabulary deck. Sentence lessons for the whole list are the next content milestone.
+**Important:** the **word list** is complete for HSK 1, but this is **not** a complete lesson sequence or exam preparation. The 33 lessons cover 217 high-utility words with sentences and grammar; the remaining 97 words are available as an audio + SRS vocabulary deck. Sentence lessons for the whole list are the next content milestone.
 
 ---
 
@@ -38,7 +38,8 @@ The course is sequenced by **communicative function**, not by the alphabetical H
 | 8 | Connect & Chat | 3 | 18 | 16 | Possession, requests, reasons |
 | 9 | Home & Tech | 3 | 20 | 17 | Rooms, devices, location words |
 | 10 | School & Work | 3 | 22 | 21 | School levels, class, jobs, health |
-| **Total** | | **30** | **193** | **166** | |
+| 11 | Time & Dates | 3 | 24 | 23 | Times of day, meals, dates |
+| **Total** | | **33** | **217** | **189** | |
 
 ### Unit 1 — First Hellos
 | Lesson | New words | Core patterns |
@@ -88,6 +89,13 @@ The course is sequenced by **communicative function**, not by the alphabetical H
 | Big & small | 大 小 多 少 真 | `很` + adjective, `真` |
 | Hot & cold | 好 冷 热 新 快 慢 | adjective predicates, opposites |
 | How do you feel? | 高兴 漂亮 太 有点儿 但是 好看 了 | `太…了`, `有点儿`, `但是` |
+
+### Unit 11 — Time & Dates
+| Lesson | New words | Core patterns |
+| --- | --- | --- |
+| Times of day | 早 晚 早上 上午 中午 下午 晚上 白天 | daily time phrases |
+| Meals & minutes | 早饭 午饭 晚饭 分钟 小时 半 时间 | meals, duration |
+| Years & dates | 今年 明年 去年 年 月 日 号 昨天 星期天 | calendar dates |
 
 ### Unit 10 — School & Work
 | Lesson | New words | Core patterns |

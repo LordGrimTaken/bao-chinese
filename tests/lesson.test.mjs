@@ -39,12 +39,12 @@ test('pinyin conversion places tone marks correctly', () => {
 });
 
 test('the course has the expected shape', () => {
-  assert.equal(UNITS.length, 10);
-  assert.equal(LESSONS.length, 30);
+  assert.equal(UNITS.length, 11);
+  assert.equal(LESSONS.length, 33);
   assert.equal(TOTAL_WORDS, 151);
-  assert.equal(COURSE_WORDS.length, 193);
+  assert.equal(COURSE_WORDS.length, 217);
   assert.equal(BONUS_WORDS.length, 163);
-  assert.equal(BONUS_ONLY_WORDS.length, 121);
+  assert.equal(BONUS_ONLY_WORDS.length, 97);
   assert.equal(ALL_WORDS.length, 314);
   assert.equal(new Set(LESSONS.map((lesson) => lesson.id)).size, LESSONS.length);
 });

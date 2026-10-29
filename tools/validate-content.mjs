@@ -65,11 +65,11 @@ for (const lesson of LESSONS) {
   }
 }
 
-if (TOTAL_LESSONS !== 30) fail(`expected 30 lessons, got ${TOTAL_LESSONS}`);
+if (TOTAL_LESSONS !== 33) fail(`expected 33 lessons, got ${TOTAL_LESSONS}`);
 if (TOTAL_WORDS !== 151) fail(`expected 151 starter words, got ${TOTAL_WORDS}`);
-if (TOTAL_COURSE_WORDS !== 193) fail(`expected 193 lesson words, got ${TOTAL_COURSE_WORDS}`);
+if (TOTAL_COURSE_WORDS !== 217) fail(`expected 217 lesson words, got ${TOTAL_COURSE_WORDS}`);
 if (BONUS_WORDS.length !== 163) fail(`expected 163 HSK bonus entries, got ${BONUS_WORDS.length}`);
-if (BONUS_ONLY_WORDS.length !== 121) fail(`expected 121 deck-only words, got ${BONUS_ONLY_WORDS.length}`);
+if (BONUS_ONLY_WORDS.length !== 97) fail(`expected 97 deck-only words, got ${BONUS_ONLY_WORDS.length}`);
 
 // Every HSK bonus entry has valid pinyin and meaning.
 for (const word of BONUS_WORDS) {

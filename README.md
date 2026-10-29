@@ -19,11 +19,11 @@ Bao is a Duolingo-shaped Mandarin course that refuses to skip the parts generic 
 - **Grammar gets one minute.** Every lesson has a plain-English “why” card.
 - **Five minutes is enough.** 14–22 interactions, with a real completion screen.
 - **It works offline.** No account, no server, no ads, no tracking. Your progress is local and exportable.
-- **Bundled Mandarin audio.** 516 neural-voice clips cover every word, sentence, and tone pair; device TTS is the fallback.
+- **Bundled Mandarin audio.** 539 neural-voice clips cover every word, sentence, and tone pair; device TTS is the fallback.
 - **It updates itself.** The Android build checks GitHub Releases, verifies the APK checksum, and hands it to Android's installer.
 - **Gentle gamification.** Streaks, XP, gems, and hearts — with an unlimited-hearts setting and free review.
 
-It is a **starter course for HSK 3.0 Level 1**: 10 units, 30 lessons, **193 lesson words**, 166 sentences, 30 grammar cards — plus the **complete 302-word HSK 1 vocabulary deck** in the dictionary (314 entries including 12 extra high-utility words). The word list is complete; sentence lessons for the remaining 121 deck-only words are the next content milestone. It is not exam prep.
+It is a **starter course for HSK 3.0 Level 1**: 11 units, 33 lessons, **217 lesson words**, 189 sentences, 33 grammar cards — plus the **complete 302-word HSK 1 vocabulary deck** in the dictionary (314 entries including 12 extra high-utility words). The word list is complete; sentence lessons for the remaining 97 deck-only words are the next content milestone. It is not exam prep.
 
 ## Screens
 
@@ -42,6 +42,10 @@ It is a **starter course for HSK 3.0 Level 1**: 10 units, 30 lessons, **193 less
 | Unit 9: Home & Tech | Unit 10: School & Work |
 | --- | --- |
 | ![Unit 9](screenshots/unit9.png) | ![Unit 10](screenshots/unit10.png) |
+
+| Unit 11: Time & Dates | New lesson |
+| --- | --- |
+| ![Unit 11](screenshots/unit11.png) | ![Unit 11 lesson](screenshots/unit11-lesson.png) |
 
 | Unit 9 lesson | Unit 10 lesson |
 | --- | --- |
@@ -106,7 +110,7 @@ When a newer release exists, it:
 
 The first update needs “Allow from this source” for Bao. Progress stays on the device; the app does not use an account.
 
-**One-time note:** v0.1.0 was signed with a throwaway CI debug key and has no updater code, so it cannot update itself. Reinstall v0.3.0 once. The v0.1.1+ builds are signed with the stable demo key and can update in place. The demo key is intentionally public for this prototype — see [android/keystore/README.md](android/keystore/README.md) before a Play Store release.
+**One-time note:** v0.1.0 was signed with a throwaway CI debug key and has no updater code, so it cannot update itself. Reinstall v0.4.0 once. The v0.1.1+ builds are signed with the stable demo key and can update in place. The demo key is intentionally public for this prototype — see [android/keystore/README.md](android/keystore/README.md) before a Play Store release.
 
 ```bash
 # requires JDK 17, Android SDK 35, and Gradle 8.9+
@@ -140,9 +144,10 @@ Read [docs/architecture.md](docs/architecture.md) for the full design.
 | 8 | Connect & Chat | 3 | 18 |
 | 9 | Home & Tech | 3 | 20 |
 | 10 | School & Work | 3 | 22 |
-| **Lesson total** | | **30** | **193** |
-| **HSK 1 deck** | Remaining HSK 1 vocabulary (302 total, 121 still deck-only) | — | **121 deck-only** |
-| **Dictionary total** | Course + HSK 1 deck + 12 extras | **30** | **314** |
+| 11 | Time & Dates | 3 | 24 |
+| **Lesson total** | | **33** | **217** |
+| **HSK 1 deck** | Remaining HSK 1 vocabulary (302 total, 97 still deck-only) | — | **97 deck-only** |
+| **Dictionary total** | Course + HSK 1 deck + 12 extras | **33** | **314** |
 
 What a learner can do after v0.1: greet, introduce themselves, talk about family, count, tell time, order basic food, talk about places/transport, describe simple things, and connect ideas. The HSK 1 deck adds audio, meaning, and spaced review for every remaining official HSK 1 word.
 
@@ -160,7 +165,7 @@ Full sources and reasoning: [docs/research.md](docs/research.md).
 ## Roadmap
 
 - **v0.2:** bundled neural audio, tone-pair gym, full HSK 1 word deck, auto-updater. *(shipped)*
-- **v1.0:** sentence lessons for the remaining 121 deck words, 70 grammar points, stroke-order handwriting, traditional toggle, beta on Google Play.
+- **v1.0:** sentence lessons for the remaining 97 deck words, 70 grammar points, stroke-order handwriting, traditional toggle, beta on Google Play.
 - **Later:** HSK 2, graded readers, FSRS, accounts/sync, AI conversation with honest tone feedback.
 
 See [docs/product.md](docs/product.md) for the full roadmap and metrics.

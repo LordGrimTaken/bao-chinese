@@ -721,6 +721,25 @@ function applyDemo() {
   } else if (demo === 'review') {
     app.route = { name: 'review' };
     app.render();
+  } else if (demo === 'unit11') {
+    for (const lesson of LESSONS.filter((item) => item.unitNumber <= 10)) {
+      app.state.lessons[lesson.id] = {
+        completed: true,
+        stars: 3,
+        bestAccuracy: 1,
+        attempts: 1,
+        at: new Date().toISOString(),
+      };
+    }
+    app.state.xp = 1940;
+    app.state.streak = 18;
+    app.state.longestStreak = 20;
+    app.state.daily = { date: dateKey(new Date()), xp: 35, lessons: 2 };
+    app.route = { name: 'learn' };
+    app.render();
+    setTimeout(() => {
+      document.querySelector('.node--current:not(.node--review)')?.closest('.unit-section')?.scrollIntoView({ block: 'start' });
+    }, 350);
   } else if (demo === 'unit10') {
     for (const lesson of LESSONS.filter((item) => item.unitNumber <= 9)) {
       app.state.lessons[lesson.id] = {
