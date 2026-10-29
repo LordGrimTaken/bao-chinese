@@ -530,6 +530,11 @@ ul {
   --u-dark: #1f5c7d;
   --u-soft: #e2f0f7;
 }
+.unit-clay {
+  --u: #b06a4a;
+  --u-dark: #83492f;
+  --u-soft: #f7e8de;
+}
 
 .unit-banner {
   position: relative;

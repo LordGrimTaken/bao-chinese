@@ -18,7 +18,7 @@ export function renderWords(app) {
     <header class="page-header">
       <span class="eyebrow">Your dictionary</span>
       <h1>Words</h1>
-      <p>${total} words: 33 lessons across 11 units plus the full 302-word HSK 1 deck. Tap any word for audio and a quick drill.</p>
+      <p>${total} words: 36 lessons across 12 units plus the full 302-word HSK 1 deck. Tap any word for audio and a quick drill.</p>
     </header>
     <div class="search-wrap">
       ${icon('search')}

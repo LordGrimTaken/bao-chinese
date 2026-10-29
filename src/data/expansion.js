@@ -221,6 +221,74 @@ export const EXPANSION_UNITS = [
       },
     ],
   },
+  {
+    id: 'u12',
+    number: 12,
+    title: 'Shopping & Food',
+    subtitle: 'Clothes, prices, money, and buying a meal',
+    color: 'clay',
+    emoji: '🛍️',
+    lessons: [
+      {
+        id: 'u12l1',
+        title: 'Clothes & shops',
+        kicker: 'What you wear and where you buy it',
+        words: ['hsk_yi_fu', 'hsk_chuan', 'hsk_gui', 'hsk_pian_yi', 'hsk_mai', 'hsk_dian', 'hsk_shu_dian', 'hsk_fan_dian'],
+        sentences: [
+          s(['这', '是', '我', '的', '衣服', '。'], 'This is my clothing.'),
+          s(['今天', '我', '穿', '衣服', '。'], 'Today I wear clothes.'),
+          s(['这个', '很', '贵', '。'], 'This one is expensive.'),
+          s(['那个', '很', '便宜', '。'], 'That one is cheap.'),
+          s(['我', '卖', '衣服', '。'], 'I sell clothes.'),
+          s(['店', '在', '哪儿', '？'], 'Where is the shop?'),
+          s(['书店', '在', '这儿', '。'], 'The bookshop is here.'),
+          s(['饭店', '在', '那儿', '。'], 'The restaurant is over there.'),
+        ],
+        grammar: {
+          title: 'Clothes and shops',
+          pattern: '穿 + 衣服 · 贵 / 便宜',
+          body: '衣服 means clothing, and 穿 means “to wear”. 贵 is expensive; 便宜 is cheap. 店 is a shop: 书店 = bookshop, 饭店 = restaurant/hotel.',
+        },
+      },
+      {
+        id: 'u12l2',
+        title: 'Money & prices',
+        kicker: 'Ask how much and talk about yuan',
+        words: ['hsk_kuai', 'hsk_yuan', 'hsk_bai', 'hsk_qian', 'hsk_liang', 'hsk_duo_shao'],
+        sentences: [
+          s(['苹果', '三', '块', '。'], 'The apples are three yuan.'),
+          s(['这个', '多少', '钱', '？'], 'How much is this?'),
+          s(['这个', '五', '元', '。'], 'This one is five yuan.'),
+          s(['一', '百', '块', '。'], 'One hundred yuan.'),
+          s(['一', '千', '块', '。'], 'One thousand yuan.'),
+          s(['我', '有', '两', '个', '苹果', '。'], 'I have two apples.'),
+        ],
+        grammar: {
+          title: 'Yuan, hundred, thousand',
+          pattern: 'Number + 块/元 · 两 + Measure word',
+          body: '块 is the colloquial word for yuan; 元 is the formal one. 百 = hundred, 千 = thousand. Use 两 instead of 二 before a measure word: 两个苹果.',
+        },
+      },
+      {
+        id: 'u12l3',
+        title: 'Buying food',
+        kicker: 'Bread, baozi, dumplings, and noodles',
+        words: ['hsk_mian_bao', 'hsk_bao_zi', 'hsk_jiao_zi', 'hsk_mian_tiaor'],
+        sentences: [
+          s(['我', '吃', '面包', '。'], 'I eat bread.'),
+          s(['我', '吃', '包子', '。'], 'I eat baozi.'),
+          s(['我', '吃', '饺子', '。'], 'I eat dumplings.'),
+          s(['我', '吃', '面条儿', '。'], 'I eat noodles.'),
+          s(['饭店', '的', '饺子', '很', '好吃', '。'], 'The restaurant’s dumplings are delicious.'),
+        ],
+        grammar: {
+          title: 'Everyday foods',
+          pattern: '饭店 + 的 + Food',
+          body: '面包 = bread, 包子 = steamed buns, 饺子 = dumplings, 面条儿 = noodles. 饭店的饺子 means “the restaurant’s dumplings”.',
+        },
+      },
+    ],
+  },
 ];
 
 export const EXPANSION_WORDS = [...new Set(EXPANSION_UNITS.flatMap((unit) => unit.lessons.flatMap((lesson) => lesson.words)))]
