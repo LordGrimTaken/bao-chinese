@@ -97,7 +97,7 @@ When a newer release exists, it:
 
 The first update needs “Allow from this source” for Bao. Progress stays on the device; the app does not use an account.
 
-**One-time note:** v0.1.0 was signed with a throwaway CI debug key and has no updater code. Reinstall any v0.1.2+ build once; every build after that is signed with the stable demo key and can update in place. The demo key is intentionally public for this prototype — see [android/keystore/README.md](android/keystore/README.md) before a Play Store release.
+**One-time note:** v0.1.0 was signed with a throwaway CI debug key and has no updater code, so it cannot update itself. Reinstall v0.1.2 once. The v0.1.1+ builds are signed with the stable demo key and can update in place. The demo key is intentionally public for this prototype — see [android/keystore/README.md](android/keystore/README.md) before a Play Store release.
 
 ```bash
 # requires JDK 17, Android SDK 35, and Gradle 8.9+
