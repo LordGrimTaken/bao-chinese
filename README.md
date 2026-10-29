@@ -82,7 +82,7 @@ node tools/e2e-lesson.mjs u1l1
 There are two Android paths:
 
 1. **Install the PWA** from the GitHub Pages URL in Chrome → “Add to Home screen”. It is offline-capable and uses Web Speech for audio.
-2. **Install the APK** — [download the latest debug build](https://github.com/LordGrimTaken/bao-chinese/releases/latest) (Android 8.0+, ~0.9 MB). It is a thin WebView shell with native Android TTS and haptics. The `Android APK` workflow rebuilds it on every push to `main`.
+2. **Install the APK** — [download the latest build](https://github.com/LordGrimTaken/bao-chinese/releases/latest) (Android 8.0+, ~6 MB with all 478 audio clips). It is a thin WebView shell with native Android TTS and haptics. The `Android APK` workflow rebuilds it on every push to `main`.
 
 The current APK is **demo-signed** for testing. Enable “Install unknown apps” for your browser/file manager, then open the downloaded `app-debug.apk`.
 
@@ -113,7 +113,7 @@ The Android build copies the web app from the repo root at build time — there 
 - **No build step.** Vanilla ES modules, CSS, and JSON-free typed JS content. The service worker caches the shell.
 - **Pure core.** `src/js/core.js` owns state, SRS, streaks, hearts, XP, and achievements; it is tested in Node.
 - **Deterministic lessons.** `src/js/lesson-engine.js` turns a lesson into exercises with a seeded PRNG.
-- **Single content source.** 151 typed words and 128 tokenized sentences; pinyin is stored in numbered form and rendered with tone marks.
+- **Single content source.** 314 typed dictionary entries and 128 tokenized sentences; pinyin is stored in numbered form and rendered with tone marks.
 - **Thin native shell.** Android `WebView` + asset interception at a secure fake origin, with a `BaoNative` TTS/vibration bridge.
 
 Read [docs/architecture.md](docs/architecture.md) for the full design.
