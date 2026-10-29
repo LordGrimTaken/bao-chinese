@@ -1,8 +1,23 @@
 import org.gradle.api.tasks.Copy
+import java.util.Base64
 
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
+}
+
+/**
+ * A stable demo signing key is required for in-place APK updates: Android
+ * refuses to install an update signed by a different certificate. The key is
+ * stored as base64 text so the build is reproducible on CI and locally.
+ *
+ * This key is public and for demos only. See keystore/README.md.
+ */
+val demoKeystore = layout.buildDirectory.file("keystore/bao-demo.jks").get().asFile
+if (!demoKeystore.exists()) {
+    demoKeystore.parentFile.mkdirs()
+    val encoded = rootProject.file("keystore/bao-demo.jks.b64").readText().trim()
+    demoKeystore.writeBytes(Base64.getDecoder().decode(encoded))
 }
 
 android {
@@ -13,13 +28,26 @@ android {
         applicationId = "com.baochinese.app"
         minSdk = 26
         targetSdk = 35
-        versionCode = 1
-        versionName = "0.1.0"
+        versionCode = 2
+        versionName = "0.1.1"
+    }
+
+    signingConfigs {
+        create("demo") {
+            storeFile = demoKeystore
+            storePassword = "baochinese"
+            keyAlias = "bao"
+            keyPassword = "baochinese"
+        }
     }
 
     buildTypes {
+        debug {
+            signingConfig = signingConfigs.getByName("demo")
+        }
         release {
             isMinifyEnabled = false
+            signingConfig = signingConfigs.getByName("demo")
             proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
         }
     }

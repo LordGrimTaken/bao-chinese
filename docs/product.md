@@ -110,6 +110,7 @@ A friendly, offline Android app that teaches absolute beginners to **hear tones,
 | Persistence | localStorage, export/import JSON, reset | ✅ |
 | Offline | Service worker, manifest, installable PWA | ✅ |
 | Android | WebView shell, asset interception, TTS/haptics bridge, CI APK | ✅ (CI build) |
+| Auto-update | GitHub release check, SHA-256, PackageInstaller, in-place update | ✅ v0.1.1 |
 | Accessibility | Focus states, labels, 44px targets, reduced motion, pinyin toggle | ✅ |
 | Dark mode | — | ⏳ |
 | Speech recognition | — | ⏳ |

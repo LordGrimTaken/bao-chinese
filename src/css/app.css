@@ -3304,6 +3304,85 @@ body.modal-open {
   box-shadow: 0 3px 0 var(--line-strong);
 }
 
+/* ---------- In-app updater ---------- */
+
+.update-hero .panda {
+  width: 112px;
+  margin: 0 auto 2px;
+}
+
+.update-notes {
+  margin-top: 14px;
+  padding: 12px 14px;
+  max-height: 150px;
+  overflow-y: auto;
+  border-radius: 14px;
+  background: var(--paper-deep);
+  color: var(--ink-soft);
+  font-size: 12.5px;
+  line-height: 1.5;
+}
+
+.update-notes p + p {
+  margin-top: 4px;
+}
+
+.update-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+  margin-top: 16px;
+}
+
+.update-actions .btn {
+  width: 100%;
+}
+
+.update-small {
+  margin-top: 10px;
+  text-align: center;
+  color: var(--muted);
+  font-size: 10.5px;
+  line-height: 1.4;
+}
+
+.update-progress {
+  margin-top: 16px;
+  padding: 13px;
+  border-radius: 14px;
+  background: var(--paper-deep);
+}
+
+.update-progress-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  color: var(--ink-soft);
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.update-progress-track {
+  height: 12px;
+  margin-top: 8px;
+  border-radius: 99px;
+  background: #e6d8c9;
+  overflow: hidden;
+}
+
+.update-progress-bar {
+  width: 0;
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, var(--jade), #57cf9f);
+  transition: width 0.2s ease;
+}
+
+.update-progress.is-installing .update-progress-bar {
+  width: 100% !important;
+}
+
 /* Toast */
 #toast-root {
   position: fixed;

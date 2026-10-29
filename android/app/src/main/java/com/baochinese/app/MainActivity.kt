@@ -25,6 +25,7 @@ import java.util.UUID
 
 class MainActivity : Activity() {
     private lateinit var webView: WebView
+    private val updater by lazy { Updater(this, webView) }
     private var tts: TextToSpeech? = null
     private var ttsReady = false
     private var pendingSpeech: Pair<String, Float>? = null
@@ -161,6 +162,32 @@ class MainActivity : Activity() {
 
         @JavascriptInterface
         fun isReady(): Boolean = ttsReady
+
+        @JavascriptInterface
+        fun checkForUpdates(force: Boolean) {
+            runOnUiThread { updater.check(force) }
+        }
+
+        @JavascriptInterface
+        fun installUpdate(url: String, version: String, digest: String, size: String) {
+            val info = UpdateInfo(
+                version = version,
+                notes = "",
+                downloadUrl = url,
+                size = size.toLongOrNull() ?: 0L,
+                digest = digest.takeIf { it.isNotBlank() },
+                pageUrl = ""
+            )
+            runOnUiThread { updater.downloadAndInstall(info) }
+        }
+
+        @JavascriptInterface
+        fun openInstallSettings() {
+            runOnUiThread { updater.openInstallSettings() }
+        }
+
+        @JavascriptInterface
+        fun getVersionName(): String = updater.currentVersionName()
     }
 
     @Deprecated("Deprecated in Java")

@@ -18,6 +18,7 @@ Bao is a Duolingo-shaped Mandarin course that refuses to skip the parts generic 
 - **Grammar gets one minute.** Every lesson has a plain-English “why” card.
 - **Five minutes is enough.** 14–22 interactions, with a real completion screen.
 - **It works offline.** No account, no server, no ads, no tracking. Your progress is local and exportable.
+- **It updates itself.** The Android build checks GitHub Releases, verifies the APK checksum, and hands it to Android's installer.
 - **Gentle gamification.** Streaks, XP, gems, and hearts — with an unlimited-hearts setting and free review.
 
 It is a **starter subset of HSK 3.0 Level 1**: 8 units, 24 lessons, **151 words**, 128 sentences, 24 grammar cards. It is not a complete HSK course or exam prep.
@@ -76,7 +77,23 @@ There are two Android paths:
 1. **Install the PWA** from the GitHub Pages URL in Chrome → “Add to Home screen”. It is offline-capable and uses Web Speech for audio.
 2. **Install the APK** — [download the latest debug build](https://github.com/LordGrimTaken/bao-chinese/releases/latest) (Android 8.0+, ~0.9 MB). It is a thin WebView shell with native Android TTS and haptics. The `Android APK` workflow rebuilds it on every push to `main`.
 
-The current APK is **debug-signed** for testing. Enable “Install unknown apps” for your browser/file manager, then open the downloaded `app-debug.apk`.
+The current APK is **demo-signed** for testing. Enable “Install unknown apps” for your browser/file manager, then open the downloaded `app-debug.apk`.
+
+### Auto-update
+
+The Android app checks `api.github.com/repos/LordGrimTaken/bao-chinese/releases/latest` on launch (throttled to once every 6 hours) and from **Me → Check for updates**.
+
+When a newer release exists, it:
+
+1. Downloads the APK to app-private storage.
+2. Verifies the GitHub SHA-256 digest, package name, and version code.
+3. Opens Android's `PackageInstaller` confirmation.
+
+The first update needs “Allow from this source” for Bao. Progress stays on the device; the app does not use an account.
+
+**One-time note:** v0.1.0 was signed with a throwaway CI debug key and has no updater code. Reinstall v0.1.1 once; every build after that is signed with the stable demo key and can update in place. The demo key is intentionally public for this prototype — see [android/keystore/README.md](android/keystore/README.md) before a Play Store release.
+
+![Update sheet](screenshots/update.png)
 
 ```bash
 # requires JDK 17, Android SDK 35, and Gradle 8.9+

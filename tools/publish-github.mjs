@@ -103,6 +103,7 @@ const PENDING = [
   ['final-lesson.png', 'screenshots/lesson.png'],
   ['final-question.png', 'screenshots/lesson-question.png'],
   ['final-complete.png', 'screenshots/complete.png'],
+  ['update.png', 'screenshots/update.png'],
 ];
 
 const SHOTS_DIR = process.env.BAO_SHOTS_DIR || 'C:\\Users\\Austin\\AppData\\Local\\BaoShots';

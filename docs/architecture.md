@@ -212,10 +212,27 @@ Sentence data is **tokenized**:
 - Back button calls `BaoApp.handleBack()`; if the web app does not consume it, the activity finishes.
 - The APK is built by `.github/workflows/android.yml`; there is no Gradle wrapper jar in the repo (it would be a binary), so CI uses the Gradle action.
 
+### 7.1 Auto-updater
+
+The shell checks the public GitHub Releases API (`/repos/LordGrimTaken/bao-chinese/releases/latest`) and compares the release tag with the installed `versionName`.
+
+Flow:
+1. `Updater.check(force)` on launch (6-hour throttle) or from **Me → Check for updates**.
+2. Parse `tag_name`, release notes, and the first `.apk` asset (`browser_download_url`, `size`, `digest`).
+3. Download to `filesDir/updates` with redirect handling and progress callbacks.
+4. Verify the SHA-256 digest from GitHub, the APK's package name, and a higher `versionCode`.
+5. Commit a `PackageInstaller` session. The system shows its install confirmation; `InstallResultReceiver` launches the pending-user-action Intent and reports failures.
+6. Same package + stable signing key means the installed app updates in place and keeps `localStorage`.
+
+Permissions: `INTERNET` and `REQUEST_INSTALL_PACKAGES`. The first update also requires the user to allow installs from Bao (`ACTION_MANAGE_UNKNOWN_APP_SOURCES`). The web layer exposes this as a friendly sheet via `BaoNative.installUpdate`, `onProgress`, `onInstalling`, `onPermissionNeeded`, and `onInstallError`.
+
+Signing: every build uses a **stable demo key** (`android/keystore/bao-demo.jks.b64`) so Android accepts the update. The key is public and must be replaced with a private release key before Play Store distribution.
+
 Known limitations:
 - Blob downloads (export progress) may not work in WebView; the PWA path is the reliable one.
 - File picker for import is not wired in the shell.
 - TTS voice quality varies by OEM; a “no Chinese voice” nudge is on the roadmap.
+- The updater requires a GitHub release; it does not use a private update server yet.
 
 ---
 

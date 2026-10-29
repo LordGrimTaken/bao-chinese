@@ -18,6 +18,7 @@ export function renderProfile(app) {
   const name = state.profile.name || 'friend';
   const joinDate = new Date(state.createdAt).toLocaleDateString(undefined, { month: 'short', year: 'numeric' });
   const history = state.history || {};
+  const version = window.BaoNative?.getVersionName?.() || '0.1.1';
 
   return `<div class="screen">
     <header class="page-header">
@@ -80,6 +81,7 @@ export function renderProfile(app) {
       ${toggle('showPinyin', 'book', 'Always show pinyin', 'Helpful while you are starting out', state.profile.showPinyin)}
       ${toggle('slowAudio', 'clock', 'Slow audio by default', 'Extra time to catch the tones', state.profile.slowAudio)}
       ${toggle('unlimitedHearts', 'heart', 'Unlimited hearts', 'Practice mode — no hearts lost on mistakes', state.profile.unlimitedHearts)}
+      ${row('download', 'Check for updates', `Current version ${version}`, 'updates', '')}
       ${row('install', 'Install app', app.installPrompt ? 'Add Bao to your home screen' : 'Use your browser menu → Add to Home screen', 'install', '')}
       ${row('download', 'Export progress', 'Download a JSON backup', 'export', '')}
       ${row('upload', 'Import progress', 'Restore a backup file', 'import', '')}
@@ -91,7 +93,7 @@ export function renderProfile(app) {
     <div class="profile-footer">
       ${panda('sleepy', 'small')}
       <div class="brand" style="justify-content:center;margin:6px 0 2px"><span class="brand-mark">包</span><span class="brand-word">Bao Chinese</span></div>
-      <div>Version 0.1 · HSK 1 starter course</div>
+      <div>Version ${version} · HSK 1 starter course</div>
       <div>Made for curious beginners. 慢慢来 — take it slow.</div>
     </div>
   </div>`;
@@ -157,6 +159,7 @@ export function mountProfile(app) {
   const actions = {
     goal: () => app.openGoalSheet(),
     shop: () => app.openShop(),
+    updates: () => app.checkForUpdates(),
     install: () => app.install(),
     export: () => app.exportProgress(),
     import: () => document.querySelector('#import-file')?.click(),

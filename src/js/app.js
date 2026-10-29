@@ -33,6 +33,7 @@ import { renderOnboarding, mountOnboarding } from './ui/onboarding.js';
 import { renderProfile, mountProfile } from './ui/profile.js';
 import { renderReview, mountReview } from './ui/review.js';
 import { renderWords, mountWords, openWord } from './ui/words.js';
+import { initUpdater, showUpdateSheet } from './updater.js';
 
 const root = document.querySelector('#app');
 const modalRoot = document.querySelector('#modal-root');
@@ -738,6 +739,17 @@ function applyDemo() {
         app.render();
       }
     }
+  } else if (demo === 'update') {
+    app.route = { name: 'profile' };
+    app.render();
+    showUpdateSheet(app, {
+      version: '0.1.2',
+      notes: '• Tone-pair gym with minimal pairs\n• Native-speaker audio for every word\n• Faster lesson start and smoother tracing\n• Bug fixes and polish',
+      url: 'https://github.com/LordGrimTaken/bao-chinese/releases/latest',
+      size: 1258291,
+      digest: '',
+      pageUrl: 'https://github.com/LordGrimTaken/bao-chinese/releases',
+    }, { manual: true });
   } else if (demo === 'complete') {
     app.route = { name: 'lesson' };
     app.session = {
@@ -780,6 +792,7 @@ function init() {
   ensureDaily(app.state, new Date());
   bindDocumentEvents();
   startHeartTicker();
+  initUpdater(app);
   applyDemo();
   if (!new URLSearchParams(window.location.search).get('demo')) app.render();
   registerServiceWorker();
