@@ -10,16 +10,16 @@ The course is sequenced by **communicative function**, not by the alphabetical H
 
 | | |
 | --- | --- |
-| Units | 15 |
-| Lessons | 45 |
-| Words | 294 lesson words + 20 deck-only words (314 dictionary entries) |
-| Sentences | 267 |
-| Grammar cards | 45 |
+| Units | 16 |
+| Lessons | 49 |
+| Words | 314 lesson words (no deck-only words) |
+| Sentences | 287 |
+| Grammar cards | 49 |
 | Exercise types | 9 |
 | Estimated time | 5–8 minutes per lesson |
-| Coverage | 294 lesson words + the **full 302-word HSK 1 vocabulary deck** (20 still deck-only; 314 dictionary entries including extras) |
+| Coverage | All 302 official HSK 1 words have a lesson; 314 dictionary entries including extras |
 
-**Important:** the **word list** is complete for HSK 1, but this is **not** a complete lesson sequence or exam preparation. The 45 lessons cover 294 high-utility words with sentences and grammar; the remaining 20 words are available as an audio + SRS vocabulary deck. Sentence lessons for the whole list are the next content milestone.
+**Important:** the **word list and sentence sequence are complete** for HSK 1, but this is **not** exam preparation. The 49 lessons cover all 314 dictionary entries with sentences and grammar. Mock tests, stories, and more output practice are still needed.
 
 ---
 
@@ -42,7 +42,8 @@ The course is sequenced by **communicative function**, not by the alphabetical H
 | 13 | People & Pets | 3 | 18 | 18 | Family, pronouns, partners, pets |
 | 14 | City & Communication | 3 | 20 | 20 | Going out, senses, phone calls |
 | 15 | Questions & Connectors | 3 | 21 | 21 | Which/how, particles, quantifiers |
-| **Total** | | **45** | **294** | **267** | |
+| 16 | Everyday Basics | 4 | 20 | 20 | Measure words, days, home, helpers |
+| **Total** | | **49** | **314** | **287** | |
 
 ### Unit 1 — First Hellos
 | Lesson | New words | Core patterns |
@@ -92,6 +93,14 @@ The course is sequenced by **communicative function**, not by the alphabetical H
 | Big & small | 大 小 多 少 真 | `很` + adjective, `真` |
 | Hot & cold | 好 冷 热 新 快 慢 | adjective predicates, opposites |
 | How do you feel? | 高兴 漂亮 太 有点儿 但是 好看 了 | `太…了`, `有点儿`, `但是` |
+
+### Unit 16 — Everyday Basics
+| Lesson | New words | Core patterns |
+| --- | --- | --- |
+| Measure words | 本 件 口 第 一半 | 本/件/口, ordinals, half |
+| Days & weather | 天 星期日 雪 睡 上学 | days, snow, sleep, school |
+| At home | 做饭 读书 字 小朋友 们 | home, reading, plural 们 |
+| Little helpers | 不要 对 非常 好听 没 | negation, degree, opinion |
 
 ### Unit 15 — Questions & Connectors
 | Lesson | New words | Core patterns |

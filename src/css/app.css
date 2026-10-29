@@ -550,6 +550,11 @@ ul {
   --u-dark: #826331;
   --u-soft: #f6eedf;
 }
+.unit-mint {
+  --u: #4f9d7a;
+  --u-dark: #367357;
+  --u-soft: #e2f3ea;
+}
 
 .unit-banner {
   position: relative;

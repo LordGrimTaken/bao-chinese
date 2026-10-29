@@ -39,12 +39,12 @@ test('pinyin conversion places tone marks correctly', () => {
 });
 
 test('the course has the expected shape', () => {
-  assert.equal(UNITS.length, 15);
-  assert.equal(LESSONS.length, 45);
+  assert.equal(UNITS.length, 16);
+  assert.equal(LESSONS.length, 49);
   assert.equal(TOTAL_WORDS, 151);
-  assert.equal(COURSE_WORDS.length, 294);
+  assert.equal(COURSE_WORDS.length, 314);
   assert.equal(BONUS_WORDS.length, 163);
-  assert.equal(BONUS_ONLY_WORDS.length, 20);
+  assert.equal(BONUS_ONLY_WORDS.length, 0);
   assert.equal(ALL_WORDS.length, 314);
   assert.equal(new Set(LESSONS.map((lesson) => lesson.id)).size, LESSONS.length);
 });
@@ -62,8 +62,9 @@ test('the remaining HSK 1 deck is valid and does not duplicate lesson words', ()
     assert.ok(word.pinyin && !/\d/.test(word.pinyin));
     assert.ok(word.tones.length >= 1);
   }
+  const deckSample = BONUS_ONLY_WORDS.length ? BONUS_ONLY_WORDS.slice(0, 6) : COURSE_WORDS.slice(0, 6);
   const session = buildReviewSession(
-    BONUS_ONLY_WORDS.slice(0, 6).map((word) => word.id),
+    deckSample.map((word) => word.id),
     { limit: 6, pool: ALL_WORDS, wordMap: ALL_WORD_BY_ID, seed: 'bonus' }
   );
   assert.ok(session.steps.length >= 4);

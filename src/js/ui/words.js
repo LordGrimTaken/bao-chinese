@@ -14,24 +14,25 @@ import { escapeHtml, icon, panda, toneSparkline, toneSummary } from './common.js
 export function renderWords(app) {
   const view = app.wordsView || (app.wordsView = { query: '', filter: 'all' });
   const total = ALL_WORDS.length;
+  const filters = [
+    ['all', 'All'],
+    ['new', 'New'],
+    ['learning', 'Learning'],
+    ['strong', 'Strong'],
+  ];
+  if (BONUS_ONLY_WORDS.length) filters.push(['deck', 'HSK 1 deck']);
   return `<div class="screen">
     <header class="page-header">
       <span class="eyebrow">Your dictionary</span>
       <h1>Words</h1>
-      <p>${total} words: 45 lessons across 15 units plus the full 302-word HSK 1 deck. Tap any word for audio and a quick drill.</p>
+      <p>${total} words: all 49 lessons across 16 units. Every HSK 1 word now has a lesson. Tap any word for audio and a quick drill.</p>
     </header>
     <div class="search-wrap">
       ${icon('search')}
       <input class="search-input" id="word-search" type="search" placeholder="Search 汉字, pinyin, or English" value="${escapeHtml(view.query)}" autocomplete="off" />
     </div>
     <div class="chip-row" id="word-filters">
-      ${[
-        ['all', 'All'],
-        ['new', 'New'],
-        ['learning', 'Learning'],
-        ['strong', 'Strong'],
-        ['deck', 'HSK 1 deck'],
-      ]
+      ${filters
         .map(
           ([id, label]) =>
             `<button class="chip ${view.filter === id ? 'active' : ''}" data-filter="${id}">${label}</button>`
@@ -66,6 +67,7 @@ function renderUnitWords(app, unit) {
 }
 
 function renderBonusWords(app) {
+  if (!BONUS_ONLY_WORDS.length) return '';
   return `<section class="word-group" data-group="bonus">
     <div class="word-group-head">
       <h3>HSK 1 vocabulary deck</h3>

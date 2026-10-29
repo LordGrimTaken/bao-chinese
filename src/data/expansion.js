@@ -495,6 +495,88 @@ export const EXPANSION_UNITS = [
       },
     ],
   },
+  {
+    id: 'u16',
+    number: 16,
+    title: 'Everyday Basics',
+    subtitle: 'The final HSK 1 words: measure words, days, home, and small helpers',
+    color: 'mint',
+    emoji: '📚',
+    lessons: [
+      {
+        id: 'u16l1',
+        title: 'Measure words',
+        kicker: 'Books, clothes, people, ordinals, and half',
+        words: ['hsk_ben', 'hsk_jian_2', 'hsk_kou', 'hsk_di', 'hsk_yi_ban'],
+        sentences: [
+          s(['我', '有', '一', '本', '书', '。'], 'I have one book.'),
+          s(['这', '是', '一', '件', '衣服', '。'], 'This is one piece of clothing.'),
+          s(['我', '家', '有', '三', '口', '人', '。'], 'There are three people in my family.'),
+          s(['我', '是', '第', '一', '个', '。'], 'I am the first one.'),
+          s(['一半', '是', '我', '的', '。'], 'Half is mine.'),
+        ],
+        grammar: {
+          title: 'Measure words and ordinals',
+          pattern: 'Number + 本/件/口 · 第 + Number',
+          body: '本 counts books, 件 counts items/clothing, 口 counts people in a family. 第 makes an ordinal: 第一个 = the first one. 一半 = half.',
+        },
+      },
+      {
+        id: 'u16l2',
+        title: 'Days & weather',
+        kicker: 'Days, Sundays, snow, sleep, and going to school',
+        words: ['hsk_tian', 'hsk_xing_qi_ri', 'hsk_xue', 'hsk_shui', 'hsk_shang_xue'],
+        sentences: [
+          s(['一', '天', '有', '二', '十', '四', '个', '小时', '。'], 'A day has twenty-four hours.'),
+          s(['今天', '是', '星期日', '。'], 'Today is Sunday.'),
+          s(['外', '边', '下', '雪', '了', '。'], 'It is snowing outside.'),
+          s(['我', '睡', '了', '八', '小时', '。'], 'I slept for eight hours.'),
+          s(['我', '七', '点', '上学', '。'], 'I go to school at seven.'),
+        ],
+        grammar: {
+          title: 'Days and weather',
+          pattern: '天 / 星期日 · 下雪 · 上学',
+          body: '天 means day or sky; 星期日 is Sunday. 下雪 = to snow. 睡 = sleep; 上学 = go to school.',
+        },
+      },
+      {
+        id: 'u16l3',
+        title: 'At home',
+        kicker: 'Cooking, reading, characters, children, and plurals',
+        words: ['hsk_zuo_fan', 'hsk_du_shu', 'hsk_zi', 'hsk_xiao_peng_you', 'hsk_men'],
+        sentences: [
+          s(['我', '在', '家', '做饭', '。'], 'I cook at home.'),
+          s(['我', '喜欢', '读书', '。'], 'I like to read.'),
+          s(['这', '是', '什么', '字', '？'], 'What character is this?'),
+          s(['小朋友', '在', '玩', '。'], 'The children are playing.'),
+          s(['孩子', '们', '在', '玩', '。'], 'The children are playing.'),
+        ],
+        grammar: {
+          title: 'Home, books, and plurals',
+          pattern: '做饭 / 读书 / 字 · Noun + 们',
+          body: '做饭 = cook, 读书 = read/study, 字 = character. 小朋友 = child. 们 makes a pronoun or noun plural: 孩子们 = the children.',
+        },
+      },
+      {
+        id: 'u16l4',
+        title: 'Little helpers',
+        kicker: 'Don’t, right, very, nice to hear, and not',
+        words: ['hsk_bu_yao', 'hsk_dui', 'hsk_fei_chang', 'hsk_hao_ting', 'hsk_mei'],
+        sentences: [
+          s(['不要', '去', '！'], 'Don’t go!'),
+          s(['你', '是', '对', '的', '。'], 'You are right.'),
+          s(['今天', '非常', '冷', '。'], 'It is very cold today.'),
+          s(['这', '个', '歌', '很', '好听', '。'], 'This song is nice to listen to.'),
+          s(['我', '没', '去', '。'], 'I did not go.'),
+        ],
+        grammar: {
+          title: 'Small but useful words',
+          pattern: '不要 + Verb · 非常 + Adj · 没 + Verb',
+          body: '不要 = don’t. 对 = right/correct. 非常 = very. 好听 = nice to hear. 没 negates a past action: 我没去 = I didn’t go.',
+        },
+      },
+    ],
+  },
 ];
 
 export const EXPANSION_WORDS = [...new Set(EXPANSION_UNITS.flatMap((unit) => unit.lessons.flatMap((lesson) => lesson.words)))]

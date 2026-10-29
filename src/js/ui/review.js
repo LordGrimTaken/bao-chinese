@@ -56,11 +56,17 @@ export function renderReview(app) {
         <strong>Weak words</strong>
         <span>${weak.length ? `${weak.length} word${weak.length === 1 ? '' : 's'} need another look.` : 'No weak spots yet — keep it up.'}</span>
       </button>
-      <button class="practice-card practice-card--wide" data-practice="hsk1">
-        <span class="practice-emoji" style="--accent:var(--jade);--accent-soft:var(--jade-soft)">${icon('book')}</span>
-        <strong>HSK 1 deck</strong>
-        <span>All ${BONUS_ONLY_WORDS.length} remaining HSK 1 words — audio, meaning, and spaced review.</span>
-      </button>
+      ${BONUS_ONLY_WORDS.length
+        ? `<button class="practice-card practice-card--wide" data-practice="hsk1">
+            <span class="practice-emoji" style="--accent:var(--jade);--accent-soft:var(--jade-soft)">${icon('book')}</span>
+            <strong>HSK 1 deck</strong>
+            <span>All ${BONUS_ONLY_WORDS.length} remaining HSK 1 words — audio, meaning, and spaced review.</span>
+          </button>`
+        : `<div class="practice-card practice-card--wide">
+            <span class="practice-emoji" style="--accent:var(--jade);--accent-soft:var(--jade-soft)">${icon('book')}</span>
+            <strong>HSK 1 complete</strong>
+            <span>Every official HSK 1 word now has a lesson, audio, and spaced review.</span>
+          </div>`}
     </div>
 
     <section class="strength-card">

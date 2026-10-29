@@ -1,11 +1,11 @@
 # Bundled audio
 
-617 Mandarin clips generated with Microsoft Edge neural TTS:
+637 Mandarin clips generated with Microsoft Edge neural TTS:
 
 | Folder | Files | Content |
 | --- | ---: | --- |
 | `words/` | 314 | every course + HSK 1 deck word |
-| `sentences/` | 267 | every course example sentence |
+| `sentences/` | 287 | every course example sentence |
 | `tones/` | 36 | every tone-pair minimal-pair word |
 
 - Voice: `zh-CN-XiaoxiaoNeural`
