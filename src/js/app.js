@@ -25,7 +25,7 @@ import {
   saveState,
 } from './core.js';
 import { initAudio, setSoundEnabled, sfx, speak, vibrate } from './audio.js';
-import { buildLessonSession } from './lesson-engine.js';
+import { buildLessonSession, buildTonePairSession } from './lesson-engine.js';
 import { icon, panda } from './ui/common.js';
 import { drawPathLines, renderHome, mountHome } from './ui/home.js';
 import { renderLesson, mountLesson, handleLessonKey } from './ui/lesson.js';
@@ -721,6 +721,10 @@ function applyDemo() {
   } else if (demo === 'review') {
     app.route = { name: 'review' };
     app.render();
+  } else if (demo === 'tone-pairs') {
+    app.route = { name: 'learn' };
+    app.render();
+    app.startSession(buildTonePairSession({ limit: 8 }));
   } else if (demo === 'words') {
     app.route = { name: 'words' };
     app.render();

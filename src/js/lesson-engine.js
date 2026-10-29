@@ -4,6 +4,7 @@
  */
 
 import { DRILL_WORDS, SENTENCES, WORD_BY_ID, WORD_BY_ZH } from '../data/course.js';
+import { TONE_PAIRS } from '../data/tone-pairs.js';
 
 export const PUNCTUATION = new Set(['，', '。', '！', '？', '、', '；', '：']);
 
@@ -335,6 +336,44 @@ export function buildToneSession(wordIds, options = {}) {
     mode: 'tone',
     title: 'Tone gym',
     subtitle: 'Train your ear',
+    steps: finalize(steps),
+  };
+}
+
+/**
+ * Minimal-pair tone gym. A random word from each set is played; the learner
+ * chooses the meaning/tone. The pinyin and character are revealed only after
+ * answering, so the task is genuinely audio-first.
+ */
+export function buildTonePairSession(options = {}) {
+  const random = mulberry32(hashString(`tone-pairs:${options.seed || 'v1'}`));
+  const sets = shuffle(TONE_PAIRS, random).slice(0, options.limit || 8);
+  const ordinal = (tone) => `${tone}${tone === 1 ? 'st' : tone === 2 ? 'nd' : tone === 3 ? 'rd' : 'th'} tone`;
+  const steps = sets.map((toneSet) => {
+    const target = toneSet.words[Math.floor(random() * toneSet.words.length)];
+    return {
+      type: 'tone-word',
+      id: `tone-set-${toneSet.id}`,
+      prompt: 'Which word did you hear?',
+      syllable: toneSet.syllable,
+      answer: target.zh,
+      target: { ...target },
+      audioText: target.zh,
+      autoPlay: true,
+      options: shuffle(toneSet.words, random).map((word) => ({
+        value: word.zh,
+        label: ordinal(word.tone),
+        sub: word.en,
+        tone: word.tone,
+        pinyin: word.pinyin,
+        id: word.id,
+      })),
+    };
+  });
+  return {
+    mode: 'tone',
+    title: 'Tone pairs',
+    subtitle: 'Hear the difference',
     steps: finalize(steps),
   };
 }

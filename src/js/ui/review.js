@@ -1,6 +1,11 @@
 import { DRILL_WORDS, WORD_BY_ID } from '../../data/course.js';
 import { dueWords, studiedWords, weakWords, wordMastery } from '../core.js';
-import { buildListeningSession, buildReviewSession, buildToneSession, buildTraceSession } from '../lesson-engine.js';
+import {
+  buildListeningSession,
+  buildReviewSession,
+  buildTonePairSession,
+  buildTraceSession,
+} from '../lesson-engine.js';
 import { icon, panda, escapeHtml } from './common.js';
 
 export function renderReview(app) {
@@ -33,8 +38,8 @@ export function renderReview(app) {
     <div class="practice-grid">
       <button class="practice-card" data-practice="tone">
         <span class="practice-emoji" style="--accent:var(--gold);--accent-soft:var(--gold-soft)">${icon('speaker')}</span>
-        <strong>Tone gym</strong>
-        <span>Hear the difference between mā, má, mǎ, mà.</span>
+        <strong>Tone pairs</strong>
+        <span>mā, má, mǎ, mà — hear the difference in minimal pairs.</span>
       </button>
       <button class="practice-card" data-practice="listening">
         <span class="practice-emoji" style="--accent:var(--sky);--accent-soft:var(--sky-soft)">${icon('headphones')}</span>
@@ -127,8 +132,7 @@ export function mountReview(app) {
     button.addEventListener('click', () => {
       const mode = button.dataset.practice;
       if (mode === 'tone') {
-        const session = buildToneSession(studied.length ? studied : null, { limit: 10 });
-        app.startSession(session);
+        app.startSession(buildTonePairSession({ limit: 8 }));
       } else if (mode === 'listening') {
         const session = buildListeningSession(studied.length ? studied : null, { limit: 10 });
         app.startSession(session);

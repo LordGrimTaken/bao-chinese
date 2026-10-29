@@ -104,7 +104,8 @@ A friendly, offline Android app that teaches absolute beginners to **hear tones,
 | Feedback | Correct/incorrect states, answer reveal, retry queue | ✅ |
 | Audio | Android TTS bridge; browser speech synthesis; slow mode | ✅ |
 | Gamification | XP, levels, gems, hearts + refill, streak + freeze, daily goal | ✅ |
-| Review | Due SRS, weak words, tone gym, listening, tracing | ✅ |
+| Review | Due SRS, weak words, tone pairs, listening, tracing | ✅ |
+| Tone pairs | 9 four-way minimal-pair sets, audio-first, character hidden until answer | ✅ v0.1.2 |
 | Words | 151-word dictionary, search/filter, word sheet, practice | ✅ |
 | Profile | Streak/XP/words/lessons, weekly chart, 9 achievements, settings | ✅ |
 | Persistence | localStorage, export/import JSON, reset | ✅ |
@@ -221,7 +222,7 @@ Experiments:
 
 ### Now → 4 weeks (v0.2)
 - Native-speaker audio for 151 words + 128 sentences.
-- Tone-pair gym with minimal pairs.
+- ~~Tone-pair gym with minimal pairs.~~ Shipped in v0.1.2.
 - Fix WebView export/import.
 - Add 8 mini-stories using known words.
 - Onboarding placement check (3 questions) for restarting learners.

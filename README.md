@@ -14,6 +14,7 @@
 Bao is a Duolingo-shaped Mandarin course that refuses to skip the parts generic apps skip:
 
 - **Tones are explicit.** Every word has audio, pinyin, and a tone contour; tone questions are audio-first.
+- **Minimal pairs, not guesswork.** The tone gym drills sets like mā/má/mǎ/mà and shū/shú/shǔ/shù with the character hidden until you answer.
 - **You produce characters.** Trace the character you just learned; recognition is not treated as mastery.
 - **Grammar gets one minute.** Every lesson has a plain-English “why” card.
 - **Five minutes is enough.** 14–22 interactions, with a real completion screen.
@@ -28,6 +29,10 @@ It is a **starter subset of HSK 3.0 Level 1**: 8 units, 24 lessons, **151 words*
 | Learn | Lesson | Review |
 | --- | --- | --- |
 | ![Learn](screenshots/home.png) | ![Lesson](screenshots/lesson.png) | ![Review](screenshots/review.png) |
+
+| Tone pairs | Update |
+| --- | --- |
+| ![Tone pairs](screenshots/tone-pairs.png) | ![Update](screenshots/update.png) |
 
 | Words | Profile | Completion |
 | --- | --- | --- |
@@ -53,6 +58,7 @@ Demo routes for screenshots and QA:
 /?demo=profile
 /?demo=lesson&lesson=u2l2
 /?demo=lesson&lesson=u1l1&type=build
+/?demo=tone-pairs
 /?demo=complete
 ```
 
@@ -91,9 +97,7 @@ When a newer release exists, it:
 
 The first update needs “Allow from this source” for Bao. Progress stays on the device; the app does not use an account.
 
-**One-time note:** v0.1.0 was signed with a throwaway CI debug key and has no updater code. Reinstall v0.1.1 once; every build after that is signed with the stable demo key and can update in place. The demo key is intentionally public for this prototype — see [android/keystore/README.md](android/keystore/README.md) before a Play Store release.
-
-![Update sheet](screenshots/update.png)
+**One-time note:** v0.1.0 was signed with a throwaway CI debug key and has no updater code. Reinstall any v0.1.2+ build once; every build after that is signed with the stable demo key and can update in place. The demo key is intentionally public for this prototype — see [android/keystore/README.md](android/keystore/README.md) before a Play Store release.
 
 ```bash
 # requires JDK 17, Android SDK 35, and Gradle 8.9+

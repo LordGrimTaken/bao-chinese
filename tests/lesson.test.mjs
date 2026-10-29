@@ -1,11 +1,13 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { UNITS, LESSONS, WORD_LIST, WORD_BY_ZH, TOTAL_WORDS } from '../src/data/course.js';
+import { TONE_PAIRS } from '../src/data/tone-pairs.js';
 import { toMarks, tonesOf, plainPinyin } from '../src/js/pinyin.js';
 import {
   buildLessonSession,
   buildListeningSession,
   buildReviewSession,
+  buildTonePairSession,
   buildToneSession,
   buildTraceSession,
   buildWordSession,
@@ -120,6 +122,38 @@ test('review, tone, listening, and trace sessions are populated', () => {
   for (const step of tone.steps) {
     assert.equal(step.type, 'tone');
     assert.ok([1, 2, 3, 4].includes(step.answer));
+  }
+});
+
+test('tone-pair sets are four-way minimal pairs', () => {
+  assert.ok(TONE_PAIRS.length >= 8);
+  for (const set of TONE_PAIRS) {
+    assert.equal(set.words.length, 4, `${set.id} should have four words`);
+    assert.deepEqual(
+      set.words.map((word) => word.tone).sort(),
+      [1, 2, 3, 4],
+      `${set.id} should cover all four tones`
+    );
+    for (const word of set.words) {
+      assert.equal(tonesOf(word.py).length, 1);
+      assert.equal(tonesOf(word.py)[0], word.tone);
+      assert.ok(!/\d/.test(word.pinyin), `${word.pinyin} should be tone-marked`);
+      assert.ok(word.zh && word.en);
+    }
+  }
+});
+
+test('tone-pair session is audio-first with one correct answer', () => {
+  const session = buildTonePairSession({ limit: 8, seed: 'test' });
+  assert.equal(session.mode, 'tone');
+  assert.equal(session.steps.length, 8);
+  for (const step of session.steps) {
+    assert.equal(step.type, 'tone-word');
+    assert.equal(step.options.length, 4);
+    assert.ok(step.options.some((option) => option.value === step.answer));
+    assert.equal(new Set(step.options.map((option) => option.value)).size, 4);
+    assert.ok(step.target.zh && step.target.pinyin);
+    assert.equal(step.audioText, step.target.zh);
   }
 });
 

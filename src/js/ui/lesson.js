@@ -4,7 +4,7 @@ import { buildReviewSession, hashString, mulberry32, shuffle } from '../lesson-e
 import { toneName } from '../pinyin.js';
 import { escapeHtml, icon, panda, toneSparkline, toneSummary } from './common.js';
 
-const OPTION_TYPES = new Set(['meaning', 'hanzi', 'audio', 'fill', 'tone']);
+const OPTION_TYPES = new Set(['meaning', 'hanzi', 'audio', 'fill', 'tone', 'tone-word']);
 
 export function renderLesson(app) {
   const session = app.session;
@@ -44,6 +44,7 @@ function renderStep(app, step) {
   if (step.type === 'fill') return renderFill(app, step);
   if (step.type === 'trace') return renderTrace(app, step);
   if (step.type === 'tone') return renderTone(app, step);
+  if (step.type === 'tone-word') return renderToneWord(app, step);
   if (step.type === 'audio') return renderAudio(app, step);
   return renderChoice(app, step);
 }
@@ -136,6 +137,29 @@ function optionClass(app, step, value) {
   const selected = String(app.session.selection) === String(value);
   const answer = String(step.answer) === String(value);
   return `${selected ? 'selected' : ''} ${answer ? 'correct' : ''} ${selected && !answer ? 'wrong' : ''}`;
+}
+
+function renderToneWord(app, step) {
+  return `<div class="lesson-prompt">
+    ${promptHeader('Which word did you hear?')}
+    <div class="audio-hero" style="margin-top:30px">${speakerButton(step.audioText, true)}</div>
+    <p class="prompt-sub" style="max-width:320px;margin:12px auto 0">All four share the syllable <strong>${escapeHtml(step.syllable)}</strong>. Only the pitch changes.</p>
+  </div>
+  <div class="options tone-pair-grid" data-options>
+    ${step.options
+      .map(
+        (option, index) => `<button class="option tone-option ${optionClass(app, step, option.value)}" data-value="${escapeHtml(option.value)}" ${app.session.checked ? 'disabled' : ''}>
+          <span class="option-key">${index + 1}</span>
+          <span class="tone-option-main">
+            <span class="tone-label">${escapeHtml(option.label)}</span>
+            <span class="tone-sub">${escapeHtml(option.sub)}</span>
+          </span>
+          ${toneSparkline(option.tone)}
+          ${app.session.checked ? `<span class="opt-py">${escapeHtml(option.pinyin)}</span>` : ''}
+        </button>`
+      )
+      .join('')}
+  </div>`;
 }
 
 function renderOptions(step, app) {
@@ -295,12 +319,16 @@ function goodTitle(step) {
     build: 'Sentence builder!',
     match: 'Perfect match!',
     trace: 'Beautifully traced!',
+    'tone-word': 'That is the one!',
   };
   return titles[step.type] || '对了! Nice work!';
 }
 
 function goodCopy(step) {
   if (step.type === 'tone') return `${toneName(Number(step.answer))}. Feel the shape of the pitch.`;
+  if (step.type === 'tone-word') {
+    return `${escapeHtml(step.target?.zh || '')} ${escapeHtml(step.target?.pinyin || '')} — ${escapeHtml(step.target?.en || '')}.`;
+  }
   if (step.type === 'build') return 'Word order is coming together.';
   if (step.type === 'trace') return 'Every stroke makes the character more familiar.';
   if (step.type === 'match') return 'Four pairs, no slips.';
@@ -309,6 +337,11 @@ function goodCopy(step) {
 
 function correctAnswer(step) {
   const word = step.wordId ? WORD_BY_ID.get(step.wordId) : null;
+  if (step.type === 'tone-word') {
+    const target = step.target;
+    if (!target) return '';
+    return `<span style="font-family:var(--hanzi);font-size:22px">${escapeHtml(target.zh)} ${escapeHtml(target.pinyin)}</span> — ${escapeHtml(target.en)}`;
+  }
   if (step.type === 'tone') {
     return `${toneName(Number(step.answer))} · ${word ? escapeHtml(word.pinyin) : ''}`;
   }
@@ -499,7 +532,9 @@ function recordResult(app, step, wordId, correct) {
   if (!results[wordId]) results[wordId] = { correct: 0, wrong: 0 };
   if (correct) results[wordId].correct += 1;
   else results[wordId].wrong += 1;
-  if (step.type === 'tone' && correct) app.session.toneCorrect = (app.session.toneCorrect || 0) + 1;
+  if ((step.type === 'tone' || step.type === 'tone-word') && correct) {
+    app.session.toneCorrect = (app.session.toneCorrect || 0) + 1;
+  }
 }
 
 function evaluate(app, step) {

@@ -119,6 +119,7 @@ Typical length: 14–22 interactions, 5–8 minutes.
 | `hanzi` | recognition | Which characters mean “friend”? |
 | `audio` | listening | Listen and choose the word |
 | `tone` | perception | Which tone do you hear? |
+| `tone-word` | tone + meaning | shī / shí / shǐ / shì — which word did you hear? |
 | `match` | linking | 你好 ↔ hello |
 | `build` | syntax/production | “Are you a student?” → 你 是 学生 吗 |
 | `fill` | recall in context | ? 不是学生 → 我 |
@@ -165,7 +166,7 @@ node tools/validate-content.mjs
 | --- | --- | --- |
 | P0 | Remaining HSK 1 words (~151) | Complete the level |
 | P0 | Native-speaker audio for all 151 words + 128 sentences | TTS is not enough for a paid product |
-| P1 | Tone-pair gym (mā/má/mǎ/mà, tāng/táng/tǎng/tàng) | The highest-leverage pronunciation drill |
+| ✅ | Tone-pair gym (mā/má/mǎ/mà, shū/shú/shǔ/shù, …) | Shipped in v0.1.2: 9 minimal-pair sets, audio-first |
 | P1 | 8 graded mini-stories using known words | Comprehensible input; reading habit |
 | P1 | Measure-word trainer (个/本/杯/件/家/口) | Major beginner error source |
 | P2 | Traditional character toggle | Taiwan / heritage learners |
