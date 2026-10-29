@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="paper">#FFF9F0</color>
+    <color name="ink">#2B2118</color>
+    <color name="seal_red">#E8503A</color>
+    <color name="jade">#1FA97A</color>
+    <color name="icon_bg">#E8503A</color>
+</resources>

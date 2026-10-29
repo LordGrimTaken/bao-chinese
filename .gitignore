@@ -1,0 +1,24 @@
+# Editor / OS
+.DS_Store
+Thumbs.db
+*.log
+
+# Node
+node_modules/
+
+# Browser QA profiles
+.edge-profile/
+.edge-run/
+.edge-*/
+
+# Gradle / Android build outputs
+android/.gradle/
+android/app/build/
+android/local.properties
+android/app/src/main/assets/www/
+
+# Local test artifacts
+node-test.txt
+test.txt
+python-test.png
+home.png

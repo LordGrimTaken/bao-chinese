@@ -1,0 +1,12 @@
+{
+  "name": "bao-chinese",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Bao Chinese — an offline-first HSK 1 Mandarin learning app.",
+  "scripts": {
+    "start": "node tools/serve.mjs",
+    "test": "node tests/core.test.mjs && node tests/lesson.test.mjs && node tools/validate-content.mjs",
+    "check": "node tools/validate-content.mjs"
+  }
+}

@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>Bao Chinese — Chinese, one bite at a time</title>
+    <meta
+      name="description"
+      content="A friendly, offline-first Mandarin course for absolute beginners. Bite-sized HSK 1 lessons, tone training, character tracing, and spaced review."
+    />
+    <meta name="theme-color" content="#fff9f0" />
+    <meta name="color-scheme" content="light" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta name="apple-mobile-web-app-title" content="Bao" />
+    <link rel="manifest" href="./manifest.webmanifest" />
+    <link rel="icon" href="./assets/icon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="./assets/icon.svg" />
+    <link rel="stylesheet" href="./src/css/app.css" />
+  </head>
+  <body>
+    <div id="app" class="app">
+      <div class="boot">
+        <div>
+          <div class="brand-mark" aria-hidden="true">包</div>
+          <div>慢慢来 — loading your course…</div>
+        </div>
+      </div>
+    </div>
+    <div id="toast-root" aria-live="polite"></div>
+    <div id="modal-root"></div>
+    <noscript>
+      <div style="padding: 32px; font-family: sans-serif">
+        Bao needs JavaScript to run. Please enable it and reload.
+      </div>
+    </noscript>
+    <script type="module" src="./src/js/app.js"></script>
+  </body>
+</html>
