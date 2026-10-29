@@ -5,7 +5,7 @@
 [![Tests](https://github.com/LordGrimTaken/bao-chinese/actions/workflows/ci.yml/badge.svg)](https://github.com/LordGrimTaken/bao-chinese/actions/workflows/ci.yml)
 [![Android APK](https://github.com/LordGrimTaken/bao-chinese/actions/workflows/android.yml/badge.svg)](https://github.com/LordGrimTaken/bao-chinese/actions/workflows/android.yml)
 
-**[Open the app](https://lordgrimtaken.github.io/bao-chinese/)** · **[Read the research](docs/research.md)** · **[Product spec](docs/product.md)** · **[Curriculum](docs/curriculum.md)**
+**[Open the app](https://lordgrimtaken.github.io/bao-chinese/)** · **[Download the Android APK](https://github.com/LordGrimTaken/bao-chinese/releases/latest)** · **[Read the research](docs/research.md)** · **[Product spec](docs/product.md)** · **[Curriculum](docs/curriculum.md)**
 
 ![Bao Chinese home screen](screenshots/home.png)
 
@@ -74,7 +74,9 @@ node tools/e2e-lesson.mjs u1l1
 There are two Android paths:
 
 1. **Install the PWA** from the GitHub Pages URL in Chrome → “Add to Home screen”. It is offline-capable and uses Web Speech for audio.
-2. **Build an APK** from `android/` (a thin WebView shell with native Android TTS and haptics). The `Android APK` workflow builds a debug APK artifact on every push to `main`.
+2. **Install the APK** — [download the latest debug build](https://github.com/LordGrimTaken/bao-chinese/releases/latest) (Android 8.0+, ~0.9 MB). It is a thin WebView shell with native Android TTS and haptics. The `Android APK` workflow rebuilds it on every push to `main`.
+
+The current APK is **debug-signed** for testing. Enable “Install unknown apps” for your browser/file manager, then open the downloaded `app-debug.apk`.
 
 ```bash
 # requires JDK 17, Android SDK 35, and Gradle 8.9+
