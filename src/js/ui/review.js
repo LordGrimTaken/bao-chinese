@@ -1,5 +1,4 @@
-import { ALL_WORDS, ALL_WORD_BY_ID } from '../../data/course.js';
-import { BONUS_WORDS } from '../../data/hsk1-extra.js';
+import { ALL_WORDS, ALL_WORD_BY_ID, BONUS_ONLY_WORDS } from '../../data/course.js';
 import { dueWords, studiedWords, weakWords, wordMastery } from '../core.js';
 import {
   buildListeningSession,
@@ -60,7 +59,7 @@ export function renderReview(app) {
       <button class="practice-card practice-card--wide" data-practice="hsk1">
         <span class="practice-emoji" style="--accent:var(--jade);--accent-soft:var(--jade-soft)">${icon('book')}</span>
         <strong>HSK 1 deck</strong>
-        <span>All ${BONUS_WORDS.length} bonus words — audio, meaning, and spaced review.</span>
+        <span>All ${BONUS_ONLY_WORDS.length} remaining HSK 1 words — audio, meaning, and spaced review.</span>
       </button>
     </div>
 
@@ -158,7 +157,7 @@ export function mountReview(app) {
         });
         app.startSession(session);
       } else if (mode === 'hsk1') {
-        const session = buildReviewSession(BONUS_WORDS.map((word) => word.id), {
+        const session = buildReviewSession(BONUS_ONLY_WORDS.map((word) => word.id), {
           limit: 12,
           seed: 'hsk1',
           pool: ALL_WORDS,

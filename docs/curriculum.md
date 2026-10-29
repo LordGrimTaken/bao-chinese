@@ -11,15 +11,16 @@ The course is sequenced by **communicative function**, not by the alphabetical H
 | | |
 | --- | --- |
 | Units | 8 |
-| Lessons | 24 |
-| Words | 151 (150 drillable + one name) |
-| Sentences | 128 |
-| Grammar cards | 24 |
-| Exercise types | 8 |
+| Units | 9 |
+| Lessons | 27 |
+| Words | 171 lesson words + 143 deck-only words (314 dictionary entries) |
+| Sentences | 145 |
+| Grammar cards | 27 |
+| Exercise types | 9 |
 | Estimated time | 5–8 minutes per lesson |
-| Coverage | 151 lesson words + the **full 302-word HSK 1 vocabulary deck** (163 bonus entries; 314 dictionary entries including extras) |
+| Coverage | 171 lesson words + the **full 302-word HSK 1 vocabulary deck** (143 still deck-only; 314 dictionary entries including extras) |
 
-**Important:** the **word list** is complete for HSK 1, but this is **not** a complete lesson sequence or exam preparation. The 24 lessons cover 151 high-utility words with sentences and grammar; the remaining 163 words are available as an audio + SRS vocabulary deck. Sentence lessons for the whole list are the next content milestone.
+**Important:** the **word list** is complete for HSK 1, but this is **not** a complete lesson sequence or exam preparation. The 27 lessons cover 171 high-utility words with sentences and grammar; the remaining 143 words are available as an audio + SRS vocabulary deck. Sentence lessons for the whole list are the next content milestone.
 
 ---
 
@@ -35,7 +36,8 @@ The course is sequenced by **communicative function**, not by the alphabetical H
 | 6 | Daily Life | 3 | 18 | 17 | Study, work, routines, preferences |
 | 7 | Describe It | 3 | 18 | 17 | Size, weather, feelings, opinions |
 | 8 | Connect & Chat | 3 | 18 | 16 | Possession, requests, reasons |
-| **Total** | | **24** | **151** | **128** | |
+| 9 | Home & Tech | 3 | 20 | 17 | Rooms, devices, location words |
+| **Total** | | **27** | **171** | **145** | |
 
 ### Unit 1 — First Hellos
 | Lesson | New words | Core patterns |
@@ -85,6 +87,13 @@ The course is sequenced by **communicative function**, not by the alphabetical H
 | Big & small | 大 小 多 少 真 | `很` + adjective, `真` |
 | Hot & cold | 好 冷 热 新 快 慢 | adjective predicates, opposites |
 | How do you feel? | 高兴 漂亮 太 有点儿 但是 好看 了 | `太…了`, `有点儿`, `但是` |
+
+### Unit 9 — Home & Tech
+| Lesson | New words | Core patterns |
+| --- | --- | --- |
+| At home | 桌子 椅子 房间 东西 里 上 下 | `在` + place; localizers |
+| Screens & songs | 电脑 电视 手机 电影 电影院 唱 歌 | `看` + media, `唱` + 歌 |
+| Where is it? | 外边 边 前 后 那边 这边 | here/there, position phrases |
 
 ### Unit 8 — Connect & Chat
 | Lesson | New words | Core patterns |

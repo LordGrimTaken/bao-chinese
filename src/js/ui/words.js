@@ -1,12 +1,11 @@
 import {
   ALL_WORDS,
   ALL_WORD_BY_ID,
+  BONUS_ONLY_WORDS,
   SENTENCES,
   UNITS,
-  WORD_BY_ID,
   WORD_LESSON,
 } from '../../data/course.js';
-import { BONUS_WORDS } from '../../data/hsk1-extra.js';
 import { plainPinyin } from '../pinyin.js';
 import { wordMastery } from '../core.js';
 import { buildTraceSession, buildWordSession } from '../lesson-engine.js';
@@ -19,7 +18,7 @@ export function renderWords(app) {
     <header class="page-header">
       <span class="eyebrow">Your dictionary</span>
       <h1>Words</h1>
-      <p>${total} words: the 24-lesson course plus the full 302-word HSK 1 deck. Tap any word for audio and a quick drill.</p>
+      <p>${total} words: 27 lessons across 9 units plus the full 302-word HSK 1 deck. Tap any word for audio and a quick drill.</p>
     </header>
     <div class="search-wrap">
       ${icon('search')}
@@ -54,7 +53,7 @@ export function renderWords(app) {
 
 function renderUnitWords(app, unit) {
   const words = unit.lessons.flatMap((lesson) =>
-    lesson.words.map((id) => WORD_BY_ID.get(id)).filter(Boolean)
+    lesson.words.map((id) => ALL_WORD_BY_ID.get(id)).filter(Boolean)
   );
   return `<section class="word-group" data-group="${unit.id}">
     <div class="word-group-head">
@@ -71,9 +70,9 @@ function renderBonusWords(app) {
     <div class="word-group-head">
       <h3>HSK 1 vocabulary deck</h3>
       <span class="line"></span>
-      <span style="font-size:10.5px;color:var(--muted);font-weight:700">${BONUS_WORDS.length}</span>
+      <span style="font-size:10.5px;color:var(--muted);font-weight:700">${BONUS_ONLY_WORDS.length}</span>
     </div>
-    ${BONUS_WORDS.map((word) => renderWordRow(app, word)).join('')}
+    ${BONUS_ONLY_WORDS.map((word) => renderWordRow(app, word)).join('')}
   </section>`;
 }
 

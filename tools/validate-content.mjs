@@ -5,9 +5,12 @@ import {
   WORD_BY_ZH,
   ALL_WORDS,
   BONUS_WORDS,
+  BONUS_ONLY_WORDS,
+  COURSE_WORDS,
   UNITS,
   LESSONS,
   TOTAL_WORDS,
+  TOTAL_COURSE_WORDS,
   TOTAL_LESSONS,
   COURSE,
 } from '../src/data/course.js';
@@ -37,14 +40,15 @@ let sentenceCount = 0;
 for (const lesson of LESSONS) {
   if (lesson.words.length < 4) fail(`${lesson.id} has too few words`);
   if (lesson.sentences.length < 3) fail(`${lesson.id} has too few sentences`);
+  const courseById = new Map(COURSE_WORDS.map((word) => [word.id, word]));
   for (const id of lesson.words) {
-    if (!WORDS[id]) fail(`${lesson.id} references missing word ${id}`);
+    if (!courseById.has(id)) fail(`${lesson.id} references missing word ${id}`);
     if (introduced.has(id)) fail(`word ${id} introduced twice (${introduced.get(id)} / ${lesson.id})`);
     introduced.set(id, lesson.id);
   }
   const lessonText = lesson.sentences.map((sentence) => sentence.zh).join('');
   for (const id of lesson.words) {
-    const word = WORDS[id];
+    const word = courseById.get(id);
     if (word && !word.hidden && !lessonText.includes(word.zh)) {
       fail(`${lesson.id}: word ${id} (${word.zh}) never appears in a sentence`);
     }
@@ -61,19 +65,26 @@ for (const lesson of LESSONS) {
   }
 }
 
-if (TOTAL_LESSONS !== 24) fail(`expected 24 lessons, got ${TOTAL_LESSONS}`);
-if (TOTAL_WORDS !== 151) fail(`expected 151 course words, got ${TOTAL_WORDS}`);
-if (BONUS_WORDS.length !== 163) fail(`expected 163 HSK bonus words, got ${BONUS_WORDS.length}`);
+if (TOTAL_LESSONS !== 27) fail(`expected 27 lessons, got ${TOTAL_LESSONS}`);
+if (TOTAL_WORDS !== 151) fail(`expected 151 starter words, got ${TOTAL_WORDS}`);
+if (TOTAL_COURSE_WORDS !== 171) fail(`expected 171 lesson words, got ${TOTAL_COURSE_WORDS}`);
+if (BONUS_WORDS.length !== 163) fail(`expected 163 HSK bonus entries, got ${BONUS_WORDS.length}`);
+if (BONUS_ONLY_WORDS.length !== 143) fail(`expected 143 deck-only words, got ${BONUS_ONLY_WORDS.length}`);
 
-// Complete HSK 1 vocabulary deck
-const bonusIds = new Set();
+// Every HSK bonus entry has valid pinyin and meaning.
 for (const word of BONUS_WORDS) {
-  if (bonusIds.has(word.id)) fail(`duplicate bonus id: ${word.id}`);
-  bonusIds.add(word.id);
   if (!PY_RE.test(word.py)) fail(`bad bonus pinyin: ${word.id} (${word.py})`);
   if (/\d/.test(word.pinyin)) fail(`bonus tone marks still have digits: ${word.id}`);
-  if (WORD_BY_ZH.has(word.zh)) fail(`bonus word duplicates course word: ${word.zh}`);
   if (!word.en) fail(`bonus word missing meaning: ${word.id}`);
+}
+
+// Remaining deck words must not duplicate a lesson word.
+const courseHanzi = new Set(COURSE_WORDS.map((word) => word.zh));
+const bonusIds = new Set();
+for (const word of BONUS_ONLY_WORDS) {
+  if (bonusIds.has(word.id)) fail(`duplicate bonus id: ${word.id}`);
+  bonusIds.add(word.id);
+  if (courseHanzi.has(word.zh)) fail(`bonus word duplicates course word: ${word.zh}`);
 }
 if (ALL_WORDS.length !== 314) fail(`expected 314 dictionary words, got ${ALL_WORDS.length}`);
 
@@ -85,7 +96,7 @@ if (errors.length) {
 
 const sentenceWordCount = new Set(COURSE.sentences.flatMap((s) => s.tokens.filter((t) => WORD_BY_ZH.has(t))));
 console.log(
-  `✓ content valid: ${UNITS.length} units, ${TOTAL_LESSONS} lessons, ${TOTAL_WORDS} course words + ${BONUS_WORDS.length} HSK 1 deck words (${ALL_WORDS.length} dictionary entries), ${sentenceCount} sentences`
+  `✓ content valid: ${UNITS.length} units, ${TOTAL_LESSONS} lessons, ${TOTAL_COURSE_WORDS} lesson words + ${BONUS_ONLY_WORDS.length} deck-only words (${ALL_WORDS.length} dictionary entries), ${sentenceCount} sentences`
 );
 console.log(`  distinct words used in sentences: ${sentenceWordCount.size}`);
 console.log(`  sample: ${COURSE.sentences[0].zh} — ${COURSE.sentences[0].pinyin} — ${COURSE.sentences[0].en}`);

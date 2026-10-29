@@ -3,7 +3,9 @@ import assert from 'node:assert/strict';
 import {
   ALL_WORDS,
   ALL_WORD_BY_ID,
+  BONUS_ONLY_WORDS,
   BONUS_WORDS,
+  COURSE_WORDS,
   UNITS,
   LESSONS,
   WORD_LIST,
@@ -37,19 +39,21 @@ test('pinyin conversion places tone marks correctly', () => {
 });
 
 test('the course has the expected shape', () => {
-  assert.equal(UNITS.length, 8);
-  assert.equal(LESSONS.length, 24);
+  assert.equal(UNITS.length, 9);
+  assert.equal(LESSONS.length, 27);
   assert.equal(TOTAL_WORDS, 151);
+  assert.equal(COURSE_WORDS.length, 171);
   assert.equal(BONUS_WORDS.length, 163);
+  assert.equal(BONUS_ONLY_WORDS.length, 143);
   assert.equal(ALL_WORDS.length, 314);
   assert.equal(new Set(LESSONS.map((lesson) => lesson.id)).size, LESSONS.length);
 });
 
-test('the complete HSK 1 deck is valid and does not duplicate course words', () => {
-  const courseHanzi = new Set(WORD_LIST.map((word) => word.zh));
+test('the remaining HSK 1 deck is valid and does not duplicate lesson words', () => {
+  const courseHanzi = new Set(COURSE_WORDS.map((word) => word.zh));
   const ids = new Set();
   const hanzi = new Set();
-  for (const word of BONUS_WORDS) {
+  for (const word of BONUS_ONLY_WORDS) {
     assert.ok(!ids.has(word.id), `duplicate bonus id ${word.id}`);
     assert.ok(!hanzi.has(word.zh), `duplicate bonus hanzi ${word.zh}`);
     assert.ok(!courseHanzi.has(word.zh), `bonus word ${word.zh} duplicates the course`);
@@ -59,7 +63,7 @@ test('the complete HSK 1 deck is valid and does not duplicate course words', () 
     assert.ok(word.tones.length >= 1);
   }
   const session = buildReviewSession(
-    BONUS_WORDS.slice(0, 6).map((word) => word.id),
+    BONUS_ONLY_WORDS.slice(0, 6).map((word) => word.id),
     { limit: 6, pool: ALL_WORDS, wordMap: ALL_WORD_BY_ID, seed: 'bonus' }
   );
   assert.ok(session.steps.length >= 4);

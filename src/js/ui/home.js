@@ -86,7 +86,7 @@ export function renderHome(app) {
     ${UNITS.map((unit) => renderUnit(app, unit, next)).join('')}
 
     <div class="coming-soon">
-      <strong>24 lessons + the full HSK 1 word deck.</strong><br />
+      <strong>27 lessons + the full HSK 1 word deck.</strong><br />
       Every official HSK 1 word now has audio and spaced review in <b>Words</b>. More sentence lessons, stories, and stroke-order practice are next.
     </div>
   </div>`;
@@ -150,7 +150,9 @@ function renderUnit(app, unit, nextLessonIdValue) {
         unitIsCurrent
           ? `<div class="unit-cheer">${panda('happy')}<span>${
               progress.done === 0
-                ? 'Start with hello. Five minutes is enough.'
+                ? unit.number === 1
+                  ? 'Start with hello. Five minutes is enough.'
+                  : 'A new unit. One small lesson at a time.'
                 : progress.done < progress.total
                   ? 'You are building a real habit. Keep going!'
                   : 'Unit complete! Try the review to lock it in.'

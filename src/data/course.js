@@ -11,6 +11,7 @@
 
 import { toMarks, tonesOf } from '../js/pinyin.js';
 import { BONUS_WORDS } from './hsk1-extra.js';
+import { EXPANSION_UNITS, EXPANSION_WORDS, EXPANSION_WORD_IDS } from './expansion.js';
 
 export { BONUS_WORDS };
 
@@ -673,6 +674,9 @@ export const UNITS = [
   ]),
 ];
 
+// Authored expansion units extend the original 8-unit starter course.
+UNITS.push(...EXPANSION_UNITS);
+
 /** Lookup helpers shared by the engine, UI, and tests. */
 export const WORD_LIST = Object.entries(WORDS).map(([id, word]) => ({
   id,
@@ -681,14 +685,24 @@ export const WORD_LIST = Object.entries(WORDS).map(([id, word]) => ({
   tones: tonesOf(word.py),
 }));
 export const DRILL_WORDS = WORD_LIST.filter((word) => !word.hidden);
-export const WORD_BY_ZH = new Map(WORD_LIST.map((word) => [word.zh, word]));
-export const WORD_BY_ID = new Map(WORD_LIST.map((word) => [word.id, word]));
 
-/** Course words + the complete HSK 1 vocabulary deck. */
-export const ALL_WORDS = [...DRILL_WORDS, ...BONUS_WORDS];
+/** All words that are introduced by a lesson (starter + authored expansions). */
+export const COURSE_WORDS = [...DRILL_WORDS, ...EXPANSION_WORDS];
+export const WORD_BY_ZH = new Map(
+  [...WORD_LIST, ...EXPANSION_WORDS].map((word) => [word.zh, word])
+);
+export const WORD_BY_ID = new Map(
+  [...WORD_LIST, ...EXPANSION_WORDS].map((word) => [word.id, word])
+);
+
+/** The HSK 1 deck minus words that now have dedicated lessons. */
+export const BONUS_ONLY_WORDS = BONUS_WORDS.filter((word) => !EXPANSION_WORD_IDS.has(word.id));
+
+/** Course words + the remaining HSK 1 vocabulary deck. */
+export const ALL_WORDS = [...COURSE_WORDS, ...BONUS_ONLY_WORDS];
 export const ALL_WORD_BY_ZH = new Map([
   ...WORD_BY_ZH,
-  ...BONUS_WORDS.map((word) => [word.zh, word]),
+  ...BONUS_ONLY_WORDS.map((word) => [word.zh, word]),
 ]);
 export const ALL_WORD_BY_ID = new Map(ALL_WORDS.map((word) => [word.id, word]));
 
@@ -745,12 +759,13 @@ export const COURSE = {
   units: UNITS,
   lessons: LESSONS,
   words: ALL_WORDS,
-  courseWords: DRILL_WORDS,
-  bonusWords: BONUS_WORDS,
+  courseWords: COURSE_WORDS,
+  bonusWords: BONUS_ONLY_WORDS,
   sentences: SENTENCES,
 };
 
 export const TOTAL_WORDS = DRILL_WORDS.length;
+export const TOTAL_COURSE_WORDS = COURSE_WORDS.length;
 export const TOTAL_DICTIONARY_WORDS = ALL_WORDS.length;
-export const TOTAL_BONUS_WORDS = BONUS_WORDS.length;
+export const TOTAL_BONUS_WORDS = BONUS_ONLY_WORDS.length;
 export const TOTAL_LESSONS = LESSONS.length;

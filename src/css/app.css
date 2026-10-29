@@ -515,6 +515,11 @@ ul {
   --u-dark: #3f4c94;
   --u-soft: #e7eafa;
 }
+.unit-rose {
+  --u: #c75b8a;
+  --u-dark: #983f68;
+  --u-soft: #f9e5ef;
+}
 
 .unit-banner {
   position: relative;
