@@ -122,9 +122,9 @@ The Chinese Proficiency Grading Standards (HSK 3.0) introduced nine levels in th
 
 Source: [GraphChinese HSK 3.0 guide](https://graphchinese.com/hsk-3-0), [HSK 1 vocabulary list](https://graphchinese.com/new-hsk-1-vocabulary).
 
-**What Bao v1 covers:** 9 units, 27 lessons, **171 lesson words**, 145 sentences, and 27 grammar cards, plus the **complete 302-word HSK 1 vocabulary deck** in the dictionary (143 still deck-only; 314 dictionary entries including extras). It is a starter course, not a complete HSK 1 lesson sequence or exam preparation. The curriculum is sequenced by communicative function and grammar dependency, not by the alphabetical HSK list.
+**What Bao v1 covers:** 10 units, 30 lessons, **193 lesson words**, 166 sentences, and 30 grammar cards, plus the **complete 302-word HSK 1 vocabulary deck** in the dictionary (121 still deck-only; 314 dictionary entries including extras). It is a starter course, not a complete HSK 1 lesson sequence or exam preparation. The curriculum is sequenced by communicative function and grammar dependency, not by the alphabetical HSK list.
 
-**What this means:** a learner who finishes the 27 lessons can greet, introduce themselves, talk about family, count, tell time, order basic food, talk about places/transport, describe their home and devices, describe simple things, and connect ideas. The HSK 1 deck adds audio, meaning, and spaced review for every remaining official word, but 143 words do not yet have dedicated sentence lessons. They will still need mock tests and more output practice before sitting the exam.
+**What this means:** a learner who finishes the 30 lessons can greet, introduce themselves, talk about family, count, tell time, order basic food, talk about places/transport, describe their home and devices, talk about school and work, describe simple things, and connect ideas. The HSK 1 deck adds audio, meaning, and spaced review for every remaining official word, but 121 words do not yet have dedicated sentence lessons. They will still need mock tests and more output practice before sitting the exam.
 
 ---
 

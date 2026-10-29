@@ -79,6 +79,76 @@ export const EXPANSION_UNITS = [
       },
     ],
   },
+  {
+    id: 'u10',
+    number: 10,
+    title: 'School & Work',
+    subtitle: 'Classrooms, jobs, and taking care of yourself',
+    color: 'lime',
+    emoji: '🎓',
+    lessons: [
+      {
+        id: 'u10l1',
+        title: 'School days',
+        kicker: 'Talk about school levels and classmates',
+        words: ['hsk_da_xue', 'hsk_da_xue_sheng', 'hsk_zhong_xue', 'hsk_zhong_xue_sheng', 'hsk_xiao_xue', 'hsk_xiao_xue_sheng', 'hsk_tong_xue'],
+        sentences: [
+          s(['我', '是', '大学生', '。'], 'I am a university student.'),
+          s(['他', '是', '中学生', '。'], 'He is a middle school student.'),
+          s(['我', '的', '同学', '在', '大学', '。'], 'My classmate is at university.'),
+          s(['这', '是', '小学', '。'], 'This is a primary school.'),
+          s(['小学生', '在', '小学', '上课', '。'], 'Primary school pupils have class at primary school.'),
+          s(['中学', '在', '大学', '后', '边', '。'], 'The middle school is behind the university.'),
+        ],
+        grammar: {
+          title: 'School levels and the people',
+          pattern: '大学 / 中学 / 小学 + 生',
+          body: '大学 = university, 中学 = middle school, 小学 = primary school. Add 生 for the person: 大学生, 中学生, 小学生. 同学 means classmate.',
+        },
+      },
+      {
+        id: 'u10l2',
+        title: 'In class',
+        kicker: 'Class starts, class ends, and polite titles',
+        words: ['hsk_ke', 'hsk_shang_ke', 'hsk_xia_ke', 'hsk_xian_sheng', 'hsk_n_shi', 'hsk_da_jia', 'hsk_hai_zi'],
+        sentences: [
+          s(['我们', '上课', '。'], 'We are having class.'),
+          s(['现在', '下课', '。'], 'Class ends now.'),
+          s(['这', '是', '我', '的', '课', '。'], 'This is my class.'),
+          s(['先生', '，', '你', '好', '！'], 'Hello, sir.'),
+          s(['女士', '，', '你', '好', '！'], 'Hello, madam.'),
+          s(['大家', '好', '！'], 'Hello everyone.'),
+          s(['孩子', '在', '上课', '。'], 'The child is in class.'),
+        ],
+        grammar: {
+          title: '上课, 下课, and polite address',
+          pattern: '上课 / 下课 · 先生 / 女士',
+          body: '上课 means class starts or “have class”; 下课 means class ends. 先生 and 女士 are polite titles. 大家 means everyone, and 孩子 is a child.',
+        },
+      },
+      {
+        id: 'u10l3',
+        title: 'Work & health',
+        kicker: 'Jobs, commutes, and seeing a doctor',
+        words: ['hsk_gong_si', 'hsk_shang_ban', 'hsk_xia_ban', 'hsk_yi_sheng', 'hsk_bing', 'hsk_sheng_bing', 'hsk_kan_bing', 'hsk_xiu_xi'],
+        sentences: [
+          s(['我', '在', '公司', '上班', '。'], 'I work at a company.'),
+          s(['爸爸', '在', '公司', '上班', '。'], 'Dad works at a company.'),
+          s(['我', '五', '点', '下班', '。'], 'I get off work at five.'),
+          s(['妈妈', '是', '医生', '。'], 'Mom is a doctor.'),
+          s(['我', '病', '了', '。'], 'I am sick.'),
+          s(['今天', '我', '生病', '了', '。'], 'I got sick today.'),
+          s(['我', '去', '医院', '看病', '。'], 'I go to the hospital to see a doctor.'),
+          s(['我', '在', '家', '休息', '。'], 'I rest at home.'),
+        ],
+        grammar: {
+          title: 'Work and health',
+          pattern: '上班 / 下班 · 生病 / 看病 / 休息',
+          body: '上班 = go to work, 下班 = get off work. 生病 = get sick, 看病 = see a doctor, 休息 = rest. 医生 is a doctor; 公司 is a company.',
+        },
+      },
+    ],
+  },
 ];
 
 export const EXPANSION_WORDS = [...new Set(EXPANSION_UNITS.flatMap((unit) => unit.lessons.flatMap((lesson) => lesson.words)))]

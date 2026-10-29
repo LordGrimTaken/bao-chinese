@@ -91,7 +91,7 @@ export function showUpdateSheet(app, info, { manual = false } = {}) {
   const dismissed = localStorage.getItem('bao.update.dismissed');
   if (!manual && dismissed === info.version) return;
 
-  const current = window.BaoNative?.getVersionName?.() || '0.2.0';
+  const current = window.BaoNative?.getVersionName?.() || '0.3.0';
   const size = info.size ? `${(Number(info.size) / 1048576).toFixed(1)} MB` : '';
   const notes = String(info.notes || '')
     .split('\n')
