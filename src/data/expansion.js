@@ -425,6 +425,76 @@ export const EXPANSION_UNITS = [
       },
     ],
   },
+  {
+    id: 'u15',
+    number: 15,
+    title: 'Questions & Connectors',
+    subtitle: 'Which ones, how, and the little words that hold sentences together',
+    color: 'sand',
+    emoji: '❓',
+    lessons: [
+      {
+        id: 'u15l1',
+        title: 'Which ones?',
+        kicker: 'Ask which and point at these or those',
+        words: ['hsk_na', 'hsk_na_ge', 'hsk_na_xie', 'hsk_na_xie_2', 'hsk_zhe_xie', 'hsk_xie', 'hsk_yi_xie'],
+        sentences: [
+          s(['你', '要', '哪个', '？'], 'Which one do you want?'),
+          s(['哪', '个', '好', '？'], 'Which one is good?'),
+          s(['哪些', '是', '你', '的', '？'], 'Which ones are yours?'),
+          s(['那些', '是', '我', '的', '书', '。'], 'Those are my books.'),
+          s(['这些', '是', '我', '的', '东西', '。'], 'These are my things.'),
+          s(['这', '些', '书', '很', '好', '。'], 'These books are good.'),
+          s(['我', '有', '一些', '书', '。'], 'I have some books.'),
+        ],
+        grammar: {
+          title: 'Which, these, those',
+          pattern: '哪 / 哪个 / 哪些 · 这些 / 那些',
+          body: '哪 = which; 哪个 = which one; 哪些 = which ones. 这些 = these, 那些 = those. 些 means “some/few”; 一些 = some.',
+        },
+      },
+      {
+        id: 'u15l2',
+        title: 'How & what about',
+        kicker: 'Ask how, soften a suggestion, and add 还/再/只',
+        words: ['hsk_zen_me', 'hsk_zen_me_yang', 'hsk_ne', 'hsk_ba', 'hsk_hai', 'hsk_zai', 'hsk_zhi'],
+        sentences: [
+          s(['你', '怎么', '去', '？'], 'How do you go?'),
+          s(['你', '怎么样', '？'], 'How are you?'),
+          s(['我', '很', '好', '，', '你', '呢', '？'], 'I am fine; and you?'),
+          s(['我们', '去', '吧', '！'], 'Let’s go!'),
+          s(['我', '还', '有', '一', '个', '问题', '。'], 'I still have a question.'),
+          s(['我', '再', '去', '。'], 'I will go again.'),
+          s(['我', '只', '有', '一', '个', '。'], 'I only have one.'),
+        ],
+        grammar: {
+          title: 'How and little connectors',
+          pattern: '怎么 / 怎么样 · 呢 / 吧 · 还 / 再 / 只',
+          body: '怎么 = how; 怎么样 = how about/how is it. 呢 softens a follow-up question; 吧 makes a suggestion. 还 = still, 再 = again, 只 = only.',
+        },
+      },
+      {
+        id: 'u15l3',
+        title: 'Some & reassurance',
+        kicker: 'Ongoing actions, small amounts, and “no problem”',
+        words: ['hsk_zheng_zai', 'hsk_you_de', 'hsk_you_xie', 'hsk_yi_xia', 'hsk_you_yi_dianr', 'hsk_mei_guan_xi', 'hsk_mei_shi'],
+        sentences: [
+          s(['我', '正在', '学习', '。'], 'I am studying.'),
+          s(['有', '的', '人', '很', '忙', '。'], 'Some people are busy.'),
+          s(['有', '些', '人', '很', '好', '。'], 'Some people are nice.'),
+          s(['请', '你', '看', '一下', '。'], 'Please take a look.'),
+          s(['我', '有一点儿', '忙', '。'], 'I am a little busy.'),
+          s(['没关系', '。'], 'It doesn’t matter.'),
+          s(['没事', '。'], 'No problem.'),
+        ],
+        grammar: {
+          title: 'Ongoing and “no problem”',
+          pattern: '正在 + Verb · 有的/有些 · 一下',
+          body: '正在 marks an action in progress. 有的 and 有些 mean “some”. 一下 makes a request softer; 有一点儿 = a little. 没关系/没事 = it’s okay/no problem.',
+        },
+      },
+    ],
+  },
 ];
 
 export const EXPANSION_WORDS = [...new Set(EXPANSION_UNITS.flatMap((unit) => unit.lessons.flatMap((lesson) => lesson.words)))]

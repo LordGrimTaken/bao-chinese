@@ -86,7 +86,7 @@ export function renderHome(app) {
     ${UNITS.map((unit) => renderUnit(app, unit, next)).join('')}
 
     <div class="coming-soon">
-      <strong>42 lessons + the full HSK 1 word deck.</strong><br />
+      <strong>45 lessons + the full HSK 1 word deck.</strong><br />
       Every official HSK 1 word now has audio and spaced review in <b>Words</b>. More sentence lessons, stories, and stroke-order practice are next.
     </div>
   </div>`;

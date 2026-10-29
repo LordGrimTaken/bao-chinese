@@ -193,7 +193,7 @@ Sentence data is **tokenized**:
 
 ## 6. Audio
 
-- **Bundled clips:** 596 MP3s generated with `zh-CN-XiaoxiaoNeural` cover all 314 dictionary words, 246 sentences, and 36 tone-pair words. The app resolves a clip by content ID; no manifest is needed (`words/<id>.mp3`, `sentences/<id>.mp3`, `tones/<id>.mp3`).
+- **Bundled clips:** 617 MP3s generated with `zh-CN-XiaoxiaoNeural` cover all 314 dictionary words, 267 sentences, and 36 tone-pair words. The app resolves a clip by content ID; no manifest is needed (`words/<id>.mp3`, `sentences/<id>.mp3`, `tones/<id>.mp3`).
 - **Fallback:** if a clip is missing/fails, Android `TextToSpeech` (`BaoNative.speak`) or Web Speech is used. This keeps local development and non-audio builds usable.
 - **Slow mode:** HTMLAudio `playbackRate = 0.72`, with TTS slow rate as fallback.
 - **SFX:** WebAudio oscillators (correct, wrong, tap, complete, heart). No network.

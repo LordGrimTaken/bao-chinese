@@ -10,16 +10,16 @@ The course is sequenced by **communicative function**, not by the alphabetical H
 
 | | |
 | --- | --- |
-| Units | 14 |
-| Lessons | 42 |
-| Words | 273 lesson words + 41 deck-only words (314 dictionary entries) |
-| Sentences | 246 |
-| Grammar cards | 42 |
+| Units | 15 |
+| Lessons | 45 |
+| Words | 294 lesson words + 20 deck-only words (314 dictionary entries) |
+| Sentences | 267 |
+| Grammar cards | 45 |
 | Exercise types | 9 |
 | Estimated time | 5–8 minutes per lesson |
-| Coverage | 273 lesson words + the **full 302-word HSK 1 vocabulary deck** (41 still deck-only; 314 dictionary entries including extras) |
+| Coverage | 294 lesson words + the **full 302-word HSK 1 vocabulary deck** (20 still deck-only; 314 dictionary entries including extras) |
 
-**Important:** the **word list** is complete for HSK 1, but this is **not** a complete lesson sequence or exam preparation. The 42 lessons cover 273 high-utility words with sentences and grammar; the remaining 41 words are available as an audio + SRS vocabulary deck. Sentence lessons for the whole list are the next content milestone.
+**Important:** the **word list** is complete for HSK 1, but this is **not** a complete lesson sequence or exam preparation. The 45 lessons cover 294 high-utility words with sentences and grammar; the remaining 20 words are available as an audio + SRS vocabulary deck. Sentence lessons for the whole list are the next content milestone.
 
 ---
 
@@ -41,7 +41,8 @@ The course is sequenced by **communicative function**, not by the alphabetical H
 | 12 | Shopping & Food | 3 | 18 | 19 | Clothes, prices, money, buying food |
 | 13 | People & Pets | 3 | 18 | 18 | Family, pronouns, partners, pets |
 | 14 | City & Communication | 3 | 20 | 20 | Going out, senses, phone calls |
-| **Total** | | **42** | **273** | **246** | |
+| 15 | Questions & Connectors | 3 | 21 | 21 | Which/how, particles, quantifiers |
+| **Total** | | **45** | **294** | **267** | |
 
 ### Unit 1 — First Hellos
 | Lesson | New words | Core patterns |
@@ -91,6 +92,13 @@ The course is sequenced by **communicative function**, not by the alphabetical H
 | Big & small | 大 小 多 少 真 | `很` + adjective, `真` |
 | Hot & cold | 好 冷 热 新 快 慢 | adjective predicates, opposites |
 | How do you feel? | 高兴 漂亮 太 有点儿 但是 好看 了 | `太…了`, `有点儿`, `但是` |
+
+### Unit 15 — Questions & Connectors
+| Lesson | New words | Core patterns |
+| --- | --- | --- |
+| Which ones? | 哪 哪个 哪些 那些 这些 些 一些 | 哪/哪个/哪些, 这些/那些 |
+| How & what about | 怎么 怎么样 呢 吧 还 再 只 | questions, suggestions, 还/再/只 |
+| Some & reassurance | 正在 有的 有些 一下 有一点儿 没关系 没事 | ongoing actions, quantifiers |
 
 ### Unit 14 — City & Communication
 | Lesson | New words | Core patterns |
