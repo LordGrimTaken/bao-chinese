@@ -99,7 +99,7 @@ A friendly, offline Android app that teaches absolute beginners to **hear tones,
 | Area | Requirement | Status |
 | --- | --- | --- |
 | Onboarding | 4 steps, reason, goal, name, skip | ✅ |
-| Path | 12 units, 36 lessons, alternating nodes, trail, stars, locked/current | ✅ |
+| Path | 13 units, 39 lessons, alternating nodes, trail, stars, locked/current | ✅ |
 | Lessons | Intro, meaning, hanzi, audio, tone, match, build, fill, trace | ✅ |
 | Feedback | Correct/incorrect states, answer reveal, retry queue | ✅ |
 | Audio | Android TTS bridge; browser speech synthesis; slow mode | ✅ |
@@ -107,7 +107,7 @@ A friendly, offline Android app that teaches absolute beginners to **hear tones,
 | Review | Due SRS, weak words, tone pairs, listening, tracing | ✅ |
 | Tone pairs | 9 four-way minimal-pair sets, audio-first, character hidden until answer | ✅ v0.1.2 |
 | Words | 314-entry dictionary (full HSK 1 deck), search/filter, word sheet, practice | ✅ |
-| Audio | 558 bundled neural Mandarin clips + TTS fallback | ✅ v0.1.3 |
+| Audio | 576 bundled neural Mandarin clips + TTS fallback | ✅ v0.1.3 |
 | Profile | Streak/XP/words/lessons, weekly chart, 9 achievements, settings | ✅ |
 | Persistence | localStorage, export/import JSON, reset | ✅ |
 | Offline | Service worker, manifest, installable PWA | ✅ |

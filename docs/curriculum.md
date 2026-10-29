@@ -11,16 +11,16 @@ The course is sequenced by **communicative function**, not by the alphabetical H
 | | |
 | --- | --- |
 | Units | 8 |
-| Units | 12 |
-| Lessons | 36 |
-| Words | 235 lesson words + 79 deck-only words (314 dictionary entries) |
-| Sentences | 208 |
-| Grammar cards | 36 |
+| Units | 13 |
+| Lessons | 39 |
+| Words | 253 lesson words + 61 deck-only words (314 dictionary entries) |
+| Sentences | 226 |
+| Grammar cards | 39 |
 | Exercise types | 9 |
 | Estimated time | 5–8 minutes per lesson |
-| Coverage | 235 lesson words + the **full 302-word HSK 1 vocabulary deck** (79 still deck-only; 314 dictionary entries including extras) |
+| Coverage | 253 lesson words + the **full 302-word HSK 1 vocabulary deck** (61 still deck-only; 314 dictionary entries including extras) |
 
-**Important:** the **word list** is complete for HSK 1, but this is **not** a complete lesson sequence or exam preparation. The 36 lessons cover 235 high-utility words with sentences and grammar; the remaining 79 words are available as an audio + SRS vocabulary deck. Sentence lessons for the whole list are the next content milestone.
+**Important:** the **word list** is complete for HSK 1, but this is **not** a complete lesson sequence or exam preparation. The 39 lessons cover 253 high-utility words with sentences and grammar; the remaining 61 words are available as an audio + SRS vocabulary deck. Sentence lessons for the whole list are the next content milestone.
 
 ---
 
@@ -40,7 +40,8 @@ The course is sequenced by **communicative function**, not by the alphabetical H
 | 10 | School & Work | 3 | 22 | 21 | School levels, class, jobs, health |
 | 11 | Time & Dates | 3 | 24 | 23 | Times of day, meals, dates |
 | 12 | Shopping & Food | 3 | 18 | 19 | Clothes, prices, money, buying food |
-| **Total** | | **36** | **235** | **208** | |
+| 13 | People & Pets | 3 | 18 | 18 | Family, pronouns, partners, pets |
+| **Total** | | **39** | **253** | **226** | |
 
 ### Unit 1 — First Hellos
 | Lesson | New words | Core patterns |
@@ -90,6 +91,13 @@ The course is sequenced by **communicative function**, not by the alphabetical H
 | Big & small | 大 小 多 少 真 | `很` + adjective, `真` |
 | Hot & cold | 好 冷 热 新 快 慢 | adjective predicates, opposites |
 | How do you feel? | 高兴 漂亮 太 有点儿 但是 好看 了 | `太…了`, `有点儿`, `但是` |
+
+### Unit 13 — People & Pets
+| Lesson | New words | Core patterns |
+| --- | --- | --- |
+| Family & gender | 妹妹 儿子 女儿 家人 男 女 | family, 男的/女的 |
+| They & you | 它 他们 她们 它们 你们 您 | plural pronouns |
+| Love & pets | 男朋友 女朋友 猫 狗 玩 好玩儿 | partners, pets, play |
 
 ### Unit 12 — Shopping & Food
 | Lesson | New words | Core patterns |

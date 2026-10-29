@@ -122,9 +122,9 @@ The Chinese Proficiency Grading Standards (HSK 3.0) introduced nine levels in th
 
 Source: [GraphChinese HSK 3.0 guide](https://graphchinese.com/hsk-3-0), [HSK 1 vocabulary list](https://graphchinese.com/new-hsk-1-vocabulary).
 
-**What Bao v1 covers:** 12 units, 36 lessons, **235 lesson words**, 208 sentences, and 36 grammar cards, plus the **complete 302-word HSK 1 vocabulary deck** in the dictionary (79 still deck-only; 314 dictionary entries including extras). It is a starter course, not a complete HSK 1 lesson sequence or exam preparation. The curriculum is sequenced by communicative function and grammar dependency, not by the alphabetical HSK list.
+**What Bao v1 covers:** 13 units, 39 lessons, **253 lesson words**, 226 sentences, and 39 grammar cards, plus the **complete 302-word HSK 1 vocabulary deck** in the dictionary (61 still deck-only; 314 dictionary entries including extras). It is a starter course, not a complete HSK 1 lesson sequence or exam preparation. The curriculum is sequenced by communicative function and grammar dependency, not by the alphabetical HSK list.
 
-**What this means:** a learner who finishes the 36 lessons can greet, introduce themselves, talk about family, count, tell time and dates, order basic food, shop for clothes and food, talk about places/transport, describe their home and devices, talk about school and work, describe simple things, and connect ideas. The HSK 1 deck adds audio, meaning, and spaced review for every remaining official word, but 79 words do not yet have dedicated sentence lessons. They will still need mock tests and more output practice before sitting the exam.
+**What this means:** a learner who finishes the 39 lessons can greet, introduce themselves, talk about family and pets, count, tell time and dates, order basic food, shop for clothes and food, talk about places/transport, describe their home and devices, talk about school and work, describe simple things, and connect ideas. The HSK 1 deck adds audio, meaning, and spaced review for every remaining official word, but 61 words do not yet have dedicated sentence lessons. They will still need mock tests and more output practice before sitting the exam.
 
 ---
 

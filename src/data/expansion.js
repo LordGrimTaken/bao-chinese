@@ -289,6 +289,73 @@ export const EXPANSION_UNITS = [
       },
     ],
   },
+  {
+    id: 'u13',
+    number: 13,
+    title: 'People & Pets',
+    subtitle: 'Family, pronouns, relationships, and play',
+    color: 'lilac',
+    emoji: '🐼',
+    lessons: [
+      {
+        id: 'u13l1',
+        title: 'Family & gender',
+        kicker: 'Brothers, sisters, sons, and daughters',
+        words: ['hsk_mei_mei', 'hsk_er_zi', 'hsk_n_er', 'hsk_jia_ren', 'hsk_nan', 'hsk_n'],
+        sentences: [
+          s(['这', '是', '我', '妹妹', '。'], 'This is my younger sister.'),
+          s(['这', '是', '我', '儿子', '。'], 'This is my son.'),
+          s(['她', '是', '我', '女儿', '。'], 'She is my daughter.'),
+          s(['我', '的', '家人', '很', '好', '。'], 'My family is great.'),
+          s(['他', '是', '男', '的', '。'], 'He is male.'),
+          s(['她', '是', '女', '的', '。'], 'She is female.'),
+        ],
+        grammar: {
+          title: 'Family and gender',
+          pattern: '男 / 女 · 家人',
+          body: '妹妹 = younger sister, 儿子 = son, 女儿 = daughter, 家人 = family members. 男 means male and 女 means female; 男的/女的 is a casual way to say “a man/a woman”.',
+        },
+      },
+      {
+        id: 'u13l2',
+        title: 'They & you',
+        kicker: 'Pronouns for people, animals, and things',
+        words: ['hsk_ta', 'hsk_ta_men', 'hsk_ta_men_2', 'hsk_ta_men_3', 'hsk_ni_men', 'hsk_nin'],
+        sentences: [
+          s(['它', '是', '猫', '。'], 'It is a cat.'),
+          s(['他们', '是', '我', '的', '朋友', '。'], 'They are my friends.'),
+          s(['她们', '是', '我', '的', '同学', '。'], 'They are my classmates.'),
+          s(['它们', '是', '狗', '。'], 'They are dogs.'),
+          s(['你们', '好', '！'], 'Hello, everyone.'),
+          s(['您', '好', '！'], 'Hello, sir/madam.'),
+        ],
+        grammar: {
+          title: 'Plural pronouns',
+          pattern: '他/她/它 + 们 · 你们 · 您',
+          body: '他们 = they (male/mixed), 她们 = they (female), 它们 = they (animals/things). 你们 = you plural; 您 = polite “you”. 它 = it.',
+        },
+      },
+      {
+        id: 'u13l3',
+        title: 'Love & pets',
+        kicker: 'Partners, cats, dogs, and having fun',
+        words: ['hsk_nan_peng_you', 'hsk_n_peng_you', 'hsk_mao', 'hsk_gou', 'hsk_wan', 'hsk_hao_wanr'],
+        sentences: [
+          s(['他', '是', '我', '男朋友', '。'], 'He is my boyfriend.'),
+          s(['她', '是', '我', '女朋友', '。'], 'She is my girlfriend.'),
+          s(['我', '家', '有', '猫', '。'], 'My home has a cat.'),
+          s(['我', '家', '有', '狗', '。'], 'My home has a dog.'),
+          s(['我', '和', '猫', '玩', '。'], 'I play with the cat.'),
+          s(['这个', '很', '好玩儿', '。'], 'This is fun.'),
+        ],
+        grammar: {
+          title: 'Partners and pets',
+          pattern: '男朋友 / 女朋友 · 和 + Noun + 玩',
+          body: '男朋友 = boyfriend, 女朋友 = girlfriend. 猫 = cat, 狗 = dog. 玩 = to play; 和 + person/animal + 玩 = play with someone. 好玩儿 = fun.',
+        },
+      },
+    ],
+  },
 ];
 
 export const EXPANSION_WORDS = [...new Set(EXPANSION_UNITS.flatMap((unit) => unit.lessons.flatMap((lesson) => lesson.words)))]

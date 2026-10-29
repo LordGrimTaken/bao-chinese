@@ -535,6 +535,11 @@ ul {
   --u-dark: #83492f;
   --u-soft: #f7e8de;
 }
+.unit-lilac {
+  --u: #8a6bbe;
+  --u-dark: #634992;
+  --u-soft: #f0e9fa;
+}
 
 .unit-banner {
   position: relative;
